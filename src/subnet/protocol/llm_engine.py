@@ -60,6 +60,15 @@ LLM_ERROR_MESSAGES = {
 }
 
 
+class Challenge(BaseModel):
+    in_total_amount: Optional[int] = None
+    out_total_amount: Optional[int] = None
+    tx_id_last_6_chars: Optional[str] = None
+    checksum: Optional[str] = None
+    block_height: Optional[int] = None
+    output: Optional[Any] = None
+
+
 class LlmMessage(BaseModel):
     type: int = Field(0, title="The type of the message")
     content: str = Field("", title="The content of the message")
