@@ -66,7 +66,7 @@ class Challenge(BaseModel):
     tx_id_last_6_chars: Optional[str] = None
     checksum: Optional[str] = None
     block_height: Optional[int] = None
-    output: Optional[Any] = None
+    output: Optional[Dict] = None
 
 
 class LlmMessage(BaseModel):

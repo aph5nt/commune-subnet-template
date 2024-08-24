@@ -4,12 +4,11 @@ from communex._common import get_node_url
 from communex.client import CommuneClient
 from communex.compat.key import classic_load_key
 
-from src.subnet.miner._config import load_environment
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
 from src.subnet.validator.database.session_manager import DatabaseSessionManager
 from src.subnet.validator.weights_storage import WeightsStorage
-from validator._config import ValidatorSettings
+from validator._config import ValidatorSettings, load_environment
 from validator.validator import Validator
 from loguru import logger
 
@@ -54,7 +53,9 @@ if __name__ == "__main__":
         weights_storage,
         miner_discovery_manager,
         miner_receipt_manager,
-        call_timeout=settings.CHALLENGE_TIMEOUT,
+        query_timeout=settings.QUERY_TIMEOUT,
+        challenge_timeout=settings.CHALLENGE_TIMEOUT,
+        llm_query_timeout=settings.LLM_QUERY_TIMEOUT
     )
 
     def shutdown_handler(signal, frame):

@@ -16,11 +16,15 @@ class ValidatorSettings(BaseSettings):
     MAX_ALLOWED_WEIGHTS: int
     NET_UID: int
     VALIDATOR_KEY: str
-    LLM_QUERY_TIMEOUT: int
+
     WEIGHTS_FILE_NAME: str = 'weights.pkl'
     DATABASE_URL: str
     API_RATE_LIMIT: int
     REDIS_URL: str
+
+    LLM_QUERY_TIMEOUT: int  # llm query timeout (organic prompt)
+    QUERY_TIMEOUT: int   # cross check query timeout
+    CHALLENGE_TIMEOUT: int  # challenge and llm challenge time
 
     class Config:
         env_file = '../env/.env.validator.testnet'  # Default .env file

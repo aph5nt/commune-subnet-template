@@ -27,7 +27,7 @@ import time
 import uuid
 from datetime import datetime
 from random import sample
-from typing import Optional, cast, Any, List
+from typing import Optional, cast, Any, List, Dict
 
 from communex.client import CommuneClient  # type: ignore
 from communex.misc import get_map_modules
@@ -43,7 +43,7 @@ from .helpers import raise_exception_if_not_registered
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
-from ..protocol.llm_engine import LlmQueryRequest, LlmMessage
+from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage
 
 IP_REGEX = re.compile(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+")
 
@@ -105,16 +105,21 @@ class Validator(Module):
             weights_storage: WeightsStorage,
             miner_discovery_manager: MinerDiscoveryManager,
             miner_receipt_manager: MinerReceiptManager,
+            query_timeout: int = 60,
             llm_query_timeout: int = 60,
+            challenge_timeout: int = 60,
 
     ) -> None:
         super().__init__()
+
         self.miner_receipt_manager = miner_receipt_manager
         self.client = client
         self.key = key
         self.netuid = netuid
-        self.val_model = "foo"
         self.llm_query_timeout = llm_query_timeout
+        self.challenge_timeout = challenge_timeout
+        self.query_timeout = query_timeout
+
         self.weights_storage = weights_storage
         self.miner_discovery_manager = miner_discovery_manager
         self.terminate_event = threading.Event()
@@ -140,7 +145,7 @@ class Validator(Module):
                 "discovery",
                 miner_key,
                 {},
-                timeout=self.call_timeout,
+                timeout=self.challenge_timeout,
             )
             logger.debug(f"Miner {module_ip}:{module_port} got discovery {discovery_result}")
         except Exception as e:
@@ -155,7 +160,7 @@ class Validator(Module):
                 {
                     'network': discovery_result['network'],
                 },
-                timeout=self.call_timeout,
+                timeout=self.challenge_timeout,
             )
             logger.info(f"Miner {module_ip}:{module_port} passed challenge {challenge_result}")
         except Exception as e:
@@ -197,7 +202,7 @@ class Validator(Module):
         score_dict: dict[int, float] = {}
         miners_module_info = {}
 
-        modules = cast(dict[str, Any], get_map_modules(self.client, netuid=netuid, include_balances=False))
+        modules = cast(dict[str, Dict], get_map_modules(self.client, netuid=netuid, include_balances=False))
         modules_addresses = self.get_addresses(self.client, netuid)
         ip_ports = get_ip_port(modules_addresses)
 

@@ -116,7 +116,9 @@ if __name__ == "__main__":
         weights_storage,
         miner_discovery_manager,
         miner_receipt_manager,
-        llm_query_timeout=settings.LLM_QUERY_TIMEOUT,
+        query_timeout=settings.QUERY_TIMEOUT,
+        challenge_timeout=settings.CHALLENGE_TIMEOUT,
+        llm_query_timeout=settings.LLM_QUERY_TIMEOUT
     )
 
     app = FastAPI(
