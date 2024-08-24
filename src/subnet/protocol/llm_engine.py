@@ -61,12 +61,22 @@ LLM_ERROR_MESSAGES = {
 
 
 class Challenge(BaseModel):
+    kind: str = Field(default=MODEL_TYPE_FUNDS_FLOW)
     in_total_amount: Optional[int] = None
     out_total_amount: Optional[int] = None
     tx_id_last_6_chars: Optional[str] = None
     checksum: Optional[str] = None
     block_height: Optional[int] = None
     output: Optional[Dict] = None
+
+    def to_dict(self):
+        return {
+            "kind": self.kind,
+            "in_total_amount": self.in_total_amount,
+            "out_total_amount": self.out_total_amount,
+            "tx_id_last_6_chars": self.tx_id_last_6_chars,
+            "block_height": self.block_height,
+        }
 
 
 class LlmMessage(BaseModel):

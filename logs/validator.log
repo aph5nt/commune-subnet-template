@@ -6059,3 +6059,1186 @@
 2024-08-24 11:29:47 | DEBUG | Got responses from 0 miners
 2024-08-24 11:29:47 | INFO | No miner managed to give a valid answer
 2024-08-24 11:29:47 | INFO | Sleeping for 43.56157612800598
+2024-08-24 11:31:29 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:31:29 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:31:29 | INFO | Found the following miners: dict_keys([])
+2024-08-24 11:31:29 | DEBUG | Updating miner ranks
+2024-08-24 11:31:29 | DEBUG | Challenging 0 miners
+2024-08-24 11:31:29 | DEBUG | Got responses from 0 miners
+2024-08-24 11:31:29 | INFO | No miner managed to give a valid answer
+2024-08-24 11:31:29 | INFO | Sleeping for 40.833011627197266
+2024-08-24 11:32:35 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:32:35 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:32:35 | INFO | Found the following miners: dict_keys([])
+2024-08-24 11:32:35 | DEBUG | Updating miner ranks
+2024-08-24 11:32:35 | DEBUG | Challenging 0 miners
+2024-08-24 11:32:35 | DEBUG | Got responses from 0 miners
+2024-08-24 11:32:35 | INFO | No miner managed to give a valid answer
+2024-08-24 11:32:35 | INFO | Sleeping for 75.68947505950928
+2024-08-24 11:34:16 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:34:16 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:34:16 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:34:16 | DEBUG | Updating miner ranks
+2024-08-24 11:34:16 | DEBUG | Challenging 1 miners
+2024-08-24 11:34:16 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:34:16 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:34:19 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 11:34:19 | DEBUG | Got responses from 1 miners
+2024-08-24 11:34:19 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:34:19 | INFO | No miner managed to give a valid answer
+2024-08-24 11:34:19 | INFO | Sleeping for 70.70121049880981
+2024-08-24 11:35:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:35:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:35:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:35:55 | DEBUG | Updating miner ranks
+2024-08-24 11:35:55 | DEBUG | Challenging 1 miners
+2024-08-24 11:35:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:35:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:35:55 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 11:35:55 | DEBUG | Got responses from 1 miners
+2024-08-24 11:35:55 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:35:55 | INFO | No miner managed to give a valid answer
+2024-08-24 11:35:55 | INFO | Sleeping for 75.49666500091553
+2024-08-24 11:37:37 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:37:37 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:37:37 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:37:37 | DEBUG | Updating miner ranks
+2024-08-24 11:37:37 | DEBUG | Challenging 1 miners
+2024-08-24 11:37:37 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:37:37 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:37:55 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:37:55 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:37:55 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:37:55 | DEBUG | Got responses from 1 miners
+2024-08-24 11:37:55 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:37:55 | INFO | No miner managed to give a valid answer
+2024-08-24 11:37:55 | INFO | Sleeping for 54.82776856422424
+2024-08-24 11:39:16 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:39:16 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:39:16 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:39:16 | DEBUG | Updating miner ranks
+2024-08-24 11:39:16 | DEBUG | Challenging 1 miners
+2024-08-24 11:39:16 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:39:16 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:39:20 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:39:20 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:39:20 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:39:20 | DEBUG | Got responses from 1 miners
+2024-08-24 11:39:20 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:39:20 | INFO | No miner managed to give a valid answer
+2024-08-24 11:39:20 | INFO | Sleeping for 69.99316048622131
+2024-08-24 11:40:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:40:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:40:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:40:54 | DEBUG | Updating miner ranks
+2024-08-24 11:40:54 | DEBUG | Challenging 1 miners
+2024-08-24 11:40:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:40:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:41:06 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:41:06 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:41:06 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:41:06 | DEBUG | Got responses from 1 miners
+2024-08-24 11:41:06 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:41:06 | INFO | No miner managed to give a valid answer
+2024-08-24 11:41:06 | INFO | Sleeping for 64.08800005912781
+2024-08-24 11:42:35 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:42:35 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:42:35 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:42:35 | DEBUG | Updating miner ranks
+2024-08-24 11:42:35 | DEBUG | Challenging 1 miners
+2024-08-24 11:42:35 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:42:35 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:42:41 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:42:41 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:42:41 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:42:41 | DEBUG | Got responses from 1 miners
+2024-08-24 11:42:41 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:42:41 | INFO | No miner managed to give a valid answer
+2024-08-24 11:42:41 | INFO | Sleeping for 69.42219471931458
+2024-08-24 11:44:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:44:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:44:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:44:14 | DEBUG | Updating miner ranks
+2024-08-24 11:44:14 | DEBUG | Challenging 1 miners
+2024-08-24 11:44:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:44:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:44:28 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:44:28 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:44:28 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:44:28 | DEBUG | Got responses from 1 miners
+2024-08-24 11:44:28 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:44:28 | INFO | No miner managed to give a valid answer
+2024-08-24 11:44:28 | INFO | Sleeping for 62.4094135761261
+2024-08-24 11:45:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:45:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:45:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:45:55 | DEBUG | Updating miner ranks
+2024-08-24 11:45:55 | DEBUG | Challenging 1 miners
+2024-08-24 11:45:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:45:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:46:06 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:46:06 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:46:06 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:46:06 | DEBUG | Got responses from 1 miners
+2024-08-24 11:46:06 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:46:06 | INFO | No miner managed to give a valid answer
+2024-08-24 11:46:06 | INFO | Sleeping for 63.763967514038086
+2024-08-24 11:47:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:47:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:47:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:47:34 | DEBUG | Updating miner ranks
+2024-08-24 11:47:34 | DEBUG | Challenging 1 miners
+2024-08-24 11:47:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:47:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:47:40 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:47:40 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:47:40 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:47:40 | DEBUG | Got responses from 1 miners
+2024-08-24 11:47:40 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:47:40 | INFO | No miner managed to give a valid answer
+2024-08-24 11:47:40 | INFO | Sleeping for 70.17548751831055
+2024-08-24 11:49:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:49:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:49:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:49:14 | DEBUG | Updating miner ranks
+2024-08-24 11:49:14 | DEBUG | Challenging 1 miners
+2024-08-24 11:49:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:49:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:49:57 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:49:57 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:49:57 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:49:57 | DEBUG | Got responses from 1 miners
+2024-08-24 11:49:57 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:49:57 | INFO | No miner managed to give a valid answer
+2024-08-24 11:49:57 | INFO | Sleeping for 33.20770597457886
+2024-08-24 11:50:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:50:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:50:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:50:55 | DEBUG | Updating miner ranks
+2024-08-24 11:50:55 | DEBUG | Challenging 1 miners
+2024-08-24 11:50:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:50:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:51:03 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:51:03 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:51:03 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:51:03 | DEBUG | Got responses from 1 miners
+2024-08-24 11:51:03 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:51:03 | INFO | No miner managed to give a valid answer
+2024-08-24 11:51:03 | INFO | Sleeping for 66.75236439704895
+2024-08-24 11:52:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:52:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:52:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:52:34 | DEBUG | Updating miner ranks
+2024-08-24 11:52:34 | DEBUG | Challenging 1 miners
+2024-08-24 11:52:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:52:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:52:41 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:52:41 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:52:41 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:52:41 | DEBUG | Got responses from 1 miners
+2024-08-24 11:52:41 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:52:41 | INFO | No miner managed to give a valid answer
+2024-08-24 11:52:41 | INFO | Sleeping for 68.70575022697449
+2024-08-24 11:54:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:54:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:54:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:54:14 | DEBUG | Updating miner ranks
+2024-08-24 11:54:14 | DEBUG | Challenging 1 miners
+2024-08-24 11:54:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:54:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:54:21 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:54:21 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:54:21 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:54:21 | DEBUG | Got responses from 1 miners
+2024-08-24 11:54:21 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:54:21 | INFO | No miner managed to give a valid answer
+2024-08-24 11:54:21 | INFO | Sleeping for 69.14732956886292
+2024-08-24 11:55:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:55:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:55:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:55:54 | DEBUG | Updating miner ranks
+2024-08-24 11:55:54 | DEBUG | Challenging 1 miners
+2024-08-24 11:55:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:55:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:56:07 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:56:07 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:56:07 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:56:07 | DEBUG | Got responses from 1 miners
+2024-08-24 11:56:07 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:56:07 | INFO | No miner managed to give a valid answer
+2024-08-24 11:56:07 | INFO | Sleeping for 62.884119749069214
+2024-08-24 11:57:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:57:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:57:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:57:34 | DEBUG | Updating miner ranks
+2024-08-24 11:57:34 | DEBUG | Challenging 1 miners
+2024-08-24 11:57:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:57:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:57:49 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:57:49 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:57:49 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:57:49 | DEBUG | Got responses from 1 miners
+2024-08-24 11:57:49 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:57:49 | INFO | No miner managed to give a valid answer
+2024-08-24 11:57:49 | INFO | Sleeping for 61.623368978500366
+2024-08-24 11:59:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:59:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:59:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 11:59:14 | DEBUG | Updating miner ranks
+2024-08-24 11:59:14 | DEBUG | Challenging 1 miners
+2024-08-24 11:59:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 11:59:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 11:59:26 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 11:59:26 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 11:59:26 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 11:59:26 | DEBUG | Got responses from 1 miners
+2024-08-24 11:59:26 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 11:59:26 | INFO | No miner managed to give a valid answer
+2024-08-24 11:59:26 | INFO | Sleeping for 63.70076084136963
+2024-08-24 12:00:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:00:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:00:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:00:54 | DEBUG | Updating miner ranks
+2024-08-24 12:00:54 | DEBUG | Challenging 1 miners
+2024-08-24 12:00:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:00:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:01:10 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:01:10 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:01:10 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:01:10 | DEBUG | Got responses from 1 miners
+2024-08-24 12:01:10 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:01:10 | INFO | No miner managed to give a valid answer
+2024-08-24 12:01:10 | INFO | Sleeping for 59.86820864677429
+2024-08-24 12:02:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:02:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:02:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:02:34 | DEBUG | Updating miner ranks
+2024-08-24 12:02:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:02:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:02:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:02:47 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:02:47 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:02:47 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:02:47 | DEBUG | Got responses from 1 miners
+2024-08-24 12:02:47 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:02:47 | INFO | No miner managed to give a valid answer
+2024-08-24 12:02:47 | INFO | Sleeping for 63.42110586166382
+2024-08-24 12:04:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:04:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:04:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:04:14 | DEBUG | Updating miner ranks
+2024-08-24 12:04:14 | DEBUG | Challenging 1 miners
+2024-08-24 12:04:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:04:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:04:26 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:04:26 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:04:26 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:04:26 | DEBUG | Got responses from 1 miners
+2024-08-24 12:04:26 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:04:26 | INFO | No miner managed to give a valid answer
+2024-08-24 12:04:26 | INFO | Sleeping for 64.15126895904541
+2024-08-24 12:05:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:05:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:05:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:05:55 | DEBUG | Updating miner ranks
+2024-08-24 12:05:55 | DEBUG | Challenging 1 miners
+2024-08-24 12:05:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:05:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:06:02 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:06:02 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:06:02 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:06:02 | DEBUG | Got responses from 1 miners
+2024-08-24 12:06:02 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:06:02 | INFO | No miner managed to give a valid answer
+2024-08-24 12:06:02 | INFO | Sleeping for 67.91077280044556
+2024-08-24 12:07:35 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:07:35 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:07:35 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:07:35 | DEBUG | Updating miner ranks
+2024-08-24 12:07:35 | DEBUG | Challenging 1 miners
+2024-08-24 12:07:35 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:07:35 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:07:40 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:07:40 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:07:40 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:07:40 | DEBUG | Got responses from 1 miners
+2024-08-24 12:07:40 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:07:40 | INFO | No miner managed to give a valid answer
+2024-08-24 12:07:40 | INFO | Sleeping for 69.91613268852234
+2024-08-24 12:09:17 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:09:17 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:09:17 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:09:17 | DEBUG | Updating miner ranks
+2024-08-24 12:09:17 | DEBUG | Challenging 1 miners
+2024-08-24 12:09:17 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:09:17 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:09:22 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:09:22 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:09:22 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:09:22 | DEBUG | Got responses from 1 miners
+2024-08-24 12:09:22 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:09:22 | INFO | No miner managed to give a valid answer
+2024-08-24 12:09:22 | INFO | Sleeping for 68.28750562667847
+2024-08-24 12:10:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:10:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:10:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:10:55 | DEBUG | Updating miner ranks
+2024-08-24 12:10:55 | DEBUG | Challenging 1 miners
+2024-08-24 12:10:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:10:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:11:11 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:11:11 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:11:11 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:11:11 | DEBUG | Got responses from 1 miners
+2024-08-24 12:11:11 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:11:11 | INFO | No miner managed to give a valid answer
+2024-08-24 12:11:11 | INFO | Sleeping for 59.06301403045654
+2024-08-24 12:12:37 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:12:37 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:12:37 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:12:37 | DEBUG | Updating miner ranks
+2024-08-24 12:12:37 | DEBUG | Challenging 1 miners
+2024-08-24 12:12:37 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:12:37 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:12:48 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:12:48 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:12:48 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:12:48 | DEBUG | Got responses from 1 miners
+2024-08-24 12:12:48 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:12:48 | INFO | No miner managed to give a valid answer
+2024-08-24 12:12:48 | INFO | Sleeping for 61.89335656166077
+2024-08-24 12:14:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:14:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:14:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:14:15 | DEBUG | Updating miner ranks
+2024-08-24 12:14:15 | DEBUG | Challenging 1 miners
+2024-08-24 12:14:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:14:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:14:23 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:14:23 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:14:23 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:14:23 | DEBUG | Got responses from 1 miners
+2024-08-24 12:14:23 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:14:23 | INFO | No miner managed to give a valid answer
+2024-08-24 12:14:23 | INFO | Sleeping for 67.46706891059875
+2024-08-24 12:15:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:15:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:15:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:15:54 | DEBUG | Updating miner ranks
+2024-08-24 12:15:54 | DEBUG | Challenging 1 miners
+2024-08-24 12:15:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:15:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:16:13 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:16:13 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:16:13 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:16:13 | DEBUG | Got responses from 1 miners
+2024-08-24 12:16:13 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:16:13 | INFO | No miner managed to give a valid answer
+2024-08-24 12:16:13 | INFO | Sleeping for 57.16791558265686
+2024-08-24 12:17:36 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:17:36 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:17:36 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:17:36 | DEBUG | Updating miner ranks
+2024-08-24 12:17:36 | DEBUG | Challenging 1 miners
+2024-08-24 12:17:36 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:17:36 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:17:44 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:17:44 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:17:44 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:17:44 | DEBUG | Got responses from 1 miners
+2024-08-24 12:17:44 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:17:44 | INFO | No miner managed to give a valid answer
+2024-08-24 12:17:44 | INFO | Sleeping for 65.70757102966309
+2024-08-24 12:19:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:19:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:19:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:19:14 | DEBUG | Updating miner ranks
+2024-08-24 12:19:14 | DEBUG | Challenging 1 miners
+2024-08-24 12:19:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:19:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:19:21 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:19:21 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:19:21 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:19:21 | DEBUG | Got responses from 1 miners
+2024-08-24 12:19:21 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:19:21 | INFO | No miner managed to give a valid answer
+2024-08-24 12:19:21 | INFO | Sleeping for 68.83772206306458
+2024-08-24 12:20:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:20:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:20:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:20:54 | DEBUG | Updating miner ranks
+2024-08-24 12:20:54 | DEBUG | Challenging 1 miners
+2024-08-24 12:20:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:20:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:21:02 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:21:02 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:21:02 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:21:02 | DEBUG | Got responses from 1 miners
+2024-08-24 12:21:02 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:21:02 | INFO | No miner managed to give a valid answer
+2024-08-24 12:21:02 | INFO | Sleeping for 68.21402525901794
+2024-08-24 12:22:37 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:22:37 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:22:37 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:22:37 | DEBUG | Updating miner ranks
+2024-08-24 12:22:37 | DEBUG | Challenging 1 miners
+2024-08-24 12:22:37 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:22:37 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:22:45 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:22:45 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:22:45 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:22:45 | DEBUG | Got responses from 1 miners
+2024-08-24 12:22:45 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:22:45 | INFO | No miner managed to give a valid answer
+2024-08-24 12:22:45 | INFO | Sleeping for 65.2545530796051
+2024-08-24 12:24:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:24:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:24:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:24:14 | DEBUG | Updating miner ranks
+2024-08-24 12:24:14 | DEBUG | Challenging 1 miners
+2024-08-24 12:24:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:24:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:24:30 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:24:30 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:24:30 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:24:30 | DEBUG | Got responses from 1 miners
+2024-08-24 12:24:30 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:24:30 | INFO | No miner managed to give a valid answer
+2024-08-24 12:24:30 | INFO | Sleeping for 60.17524838447571
+2024-08-24 12:25:54 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:25:54 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:25:54 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:25:54 | DEBUG | Updating miner ranks
+2024-08-24 12:25:54 | DEBUG | Challenging 1 miners
+2024-08-24 12:25:54 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:25:54 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:26:02 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:26:02 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:26:02 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:26:02 | DEBUG | Got responses from 1 miners
+2024-08-24 12:26:02 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:26:02 | INFO | No miner managed to give a valid answer
+2024-08-24 12:26:02 | INFO | Sleeping for 68.49071669578552
+2024-08-24 12:27:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:27:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:27:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:27:34 | DEBUG | Updating miner ranks
+2024-08-24 12:27:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:27:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:27:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:27:39 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:27:39 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:27:39 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:27:39 | DEBUG | Got responses from 1 miners
+2024-08-24 12:27:39 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:27:39 | INFO | No miner managed to give a valid answer
+2024-08-24 12:27:39 | INFO | Sleeping for 71.48551034927368
+2024-08-24 12:29:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:29:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:29:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:29:15 | DEBUG | Updating miner ranks
+2024-08-24 12:29:15 | DEBUG | Challenging 1 miners
+2024-08-24 12:29:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:29:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:29:23 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:29:23 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:29:23 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:29:23 | DEBUG | Got responses from 1 miners
+2024-08-24 12:29:23 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:29:23 | INFO | No miner managed to give a valid answer
+2024-08-24 12:29:23 | INFO | Sleeping for 67.29143500328064
+2024-08-24 12:30:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:30:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:30:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:30:55 | DEBUG | Updating miner ranks
+2024-08-24 12:30:55 | DEBUG | Challenging 1 miners
+2024-08-24 12:30:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:30:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:31:07 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:31:07 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:31:07 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:31:07 | DEBUG | Got responses from 1 miners
+2024-08-24 12:31:07 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:31:07 | INFO | No miner managed to give a valid answer
+2024-08-24 12:31:07 | INFO | Sleeping for 63.39197635650635
+2024-08-24 12:32:35 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:32:35 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:32:35 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:32:35 | DEBUG | Updating miner ranks
+2024-08-24 12:32:35 | DEBUG | Challenging 1 miners
+2024-08-24 12:32:35 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:32:35 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:32:43 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:32:43 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:32:43 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:32:43 | DEBUG | Got responses from 1 miners
+2024-08-24 12:32:43 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:32:43 | INFO | No miner managed to give a valid answer
+2024-08-24 12:32:43 | INFO | Sleeping for 67.13802075386047
+2024-08-24 12:34:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:34:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:34:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:34:14 | DEBUG | Updating miner ranks
+2024-08-24 12:34:14 | DEBUG | Challenging 1 miners
+2024-08-24 12:34:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:34:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:34:27 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:34:27 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:34:27 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:34:27 | DEBUG | Got responses from 1 miners
+2024-08-24 12:34:27 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:34:27 | INFO | No miner managed to give a valid answer
+2024-08-24 12:34:27 | INFO | Sleeping for 63.082942962646484
+2024-08-24 12:35:57 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:35:57 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:35:57 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:35:57 | DEBUG | Updating miner ranks
+2024-08-24 12:35:57 | DEBUG | Challenging 1 miners
+2024-08-24 12:35:57 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:35:57 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:36:05 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:36:05 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:36:05 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:36:05 | DEBUG | Got responses from 1 miners
+2024-08-24 12:36:05 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:36:05 | INFO | No miner managed to give a valid answer
+2024-08-24 12:36:05 | INFO | Sleeping for 64.89573621749878
+2024-08-24 12:37:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:37:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:37:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:37:34 | DEBUG | Updating miner ranks
+2024-08-24 12:37:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:37:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:37:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:37:41 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:37:41 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:37:41 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:37:41 | DEBUG | Got responses from 1 miners
+2024-08-24 12:37:41 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:37:41 | INFO | No miner managed to give a valid answer
+2024-08-24 12:37:41 | INFO | Sleeping for 68.7885684967041
+2024-08-24 12:39:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:39:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:39:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:39:15 | DEBUG | Updating miner ranks
+2024-08-24 12:39:15 | DEBUG | Challenging 1 miners
+2024-08-24 12:39:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:39:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:39:29 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:39:29 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:39:29 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:39:29 | DEBUG | Got responses from 1 miners
+2024-08-24 12:39:29 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:39:29 | INFO | No miner managed to give a valid answer
+2024-08-24 12:39:29 | INFO | Sleeping for 61.512553215026855
+2024-08-24 12:40:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:40:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:40:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:40:55 | DEBUG | Updating miner ranks
+2024-08-24 12:40:55 | DEBUG | Challenging 1 miners
+2024-08-24 12:40:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:40:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:41:00 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:41:00 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:41:00 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:41:00 | DEBUG | Got responses from 1 miners
+2024-08-24 12:41:00 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:41:00 | INFO | No miner managed to give a valid answer
+2024-08-24 12:41:00 | INFO | Sleeping for 70.29093313217163
+2024-08-24 12:42:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:42:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:42:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:42:34 | DEBUG | Updating miner ranks
+2024-08-24 12:42:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:42:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:42:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:42:47 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:42:47 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:42:47 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:42:47 | DEBUG | Got responses from 1 miners
+2024-08-24 12:42:47 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:42:47 | INFO | No miner managed to give a valid answer
+2024-08-24 12:42:47 | INFO | Sleeping for 63.412071228027344
+2024-08-24 12:44:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:44:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:44:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:44:15 | DEBUG | Updating miner ranks
+2024-08-24 12:44:15 | DEBUG | Challenging 1 miners
+2024-08-24 12:44:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:44:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:44:15 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 12:44:15 | DEBUG | Got responses from 1 miners
+2024-08-24 12:44:15 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:44:15 | INFO | No miner managed to give a valid answer
+2024-08-24 12:44:15 | INFO | Sleeping for 74.93720555305481
+2024-08-24 12:45:56 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:45:56 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:45:56 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:45:56 | DEBUG | Updating miner ranks
+2024-08-24 12:45:56 | DEBUG | Challenging 1 miners
+2024-08-24 12:45:56 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:45:56 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:46:04 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:46:04 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:46:04 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:46:04 | DEBUG | Got responses from 1 miners
+2024-08-24 12:46:04 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:46:04 | INFO | No miner managed to give a valid answer
+2024-08-24 12:46:04 | INFO | Sleeping for 66.3096432685852
+2024-08-24 12:47:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:47:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:47:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:47:34 | DEBUG | Updating miner ranks
+2024-08-24 12:47:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:47:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:47:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:47:46 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:47:46 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:47:46 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:47:46 | DEBUG | Got responses from 1 miners
+2024-08-24 12:47:46 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:47:46 | INFO | No miner managed to give a valid answer
+2024-08-24 12:47:46 | INFO | Sleeping for 64.49522542953491
+2024-08-24 12:49:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:49:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:49:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:49:15 | DEBUG | Updating miner ranks
+2024-08-24 12:49:15 | DEBUG | Challenging 1 miners
+2024-08-24 12:49:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:49:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:49:23 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:49:23 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:49:23 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:49:23 | DEBUG | Got responses from 1 miners
+2024-08-24 12:49:23 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:49:23 | INFO | No miner managed to give a valid answer
+2024-08-24 12:49:23 | INFO | Sleeping for 67.46964430809021
+2024-08-24 12:50:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:50:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:50:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:50:55 | DEBUG | Updating miner ranks
+2024-08-24 12:50:55 | DEBUG | Challenging 1 miners
+2024-08-24 12:50:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:50:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:51:00 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:51:00 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:51:00 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:51:00 | DEBUG | Got responses from 1 miners
+2024-08-24 12:51:00 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:51:00 | INFO | No miner managed to give a valid answer
+2024-08-24 12:51:00 | INFO | Sleeping for 70.69173240661621
+2024-08-24 12:52:34 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:52:34 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:52:34 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:52:34 | DEBUG | Updating miner ranks
+2024-08-24 12:52:34 | DEBUG | Challenging 1 miners
+2024-08-24 12:52:34 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:52:34 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:52:41 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:52:41 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:52:41 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:52:41 | DEBUG | Got responses from 1 miners
+2024-08-24 12:52:41 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:52:41 | INFO | No miner managed to give a valid answer
+2024-08-24 12:52:41 | INFO | Sleeping for 69.10201334953308
+2024-08-24 12:54:14 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:54:14 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:54:14 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:54:14 | DEBUG | Updating miner ranks
+2024-08-24 12:54:14 | DEBUG | Challenging 1 miners
+2024-08-24 12:54:14 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:54:14 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:54:22 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:54:22 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:54:22 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:54:22 | DEBUG | Got responses from 1 miners
+2024-08-24 12:54:22 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:54:22 | INFO | No miner managed to give a valid answer
+2024-08-24 12:54:22 | INFO | Sleeping for 68.25827193260193
+2024-08-24 12:55:56 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:55:56 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:55:56 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:55:56 | DEBUG | Updating miner ranks
+2024-08-24 12:55:56 | DEBUG | Challenging 1 miners
+2024-08-24 12:55:56 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:55:56 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:55:57 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 12:55:57 | DEBUG | Got responses from 1 miners
+2024-08-24 12:55:57 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:55:57 | INFO | No miner managed to give a valid answer
+2024-08-24 12:55:57 | INFO | Sleeping for 73.5082323551178
+2024-08-24 12:57:35 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 12:57:35 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 12:57:35 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 12:57:35 | DEBUG | Updating miner ranks
+2024-08-24 12:57:35 | DEBUG | Challenging 1 miners
+2024-08-24 12:57:35 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 12:57:35 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 12:57:45 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 12:57:45 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 12:57:45 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 12:57:45 | DEBUG | Got responses from 1 miners
+2024-08-24 12:57:45 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 12:57:45 | INFO | No miner managed to give a valid answer
+2024-08-24 12:57:45 | INFO | Sleeping for 65.52121686935425
+2024-08-24 12:58:21 | DEBUG | Shutdown handler started
+2024-08-24 12:58:21 | DEBUG | Shutdown handler finished
+2024-08-24 12:58:21 | INFO | Terminating validation loop
+2024-08-24 13:04:26 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:04:26 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:04:26 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:04:26 | DEBUG | Updating miner ranks
+2024-08-24 13:04:26 | DEBUG | Challenging 1 miners
+2024-08-24 13:04:26 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:04:26 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:04:35 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:04:35 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:04:40 | ERROR | RPC Provider with Error
+2024-08-24 13:05:48 | DEBUG | Shutdown handler started
+2024-08-24 13:05:48 | DEBUG | Shutdown handler finished
+2024-08-24 13:05:53 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:05:53 | DEBUG | Got responses from 1 miners
+2024-08-24 13:05:53 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:05:53 | INFO | No miner managed to give a valid answer
+2024-08-24 13:05:53 | INFO | Terminating validation loop
+2024-08-24 13:06:23 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:06:23 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:06:23 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:06:23 | DEBUG | Updating miner ranks
+2024-08-24 13:06:23 | DEBUG | Challenging 1 miners
+2024-08-24 13:06:23 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:06:23 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:06:36 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:06:36 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:09:21 | DEBUG | Shutdown handler started
+2024-08-24 13:09:21 | DEBUG | Shutdown handler finished
+2024-08-24 13:09:25 | ERROR | RPC Provider with Error
+2024-08-24 13:09:25 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:09:25 | DEBUG | Got responses from 1 miners
+2024-08-24 13:09:25 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:09:25 | INFO | No miner managed to give a valid answer
+2024-08-24 13:09:25 | INFO | Terminating validation loop
+2024-08-24 13:09:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:09:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:09:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:09:55 | DEBUG | Updating miner ranks
+2024-08-24 13:09:55 | DEBUG | Challenging 1 miners
+2024-08-24 13:09:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:09:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:10:03 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:10:03 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:12:14 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:12:14 | DEBUG | Got responses from 1 miners
+2024-08-24 13:12:14 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:12:14 | INFO | No miner managed to give a valid answer
+2024-08-24 13:12:17 | DEBUG | Shutdown handler started
+2024-08-24 13:12:17 | DEBUG | Shutdown handler finished
+2024-08-24 13:12:40 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:12:40 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:12:40 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:12:40 | DEBUG | Updating miner ranks
+2024-08-24 13:12:40 | DEBUG | Challenging 1 miners
+2024-08-24 13:12:40 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:12:40 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:12:46 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:12:46 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:12:56 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:12:56 | DEBUG | Got responses from 1 miners
+2024-08-24 13:12:56 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:12:56 | INFO | No miner managed to give a valid answer
+2024-08-24 13:12:56 | INFO | Terminating validation loop
+2024-08-24 13:13:18 | DEBUG | Shutdown handler started
+2024-08-24 13:13:18 | DEBUG | Shutdown handler finished
+2024-08-24 13:13:24 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:13:24 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:13:24 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:13:24 | DEBUG | Updating miner ranks
+2024-08-24 13:13:24 | DEBUG | Challenging 1 miners
+2024-08-24 13:13:24 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:13:24 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:13:37 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:13:37 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:13:38 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:13:38 | DEBUG | Got responses from 1 miners
+2024-08-24 13:13:38 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:13:38 | INFO | No miner managed to give a valid answer
+2024-08-24 13:13:38 | INFO | Terminating validation loop
+2024-08-24 13:13:59 | DEBUG | Shutdown handler started
+2024-08-24 13:13:59 | DEBUG | Shutdown handler finished
+2024-08-24 13:14:24 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:14:24 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:14:24 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:14:24 | DEBUG | Updating miner ranks
+2024-08-24 13:14:24 | DEBUG | Challenging 1 miners
+2024-08-24 13:14:24 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:14:24 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:14:40 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:14:40 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:15:33 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:15:33 | DEBUG | Got responses from 1 miners
+2024-08-24 13:15:33 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:15:33 | INFO | No miner managed to give a valid answer
+2024-08-24 13:15:33 | INFO | Terminating validation loop
+2024-08-24 13:16:02 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:16:02 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:16:02 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:16:02 | DEBUG | Updating miner ranks
+2024-08-24 13:16:02 | DEBUG | Challenging 1 miners
+2024-08-24 13:16:02 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:16:02 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:16:07 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:16:07 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:20:23 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:20:23 | DEBUG | Got responses from 1 miners
+2024-08-24 13:20:23 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:20:23 | INFO | No miner managed to give a valid answer
+2024-08-24 13:20:25 | DEBUG | Shutdown handler started
+2024-08-24 13:20:25 | DEBUG | Shutdown handler finished
+2024-08-24 13:20:47 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:20:47 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:20:47 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:20:47 | DEBUG | Updating miner ranks
+2024-08-24 13:20:47 | DEBUG | Challenging 1 miners
+2024-08-24 13:20:47 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:20:47 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:21:00 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:21:00 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:21:19 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:21:57 | DEBUG | Got responses from 1 miners
+2024-08-24 13:21:57 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:21:57 | INFO | No miner managed to give a valid answer
+2024-08-24 13:21:57 | INFO | Terminating validation loop
+2024-08-24 13:22:26 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:22:26 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:22:26 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:22:26 | DEBUG | Updating miner ranks
+2024-08-24 13:22:26 | DEBUG | Challenging 1 miners
+2024-08-24 13:22:26 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:22:26 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:22:27 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 13:22:27 | DEBUG | Got responses from 1 miners
+2024-08-24 13:22:27 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:22:27 | INFO | No miner managed to give a valid answer
+2024-08-24 13:22:27 | INFO | Sleeping for 74.48546099662781
+2024-08-24 13:24:05 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:24:05 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:24:05 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:24:05 | DEBUG | Updating miner ranks
+2024-08-24 13:24:05 | DEBUG | Challenging 1 miners
+2024-08-24 13:24:05 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:24:05 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:24:10 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:24:10 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:25:04 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:25:05 | DEBUG | Got responses from 1 miners
+2024-08-24 13:25:05 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:25:05 | INFO | No miner managed to give a valid answer
+2024-08-24 13:25:05 | INFO | Sleeping for 16.626986503601074
+2024-08-24 13:25:06 | DEBUG | Shutdown handler started
+2024-08-24 13:25:06 | DEBUG | Shutdown handler finished
+2024-08-24 13:25:06 | INFO | Terminating validation loop
+2024-08-24 13:25:36 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:25:36 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:25:36 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:25:36 | DEBUG | Updating miner ranks
+2024-08-24 13:25:36 | DEBUG | Challenging 1 miners
+2024-08-24 13:25:36 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:25:36 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:26:37 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 13:26:37 | DEBUG | Got responses from 1 miners
+2024-08-24 13:26:37 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:26:37 | INFO | No miner managed to give a valid answer
+2024-08-24 13:26:37 | INFO | Sleeping for 13.32819676399231
+2024-08-24 13:27:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:27:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:27:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:27:15 | DEBUG | Updating miner ranks
+2024-08-24 13:27:15 | DEBUG | Challenging 1 miners
+2024-08-24 13:27:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:27:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:27:26 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:27:26 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:41:22 | DEBUG | Shutdown handler started
+2024-08-24 13:41:22 | DEBUG | Shutdown handler finished
+2024-08-24 13:42:52 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:42:52 | DEBUG | Got responses from 1 miners
+2024-08-24 13:42:52 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:42:52 | INFO | No miner managed to give a valid answer
+2024-08-24 13:42:52 | INFO | Terminating validation loop
+2024-08-24 13:43:21 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:43:21 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:43:21 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:43:21 | DEBUG | Updating miner ranks
+2024-08-24 13:43:21 | DEBUG | Challenging 1 miners
+2024-08-24 13:43:21 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:43:21 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:43:33 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:43:33 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:44:53 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:44:53 | DEBUG | Got responses from 1 miners
+2024-08-24 13:44:53 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:44:53 | INFO | No miner managed to give a valid answer
+2024-08-24 13:44:56 | DEBUG | Shutdown handler started
+2024-08-24 13:44:56 | DEBUG | Shutdown handler finished
+2024-08-24 13:45:18 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:45:18 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:45:18 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:45:18 | DEBUG | Updating miner ranks
+2024-08-24 13:45:18 | DEBUG | Challenging 1 miners
+2024-08-24 13:45:18 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:45:18 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:45:25 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:45:25 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:47:15 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:47:15 | DEBUG | Got responses from 1 miners
+2024-08-24 13:47:15 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:47:15 | INFO | No miner managed to give a valid answer
+2024-08-24 13:47:15 | INFO | Terminating validation loop
+2024-08-24 13:47:46 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:47:46 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:47:46 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:47:46 | DEBUG | Updating miner ranks
+2024-08-24 13:47:46 | DEBUG | Challenging 1 miners
+2024-08-24 13:47:46 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:47:46 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:48:00 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:48:00 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:49:47 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:49:47 | DEBUG | Got responses from 1 miners
+2024-08-24 13:49:47 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:49:47 | INFO | No miner managed to give a valid answer
+2024-08-24 13:49:51 | DEBUG | Shutdown handler started
+2024-08-24 13:49:51 | DEBUG | Shutdown handler finished
+2024-08-24 13:50:13 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:50:13 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:50:13 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:50:13 | DEBUG | Updating miner ranks
+2024-08-24 13:50:13 | DEBUG | Challenging 1 miners
+2024-08-24 13:50:13 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:50:13 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:50:24 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:50:24 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:50:41 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:50:41 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:50:41 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:50:41 | DEBUG | Updating miner ranks
+2024-08-24 13:50:41 | DEBUG | Challenging 1 miners
+2024-08-24 13:50:41 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:50:41 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:50:53 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:50:53 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:52:23 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 13:52:23 | DEBUG | Got responses from 1 miners
+2024-08-24 13:52:23 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 13:52:23 | INFO | No miner managed to give a valid answer
+2024-08-24 13:52:48 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:52:48 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:52:48 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:52:48 | DEBUG | Updating miner ranks
+2024-08-24 13:52:48 | DEBUG | Challenging 1 miners
+2024-08-24 13:52:48 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:52:48 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:53:02 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:53:02 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:53:29 | INFO | Miner 0.0.0.0:9962 passed challenge 6f2a7783ee3a054a0afbd7ce39f0b01bd4213202446e8cfcd068489031e9add5  {'tx_id': '6f2a7783ee3a054a0afbd7ce39f0b01bd4213202446e8cfcd068489031e9add5'}
+2024-08-24 13:53:33 | DEBUG | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 6f2a7783ee3a054a0afbd7ce39f0b01bd4213202446e8cfcd068489031e9add5, None
+2024-08-24 13:53:36 | DEBUG | Got responses from 1 miners
+2024-08-24 13:53:36 | DEBUG | Read weights from weights.pkl
+2024-08-24 13:53:36 | DEBUG | Stored weights to weights.pkl
+2024-08-24 13:54:45 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:54:45 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:54:45 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:54:45 | DEBUG | Updating miner ranks
+2024-08-24 13:54:48 | DEBUG | Challenging 1 miners
+2024-08-24 13:54:50 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:54:50 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:55:06 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:55:06 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:55:34 | INFO | Miner 0.0.0.0:9962 passed challenge 14b48a0a2e4f910bccceb2ac08fd5e36fc4db7006729250984c4560b9f6ebc22  {'tx_id': '14b48a0a2e4f910bccceb2ac08fd5e36fc4db7006729250984c4560b9f6ebc22'}
+2024-08-24 13:55:37 | DEBUG | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 14b48a0a2e4f910bccceb2ac08fd5e36fc4db7006729250984c4560b9f6ebc22, None
+2024-08-24 13:55:37 | DEBUG | Got responses from 1 miners
+2024-08-24 13:58:20 | DEBUG | Shutdown handler started
+2024-08-24 13:58:20 | DEBUG | Shutdown handler finished
+2024-08-24 13:58:22 | DEBUG | Read weights from weights.pkl
+2024-08-24 13:58:22 | DEBUG | Stored weights to weights.pkl
+2024-08-24 13:58:59 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 13:58:59 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 13:58:59 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 13:58:59 | DEBUG | Updating miner ranks
+2024-08-24 13:58:59 | DEBUG | Challenging 1 miners
+2024-08-24 13:58:59 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 13:58:59 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 13:59:08 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 13:59:08 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 13:59:23 | INFO | Miner 0.0.0.0:9962 passed challenge 22aa0641109c682c669d869f2b5990d14a607f95d86c71f23d43b787ce50d1f8  {'tx_id': '22aa0641109c682c669d869f2b5990d14a607f95d86c71f23d43b787ce50d1f8'}
+2024-08-24 13:59:23 | DEBUG | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 22aa0641109c682c669d869f2b5990d14a607f95d86c71f23d43b787ce50d1f8, None
+2024-08-24 13:59:23 | DEBUG | Got responses from 1 miners
+2024-08-24 14:13:40 | DEBUG | Shutdown handler started
+2024-08-24 14:13:40 | DEBUG | Shutdown handler finished
+2024-08-24 21:26:06 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 21:26:06 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 21:26:06 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 21:26:06 | DEBUG | Updating miner ranks
+2024-08-24 21:26:06 | DEBUG | Challenging 1 miners
+2024-08-24 21:26:06 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 21:26:06 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 21:26:06 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 21:26:06 | DEBUG | Got responses from 1 miners
+2024-08-24 21:26:06 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 21:26:06 | INFO | No miner managed to give a valid answer
+2024-08-24 21:26:06 | INFO | Sleeping for 83.9544186592102
+2024-08-24 21:27:46 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 21:27:46 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 21:27:46 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 21:27:46 | DEBUG | Updating miner ranks
+2024-08-24 21:27:46 | DEBUG | Challenging 1 miners
+2024-08-24 21:27:46 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 21:27:46 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 21:27:46 | WARNING | Miner 0.0.0.0:9962 failed to get discovery
+2024-08-24 21:27:46 | DEBUG | Got responses from 1 miners
+2024-08-24 21:27:46 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 21:27:46 | INFO | No miner managed to give a valid answer
+2024-08-24 21:27:46 | INFO | Sleeping for 83.73368000984192
+2024-08-24 21:29:26 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 21:29:26 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 21:29:26 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 21:29:26 | DEBUG | Updating miner ranks
+2024-08-24 21:29:26 | DEBUG | Challenging 1 miners
+2024-08-24 21:29:26 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 21:29:26 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 21:29:38 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 21:29:38 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 21:29:52 | INFO | Creating balance tracking challenge
+2024-08-24 21:41:28 | DEBUG | Shutdown handler started
+2024-08-24 21:41:28 | DEBUG | Shutdown handler finished
+2024-08-24 21:42:03 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 21:42:03 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 21:42:03 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 21:42:03 | DEBUG | Updating miner ranks
+2024-08-24 21:42:03 | DEBUG | Challenging 1 miners
+2024-08-24 21:42:03 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 21:42:03 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 21:42:14 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 21:42:14 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 21:42:25 | INFO | Creating balance tracking challenge
+2024-08-24 21:46:15 | INFO | Created balance tracking challenge
+2024-08-24 21:46:39 | INFO | Created balance tracking challenge
+2024-08-24 21:46:46 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 21:46:46 | DEBUG | Got responses from 1 miners
+2024-08-24 21:46:46 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 21:46:46 | INFO | No miner managed to give a valid answer
+2024-08-24 21:46:46 | INFO | Terminating validation loop
+2024-08-24 21:48:04 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 21:48:05 | DEBUG | Got responses from 1 miners
+2024-08-24 21:48:05 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 21:48:05 | INFO | No miner managed to give a valid answer
+2024-08-24 21:48:50 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 21:48:50 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 21:48:50 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 21:48:50 | DEBUG | Updating miner ranks
+2024-08-24 21:48:50 | DEBUG | Challenging 1 miners
+2024-08-24 21:48:50 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 21:48:50 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 21:48:55 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 21:48:55 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 21:59:44 | INFO | Creating balance tracking challenge
+2024-08-24 21:59:56 | DEBUG | Shutdown handler started
+2024-08-24 21:59:56 | DEBUG | Shutdown handler finished
+2024-08-24 22:00:32 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:00:32 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:00:32 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:00:32 | DEBUG | Updating miner ranks
+2024-08-24 22:00:32 | DEBUG | Challenging 1 miners
+2024-08-24 22:00:32 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:00:32 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:00:44 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:00:44 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:01:03 | INFO | Creating balance tracking challenge
+2024-08-24 22:03:44 | INFO | Created balance tracking challenge
+2024-08-24 22:11:10 | DEBUG | Shutdown handler started
+2024-08-24 22:11:10 | DEBUG | Shutdown handler finished
+2024-08-24 22:13:12 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:13:12 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:13:12 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:13:12 | DEBUG | Updating miner ranks
+2024-08-24 22:13:12 | DEBUG | Challenging 1 miners
+2024-08-24 22:13:12 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:13:12 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:13:24 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:13:24 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:13:35 | INFO | Creating balance tracking challenge
+2024-08-24 22:20:03 | INFO | Created balance tracking challenge
+2024-08-24 22:21:05 | DEBUG | Shutdown handler started
+2024-08-24 22:21:05 | DEBUG | Shutdown handler finished
+2024-08-24 22:24:17 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:24:17 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:24:17 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:24:17 | DEBUG | Updating miner ranks
+2024-08-24 22:24:17 | DEBUG | Challenging 1 miners
+2024-08-24 22:24:17 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:24:17 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:24:26 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:24:26 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:24:27 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 22:24:27 | DEBUG | Got responses from 1 miners
+2024-08-24 22:24:27 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 22:24:27 | INFO | No miner managed to give a valid answer
+2024-08-24 22:24:27 | INFO | Sleeping for 63.11718153953552
+2024-08-24 22:25:55 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:25:55 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:25:55 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:25:55 | DEBUG | Updating miner ranks
+2024-08-24 22:25:55 | DEBUG | Challenging 1 miners
+2024-08-24 22:25:55 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:25:55 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:26:02 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:26:02 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:26:11 | INFO | Creating balance tracking challenge
+2024-08-24 22:26:11 | INFO | Created balance tracking challenge
+2024-08-24 22:26:21 | INFO | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, b03d2997e8994dad933f9107bf5962e82aca6b6c327091d785d7a026d0be8b1b, {'tx_id': 'b03d2997e8994dad933f9107bf5962e82aca6b6c327091d785d7a026d0be8b1b'}, {'sum': 5000000000}
+2024-08-24 22:26:34 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 22:26:34 | DEBUG | Got responses from 1 miners
+2024-08-24 22:26:34 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 22:26:34 | INFO | No miner managed to give a valid answer
+2024-08-24 22:26:34 | INFO | Sleeping for 36.39857244491577
+2024-08-24 22:27:36 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:27:36 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:27:36 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:27:36 | DEBUG | Updating miner ranks
+2024-08-24 22:27:36 | DEBUG | Challenging 1 miners
+2024-08-24 22:27:36 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:27:36 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:27:45 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:27:45 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:27:56 | INFO | Creating balance tracking challenge
+2024-08-24 22:27:56 | INFO | Created balance tracking challenge
+2024-08-24 22:28:09 | INFO | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 516383954ae9d828793436f3229dcfa7e7ab96ba8e6ab1b4ddbbfb69c1805629, {'tx_id': '516383954ae9d828793436f3229dcfa7e7ab96ba8e6ab1b4ddbbfb69c1805629'}, {'sum': 5000000000}
+2024-08-24 22:28:21 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 22:28:21 | DEBUG | Got responses from 1 miners
+2024-08-24 22:28:21 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 22:28:21 | INFO | No miner managed to give a valid answer
+2024-08-24 22:28:21 | INFO | Sleeping for 29.872974395751953
+2024-08-24 22:29:15 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 22:29:15 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 22:29:15 | INFO | Found the following miners: dict_keys([2])
+2024-08-24 22:29:15 | DEBUG | Updating miner ranks
+2024-08-24 22:29:15 | DEBUG | Challenging 1 miners
+2024-08-24 22:29:15 | DEBUG | Challenge miner (['0.0.0.0', '9962'], {'uid': 2, 'key': '5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 'name': 'miner5', 'address': 'None:9962', 'emission': 0, 'incentive': 0, 'dividends': 0, 'stake_from': [('5H62gikhiGMcBRXdg2Yu6DxsqMWzAdkWcwrJjNTZvrNR3S5U', 0)], 'regblock': 1375578, 'last_update': 1375578, 'balance': None, 'stake': 0, 'delegation_fee': 5, 'metadata': None})
+2024-08-24 22:29:15 | DEBUG | Miner 0.0.0.0:9962 is trying to get discovery
+2024-08-24 22:29:23 | DEBUG | Miner 0.0.0.0:9962 got discovery {'network': 'bitcoin'}
+2024-08-24 22:29:23 | DEBUG | Miner 0.0.0.0:9962 is trying to pass challenge
+2024-08-24 22:29:37 | INFO | Created balance tracking challenge
+2024-08-24 22:29:37 | INFO | Creating balance tracking challenge
+2024-08-24 22:29:37 | INFO | Created balance tracking challenge
+2024-08-24 22:29:48 | INFO | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 943fb6a4ffe283c36c723a44c501554be77758f8a23de100911fbb547ef0471a, {'tx_id': '943fb6a4ffe283c36c723a44c501554be77758f8a23de100911fbb547ef0471a'}, {'sum': 625000000}
+2024-08-24 22:29:56 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 22:29:56 | DEBUG | Got responses from 1 miners
+2024-08-24 22:29:56 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 22:29:56 | INFO | No miner managed to give a valid answer
+2024-08-24 22:29:56 | INFO | Terminating validation loop
+2024-08-24 22:29:56 | INFO | Miner 0.0.0.0:9962 finished with results {'network': 'bitcoin'}, 0281e11ca678e63b6d3beeb6f3fb29afc0efc144c605584b9818458e1346ead7, {'tx_id': '0281e11ca678e63b6d3beeb6f3fb29afc0efc144c605584b9818458e1346ead7'}, {'sum': 5000000000}
+2024-08-24 22:30:08 | INFO | Miner 0.0.0.0:9962 failed to generate an answer
+2024-08-24 22:30:08 | DEBUG | Got responses from 1 miners
+2024-08-24 22:30:08 | INFO | Skipping miner 2 that didn't answer
+2024-08-24 22:30:08 | INFO | No miner managed to give a valid answer
+2024-08-24 22:30:08 | INFO | Sleeping for 22.858782291412354

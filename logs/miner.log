@@ -1,0 +1,64 @@
+2024-08-24 13:27:37 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:43:47 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:45:37 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:49:22 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:52:26 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:52:26 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:53:19 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:55:17 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 13:59:22 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 21:29:51 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 21:42:20 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 21:46:46 | INFO | Executing balance sum query for block height: None
+2024-08-24 21:47:51 | INFO | Executing balance sum query for block height: None
+2024-08-24 21:49:08 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:00:54 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:04:09 | INFO | Executing balance sum query for block height: None
+2024-08-24 22:04:10 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "balance_change" does not exist
+[SQL: SELECT SUM(d_balance) FROM balance_change WHERE block = $1]
+[parameters: (None,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 22:13:34 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:26:11 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:26:20 | INFO | Executing balance sum query for block height: 670
+2024-08-24 22:26:34 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:26:34 | ERROR | File not found: /mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/bitcoin/classification/classification_prompt.txt
+2024-08-24 22:26:34 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 78, in determine_model_type
+    raise Exception("Failed to read prompt content")
+Exception: Failed to read prompt content
+
+2024-08-24 22:27:55 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:28:09 | INFO | Executing balance sum query for block height: 704
+2024-08-24 22:28:21 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:28:21 | ERROR | File not found: /mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/bitcoin/classification/classification_prompt.txt
+2024-08-24 22:28:21 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 78, in determine_model_type
+    raise Exception("Failed to read prompt content")
+Exception: Failed to read prompt content
+
+2024-08-24 22:29:37 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:29:42 | INFO | Executing balance sum query for block height: 641580
+2024-08-24 22:29:47 | INFO | Executing balance sum query for block height: 870
+2024-08-24 22:29:56 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:29:56 | ERROR | File not found: /mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/bitcoin/classification/classification_prompt.txt
+2024-08-24 22:29:56 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 78, in determine_model_type
+    raise Exception("Failed to read prompt content")
+Exception: Failed to read prompt content
+
+2024-08-24 22:30:08 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:30:08 | ERROR | File not found: /mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/bitcoin/classification/classification_prompt.txt
+2024-08-24 22:30:08 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 78, in determine_model_type
+    raise Exception("Failed to read prompt content")
+Exception: Failed to read prompt content
+

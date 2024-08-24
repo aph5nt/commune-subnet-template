@@ -18,7 +18,8 @@ from src.subnet.miner.blockchain import GraphTransformerFactory, ChartTransforme
 from src.subnet.miner.llm.factory import LLMFactory
 from src.subnet.protocol.llm_engine import LLM_UNKNOWN_ERROR, LLM_ERROR_MESSAGES, \
     QueryOutput, LLM_ERROR_MODIFICATION_NOT_ALLOWED, LLM_ERROR_INVALID_SEARCH_PROMPT, MODEL_TYPE_FUNDS_FLOW, \
-    MODEL_TYPE_BALANCE_TRACKING, LlmQueryRequest, LlmMessage
+    MODEL_TYPE_BALANCE_TRACKING, LlmQueryRequest, LlmMessage, Challenge
+from src.subnet.validator.database import db_manager
 
 
 class Miner(Module):
@@ -38,6 +39,41 @@ class Miner(Module):
     def discovery(self) -> dict:
         return {
             "network": self.settings.NETWORK
+        }
+
+    @endpoint
+    async def challenge(self, challenge: Challenge):
+
+        if challenge['kind'] == MODEL_TYPE_FUNDS_FLOW:
+            search = GraphSearchFactory().create_graph_search(self.settings)
+            tx_id = search.solve_challenge(
+                in_total_amount=challenge['in_total_amount'],
+                out_total_amount=challenge['out_total_amount'],
+                tx_id_last_6_chars=challenge['tx_id_last_6_chars']
+            )
+            return {
+                "tx_id": tx_id
+            }
+        else:
+            search = BalanceSearchFactory().create_balance_search(self.settings.NETWORK)
+            output = await search.solve_challenge([challenge['block_height']])
+            return {
+                "sum": output
+            }
+
+    # integrity_challenge
+    # prompt_challenge (this expects funds flow model type
+    # prompt_challenge_cross_check (this expects same graph structure across all miners)
+    # prompt
+
+    @endpoint
+    def cross_check_query(self, request: LlmQueryRequest):
+
+        # we need to validate incoming query, we support only querying here
+        # we need to LIMIT the number of returned data by query to some number (ist that possible?)
+
+        return {
+            "error": "Not implemented"
         }
 
     @endpoint
@@ -248,7 +284,9 @@ if __name__ == "__main__":
         time_func=time.time,
     )
 
-    server = ModuleServer(miner, keypair, subnets_whitelist=[39], use_testnet=use_testnet)
+    db_manager.init(settings.DATABASE_URL)
+
+    server = ModuleServer(miner, keypair, subnets_whitelist=[settings.NET_UID], use_testnet=use_testnet)
     app = server.get_fastapi_app()
     app.add_middleware(
         CORSMiddleware,

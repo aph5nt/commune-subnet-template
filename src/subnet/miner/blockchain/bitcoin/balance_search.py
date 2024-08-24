@@ -28,3 +28,16 @@ class BitcoinBalanceSearch(BaseBalanceSearch):
         except SQLAlchemyError as e:
             logger.error(f"An error occurred: {str(e)}")
             return []
+
+    async def solve_challenge(self, block_heights: list[int]):
+        try:
+            logger.info(f"Executing balance sum query for block heights: {block_heights}")
+            async with db_manager.session() as session:
+                query = "SELECT SUM(d_balance) FROM balance_changes WHERE block IN :block_heights"
+                result = await session.execute(text(query), {'block_heights': tuple(block_heights)})
+                sum_d_balance = result.scalar()
+                return sum_d_balance
+
+        except SQLAlchemyError as e:
+            logger.error(f"An error occurred: {str(e)}")
+            return None

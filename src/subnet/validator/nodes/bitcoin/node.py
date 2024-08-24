@@ -1,6 +1,6 @@
 from decimal import Decimal
 from loguru import logger
-from src.subnet.protocol.llm_engine import Challenge
+from src.subnet.protocol.llm_engine import Challenge, MODEL_TYPE_FUNDS_FLOW, MODEL_TYPE_BALANCE_TRACKING
 from .node_utils import initialize_tx_out_hash_table, get_tx_out_hash_table_sub_keys, construct_redeem_script, \
     hash_redeem_script, create_p2sh_address, pubkey_to_address, check_if_block_is_valid_for_challenge, parse_block_data, \
     Transaction, VIN, SATOSHI, VOUT
@@ -132,7 +132,10 @@ class BitcoinNode(Node):
 
             *_, in_total_amount, out_total_amount = self.process_in_memory_txn_for_indexing(tx)
             
-        challenge = Challenge(in_total_amount=in_total_amount, out_total_amount=out_total_amount, tx_id_last_6_chars=txn_id[-6:])
+        challenge = Challenge(kind=MODEL_TYPE_FUNDS_FLOW,
+                              in_total_amount=in_total_amount,
+                              out_total_amount=out_total_amount,
+                              tx_id_last_6_chars=txn_id[-6:])
         return challenge, txn_id
 
     def validate_funds_flow_challenge_response_output(self, challenge: Challenge, response_output):
@@ -147,6 +150,40 @@ class BitcoinNode(Node):
 
         *_, in_total_amount, out_total_amount = self.process_in_memory_txn_for_indexing(tx)
         return challenge.in_total_amount == in_total_amount and challenge.out_total_amount == out_total_amount
+
+    def create_balance_tracking_challenge(self, block_height):
+
+        logger.info(f"Creating balance tracking challenge", block_height=block_height)
+
+        block = self.get_block_by_height(block_height)
+        block_data = parse_block_data(block)
+        transactions = block_data.transactions
+
+        balance_changes_by_address = {}
+        changed_addresses = []
+
+        for tx in transactions:
+            in_amount_by_address, out_amount_by_address, input_addresses, output_addresses, in_total_amount, out_total_amount = self.process_in_memory_txn_for_indexing(
+                tx)
+
+            for address in input_addresses:
+                if not address in balance_changes_by_address:
+                    balance_changes_by_address[address] = 0
+                    changed_addresses.append(address)
+                balance_changes_by_address[address] -= in_amount_by_address[address]
+
+            for address in output_addresses:
+                if not address in balance_changes_by_address:
+                    balance_changes_by_address[address] = 0
+                    changed_addresses.append(address)
+                balance_changes_by_address[address] += out_amount_by_address[address]
+
+        challenge = Challenge(kind=MODEL_TYPE_BALANCE_TRACKING, block_height=block_height)
+        total_balance_change = sum(balance_changes_by_address.values())
+        logger.info(f"Created balance tracking challenge", block_height=block_height)
+
+        return challenge, total_balance_change
+
 
     def get_txn_data_by_id(self, txn_id: str):
         try:

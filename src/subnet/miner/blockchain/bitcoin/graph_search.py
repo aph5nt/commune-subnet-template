@@ -33,6 +33,24 @@ class BitcoinGraphSearch(BaseGraphSearch):
         result = self._execute_cypher_query(query)
         return result
 
+    def solve_challenge(self, in_total_amount: int, out_total_amount: int, tx_id_last_6_chars: str) -> str:
+        with self.driver.session() as session:
+            result = session.run(
+                """
+                MATCH (t:Transaction {out_total_amount: $out_total_amount})
+                WHERE t.in_total_amount = $in_total_amount AND t.tx_id ENDS WITH $tx_id_last_6_chars
+                RETURN t.tx_id
+                LIMIT 1;
+                """,
+                in_total_amount=in_total_amount,
+                out_total_amount=out_total_amount,
+                tx_id_last_6_chars=tx_id_last_6_chars
+            )
+            single_result = result.single()
+            if single_result is None or single_result[0] is None:
+                return None
+            return single_result[0]
+
     def _execute_cypher_query(self, cypher_query: str):
         with self.driver.session() as session:
             result = session.run(cypher_query)
