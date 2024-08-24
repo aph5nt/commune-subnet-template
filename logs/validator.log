@@ -6049,3 +6049,13 @@
 2024-08-21 22:05:44 | DEBUG | Shutdown handler started
 2024-08-21 22:05:44 | DEBUG | Shutdown handler finished
 2024-08-21 22:05:44 | INFO | Terminating validation loop
+2024-08-24 11:28:33 | DEBUG | Shutdown handler started
+2024-08-24 11:28:33 | DEBUG | Shutdown handler finished
+2024-08-24 11:29:47 | DEBUG | Skipping module 0 as it doesn't have an IP address
+2024-08-24 11:29:47 | DEBUG | Skipping module 1 as it doesn't have an IP address
+2024-08-24 11:29:47 | INFO | Found the following miners: dict_keys([])
+2024-08-24 11:29:47 | DEBUG | Updating miner ranks
+2024-08-24 11:29:47 | DEBUG | Challenging 0 miners
+2024-08-24 11:29:47 | DEBUG | Got responses from 0 miners
+2024-08-24 11:29:47 | INFO | No miner managed to give a valid answer
+2024-08-24 11:29:47 | INFO | Sleeping for 43.56157612800598
