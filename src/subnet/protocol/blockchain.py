@@ -1,4 +1,6 @@
 # Networks
+from pydantic import BaseModel, Field
+
 NETWORK_BITCOIN = "bitcoin"
 NETWORK_BITCOIN_ID = 1
 NETWORK_ETHEREUM = "ethereum"
@@ -21,3 +23,12 @@ def get_network_id(network):
 
 def get_networks():
     return [NETWORK_BITCOIN]
+
+
+class Discovery(BaseModel):
+    network: str = Field(NETWORK_BITCOIN, title="The network to discover")
+
+    def to_params(self):
+        return {
+            "network": self.network
+        }

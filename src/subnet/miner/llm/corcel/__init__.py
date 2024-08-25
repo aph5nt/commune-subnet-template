@@ -6,7 +6,8 @@ from src.subnet.miner.llm.base_llm import BaseLLM
 from src.subnet.miner.llm.corcel.corcel_client import CorcelClient
 from src.subnet.miner.llm.prompt_reader import read_local_file
 from src.subnet.protocol.llm_engine import LlmMessage, LLM_ERROR_QUERY_BUILD_FAILED, LLM_ERROR_INTERPRETION_FAILED, \
-    LLM_ERROR_NOT_APPLICAPLE_QUESTIONS, LLM_ERROR_GENERAL_RESPONSE_FAILED
+    LLM_ERROR_NOT_APPLICAPLE_QUESTIONS, LLM_ERROR_GENERAL_RESPONSE_FAILED, MODEL_TYPE_FUNDS_FLOW, \
+    MODEL_TYPE_BALANCE_TRACKING
 
 
 class CorcelLLM(BaseLLM):
@@ -14,19 +15,19 @@ class CorcelLLM(BaseLLM):
         self.settings = settings
         self.corcel_client = CorcelClient(settings.LLM_API_KEY)
 
-    def build_query_from_messages_balance_tracker(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
+    def build_query_from_messages_balance_tracker(self, llm_messages, llm_type: str, network: str) -> str:
         return self._build_query_from_messages(llm_messages, llm_type, network, "balance_tracking")
 
-    def build_cypher_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
+    def build_cypher_query_from_messages(self, llm_messages, llm_type: str, network: str) -> str:
         return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
 
-    def _build_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str, subfolder: str) -> str:
-        local_file_path = f"{llm_type}/{network}/{subfolder}/query_prompt.txt"
+    def _build_query_from_messages(self, llm_messages, llm_type: str, network: str, subfolder: str) -> str:
+        local_file_path = f"{llm_type}/prompts/{network}/{subfolder}/query_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
 
-        question = "\n".join([message.content for message in llm_messages])
+        question = "\n".join([message['content'] for message in llm_messages])
 
         try:
             ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
@@ -55,7 +56,7 @@ class CorcelLLM(BaseLLM):
         return self._interpret_result(llm_messages, result, llm_type, network, "funds_flow")
 
     def _interpret_result(self, llm_messages: List[LlmMessage], result: list, llm_type: str, network: str, subfolder: str) -> str:
-        local_file_path = f"{llm_type}/{network}/{subfolder}/interpretation_prompt.txt"
+        local_file_path = f"{llm_type}/prompts/{network}/{subfolder}/interpretation_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
@@ -72,23 +73,21 @@ class CorcelLLM(BaseLLM):
             raise Exception(LLM_ERROR_INTERPRETION_FAILED)
 
     def determine_model_type(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
-        local_file_path = f"{llm_type}/{network}/classification/classification_prompt.txt"
+        local_file_path = f"{llm_type}/prompts/{network}/classification/classification_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
 
-        question = "\n".join([message.content for message in llm_messages])
+        question = "\n".join([message['content'] for message in llm_messages])
         logger.info(f"Formed question: {question}")
 
         try:
             ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
-
-            if "Funds Flow" in ai_response:
-                return "funds_flow", token_usage
-            elif "Balance Tracking" in ai_response:
-                return "balance_tracking", token_usage
+            if ai_response in [MODEL_TYPE_FUNDS_FLOW, MODEL_TYPE_BALANCE_TRACKING]:
+                return ai_response, token_usage
             else:
                 raise Exception("LLM_ERROR_CLASSIFICATION_FAILED")
+
         except Exception as e:
             logger.error(f"LlmQuery classification error: {e}")
             raise Exception("LLM_ERROR_CLASSIFICATION_FAILED")

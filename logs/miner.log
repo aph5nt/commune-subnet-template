@@ -62,3 +62,525 @@ Exception: Failed to read prompt content
     raise Exception("Failed to read prompt content")
 Exception: Failed to read prompt content
 
+2024-08-24 22:31:15 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:31:28 | INFO | Executing balance sum query for block height: 755
+2024-08-24 22:31:37 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:31:37 | ERROR | File not found: /mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/bitcoin/classification/classification_prompt.txt
+2024-08-24 22:31:37 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 78, in determine_model_type
+    raise Exception("Failed to read prompt content")
+Exception: Failed to read prompt content
+
+2024-08-24 22:32:56 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:33:08 | INFO | Executing balance sum query for block height: 246
+2024-08-24 22:34:47 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:35:04 | INFO | Executing balance sum query for block heights: [771]
+2024-08-24 22:35:05 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((771,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 22:35:16 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 22:53:59 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 22:54:10 | INFO | Executing balance sum query for block heights: [454]
+2024-08-24 22:54:12 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((454,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 22:54:24 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:02:29 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:03:04 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:03:19 | INFO | Executing balance sum query for block heights: [208]
+2024-08-24 23:03:19 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((208,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:03:32 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:04:04 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:06:26 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:06:38 | INFO | Executing balance sum query for block heights: [996]
+2024-08-24 23:06:39 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((996,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:06:48 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:07:47 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message['content'] for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message['content'] for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:08:19 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:08:29 | INFO | Executing balance sum query for block heights: [554]
+2024-08-24 23:08:29 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((554,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:08:45 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:10:12 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message['content'] for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message['content'] for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:11:57 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:12:12 | INFO | Executing balance sum query for block heights: [659]
+2024-08-24 23:12:12 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((659,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:12:22 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:13:28 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message['content'] for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message['content'] for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:18:55 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:19:08 | INFO | Executing balance sum query for block heights: [898]
+2024-08-24 23:19:09 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((898,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:19:21 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:19:31 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in determine_model_type
+    question = "\n".join([message['content'] for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 80, in <listcomp>
+    question = "\n".join([message['content'] for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-24 23:22:39 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:22:56 | INFO | Executing balance sum query for block heights: [769]
+2024-08-24 23:22:58 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((769,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:23:10 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:23:25 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-24 23:23:27 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        - Classification: Funds Flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        - Classification: Balance Tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-24 23:23:28 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "- Classification: Funds Flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-24 23:23:28 | INFO | Tokens per second: 4.280567057484186
+2024-08-24 23:24:02 | INFO | Determined model type: funds_flow
+2024-08-24 23:26:21 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 93, in llm_query
+    output, token_usage_query_interpret = await self._handle_funds_flow_query(request)
+NameError: name 'request' is not defined
+
+2024-08-24 23:26:23 | INFO | Serving miner llm query output: [QueryOutput(type='error', result=['LLM unknown error'], interpreted_result=None, error=999)] (Total time taken: 192.40936160087585 seconds)
+2024-08-24 23:26:54 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:27:07 | INFO | Executing balance sum query for block heights: [359]
+2024-08-24 23:27:09 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((359,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:27:26 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:27:32 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-24 23:27:33 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        - Classification: funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        - Classification: balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-24 23:27:34 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "- Classification: funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-24 23:27:34 | INFO | Tokens per second: 2.645890787008192
+2024-08-24 23:28:12 | ERROR | LlmQuery classification error: LLM_ERROR_CLASSIFICATION_FAILED
+2024-08-24 23:28:12 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 89, in determine_model_type
+    raise Exception("LLM_ERROR_CLASSIFICATION_FAILED")
+Exception: LLM_ERROR_CLASSIFICATION_FAILED
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 89, in llm_query
+    model_type, token_usage_classification = self.llm.determine_model_type(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 93, in determine_model_type
+    raise Exception("LLM_ERROR_CLASSIFICATION_FAILED")
+Exception: LLM_ERROR_CLASSIFICATION_FAILED
+
+2024-08-24 23:30:15 | INFO | Serving miner llm query output: [QueryOutput(type='error', result=['LLM unknown error'], interpreted_result=None, error=999)] (Total time taken: 168.79748463630676 seconds)
+2024-08-24 23:32:12 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:32:24 | INFO | Executing balance sum query for block heights: [61]
+2024-08-24 23:32:25 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((61,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:32:35 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:32:43 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-24 23:32:44 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-24 23:32:46 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-24 23:32:46 | INFO | Tokens per second: 0.6900233215584908
+2024-08-24 23:33:03 | INFO | Determined model type: funds_flow
+2024-08-24 23:37:50 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 93, in llm_query
+    output, token_usage_query_interpret = await self._handle_funds_flow_query(prompt)
+NameError: name 'request' is not defined
+
+2024-08-24 23:37:50 | INFO | Serving miner llm query output: [QueryOutput(type='error', result=['LLM unknown error'], interpreted_result=None, error=999)] (Total time taken: 314.4259247779846 seconds)
+2024-08-24 23:39:11 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-24 23:39:24 | INFO | Executing balance sum query for block heights: [209]
+2024-08-24 23:39:24 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((209,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-24 23:39:36 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-24 23:39:47 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-24 23:39:49 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-24 23:39:50 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-24 23:39:50 | INFO | Tokens per second: 1.0739554466257992
+2024-08-24 23:39:53 | INFO | Determined model type: funds_flow
+2024-08-24 23:56:41 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 93, in llm_query
+    output, token_usage_query_interpret = await self._handle_funds_flow_query(prompt)
+NameError: name 'request' is not defined
+
+2024-08-24 23:56:41 | INFO | Serving miner llm query output: [QueryOutput(type='error', result=['LLM unknown error'], interpreted_result=None, error=999)] (Total time taken: 1024.7855670452118 seconds)
+2024-08-25 00:09:41 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 17:39:58 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 17:40:14 | INFO | Executing balance sum query for block heights: [54]
+2024-08-25 17:40:15 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((54,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-25 17:40:41 | INFO | llm query received: messages=[{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 17:40:42 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 17:40:42 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 17:40:43 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 17:40:43 | INFO | Tokens per second: 0.996094755611117
+2024-08-25 17:40:45 | INFO | Determined model type: funds_flow
+2024-08-25 17:40:46 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 17:40:46 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 119, in _handle_funds_flow_query
+    query, token_usage_query = self.llm.build_cypher_query_from_messages(prompt, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 22, in build_cypher_query_from_messages
+    return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in _build_query_from_messages
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-25 17:40:46 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 93, in llm_query
+    output, token_usage_query_interpret = await self._handle_funds_flow_query(prompt)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 180, in _handle_funds_flow_query
+    QueryOutput(type="error", error=error_code, result=error_message)
+  File "/home/ubuntu/.virtualenvs/commune-subnet-template/lib/python3.10/site-packages/pydantic/main.py", line 193, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for QueryOutput
+result
+  Input should be a valid list [type=list_type, input_value='LLM unknown error', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.8/v/list_type
+
+2024-08-25 17:40:46 | INFO | Serving miner llm query output: [QueryOutput(type='error', result=['LLM unknown error'], interpreted_result=None, error=999)] (Total time taken: 5.0784924030303955 seconds)
+2024-08-25 18:20:01 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 18:24:36 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 18:29:26 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 18:31:16 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:32:49 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:33:04 | INFO | Executing balance sum query for block heights: [494]
+2024-08-25 19:33:05 | ERROR | An error occurred: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near "$1"
+[SQL: SELECT SUM(d_balance) FROM balance_changes WHERE block IN $1]
+[parameters: ((494,),)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-25 19:33:28 | INFO | Received miner llm query: [{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 19:33:28 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 19:33:28 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 19:33:29 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 19:33:29 | INFO | Tokens per second: 0.9621110774679549
+2024-08-25 19:33:29 | INFO | Model type: funds_flow
+2024-08-25 19:33:29 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:33:29 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 191, in _handle_funds_flow_query
+    query, token_usage_query = self.llm.build_cypher_query_from_messages(llm_messages, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 22, in build_cypher_query_from_messages
+    return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in _build_query_from_messages
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-25 19:33:29 | INFO | LLM query processing time: 1.1289687156677246 seconds
+2024-08-25 19:41:32 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:41:48 | INFO | Executing balance sum query for block heights: [87]
+2024-08-25 19:42:22 | INFO | Received miner llm query: [{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 19:42:22 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 19:42:22 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 19:42:24 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 19:42:24 | INFO | Tokens per second: 0.7575214769044938
+2024-08-25 19:42:24 | INFO | Model type: funds_flow
+2024-08-25 19:42:24 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:42:24 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 191, in _handle_funds_flow_query
+    query, token_usage_query = self.llm.build_cypher_query_from_messages(llm_messages, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 22, in build_cypher_query_from_messages
+    return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in _build_query_from_messages
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-25 19:42:24 | INFO | LLM query processing time: 1.3786230087280273 seconds
+2024-08-25 19:50:55 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:51:16 | INFO | Executing balance sum query for block heights: [779]
+2024-08-25 19:51:29 | INFO | Received miner llm query: [{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 19:51:29 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 19:51:29 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 19:51:30 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 19:51:30 | INFO | Tokens per second: 1.0933645869393849
+2024-08-25 19:51:30 | INFO | Model type: funds_flow
+2024-08-25 19:51:30 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:51:30 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 191, in _handle_funds_flow_query
+    query, token_usage_query = self.llm.build_cypher_query_from_messages(llm_messages, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 22, in build_cypher_query_from_messages
+    return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in _build_query_from_messages
+    question = "\n".join([message.content for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in <listcomp>
+    question = "\n".join([message.content for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-25 19:51:30 | INFO | LLM query processing time: 0.9446840286254883 seconds
+2024-08-25 19:57:34 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 19:57:44 | INFO | Executing balance sum query for block heights: [317]
+2024-08-25 19:58:01 | INFO | Received miner llm query: [{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 19:58:06 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 19:58:14 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 19:58:15 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 19:58:15 | INFO | Tokens per second: 0.9663359767027154
+2024-08-25 19:58:18 | INFO | Model type: funds_flow
+2024-08-25 19:58:27 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768

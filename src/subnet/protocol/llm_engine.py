@@ -1,4 +1,6 @@
 from typing import List, Optional, Dict, Literal
+
+from communex.module.module import EndpointParams
 from typing_extensions import Any
 from pydantic import BaseModel, Field
 
@@ -69,25 +71,52 @@ class Challenge(BaseModel):
     block_height: Optional[int] = None
     output: Optional[Dict] = None
 
-    def to_dict(self):
+    def to_params(self):
         return {
-            "kind": self.kind,
-            "in_total_amount": self.in_total_amount,
-            "out_total_amount": self.out_total_amount,
-            "tx_id_last_6_chars": self.tx_id_last_6_chars,
-            "block_height": self.block_height,
+            "challenge": {
+                "kind": self.kind,
+                "in_total_amount": self.in_total_amount,
+                "out_total_amount": self.out_total_amount,
+                "tx_id_last_6_chars": self.tx_id_last_6_chars,
+                "block_height": self.block_height,
+                "checksum": self.checksum,
+                "output": self.output
+            }
         }
+
+    @staticmethod
+    def from_dict(data):
+        return Challenge(**data)
 
 
 class LlmMessage(BaseModel):
     type: int = Field(0, title="The type of the message")
     content: str = Field("", title="The content of the message")
 
-    def to_dict(self):
+    def to_params(self):
         return {
-            "type": self.type,
-            "content": self.content
+            "llm_messages": [
+                {
+                    "type": self.type,
+                    "content": self.content
+                }
+            ]
         }
+
+    @staticmethod
+    def from_dict(data):
+        return LlmMessage(**data)
+
+
+def to_params_multiple(llm_messages: list[LlmMessage]):
+    return {
+        "llm_messages": [
+            {
+                "type": message.type,
+                "content": message.content
+            } for message in llm_messages
+        ]
+    }
 
 
 class QueryOutput(BaseModel):

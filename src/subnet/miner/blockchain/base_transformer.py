@@ -43,7 +43,7 @@ class BaseGraphSummaryTransformer:
         self.incoming_amount = 0
         self.outgoing_amount = 0
 
-    def transform_result(self, result: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def transform_result(self, result: List[Dict[str, Any]]):
         raise NotImplementedError("Subclasses should implement this method.")
 
     def process_transaction_entry(self, entry: Dict[str, Any]) -> None:

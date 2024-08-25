@@ -23,9 +23,9 @@ You are an assistant that classifies prompts into two categories: "Funds Flow" a
         Given a prompt, classify it as either "Funds Flow" or "Balance Tracking". For example:
 
         1. "Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r."
-        - Classification: Funds Flow
+        funds_flow
 
         2. "Return me the address that has the highest current balance over time."
-        - Classification: Balance Tracking
+        balance_tracking
 
         Classify the provided prompt.

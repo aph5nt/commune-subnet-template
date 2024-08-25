@@ -45,7 +45,8 @@ from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
-from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage
+from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, to_params_multiple, Challenge
+from src.subnet.protocol.blockchain import Discovery
 
 IP_REGEX = re.compile(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+")
 
@@ -146,13 +147,14 @@ class Validator(Module):
         """
         try:
             logger.debug(f"Miner {module_ip}:{module_port} is trying to get discovery")
-            discovery_result = await client.call(
+            discovery = await client.call(
                 "discovery",
                 miner_key,
                 {},
                 timeout=self.challenge_timeout,
             )
-            logger.debug(f"Miner {module_ip}:{module_port} got discovery {discovery_result}")
+
+            logger.debug(f"Miner {module_ip}:{module_port} got discovery {discovery}")
         except Exception as e:
             logger.warning(f"Miner {module_ip}:{module_port} failed to get discovery")
             return None
@@ -163,32 +165,29 @@ class Validator(Module):
         try:
             logger.debug(f"Miner {module_ip}:{module_port} is trying to pass challenge")
 
-            node = NodeFactory.create_node(discovery_result['network'])
+            node = NodeFactory.create_node(discovery['network'])
             last_block_height = node.get_current_block_height() - 6
 
             # rename that to funds flow challenge
-            funds_flow_challenge, tx_id = node.create_funds_flow_challenge(0, last_block_height)
-            funds_flow_challenge_dict = funds_flow_challenge.to_dict()
-            funds_flow_challenge_output = await client.call(
+            generated_funds_flow_challenge, tx_id = node.create_funds_flow_challenge(0, last_block_height)
+            funds_flow_challenge = await client.call(
                 "challenge",
                 miner_key,
-                {'challenge': funds_flow_challenge_dict},
+                generated_funds_flow_challenge.to_params(),
                 timeout=self.challenge_timeout,
             )
 
             # balance tracking challenge
             random_balance_tracking_block = randint(1, 1000)  # this is for fast testing only, remove on production
-            #random_balance_tracking_blocks = sample(range(1, 1001), 10)  # this is for fast testing only, remove on production
-            balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(random_balance_tracking_block)
-            balance_tracking_challenge_dict = balance_tracking_challenge.to_dict()
-            balance_tracking_challenge_output = await client.call(
+            generated_balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(random_balance_tracking_block)
+            balance_tracking_challenge = await client.call(
                 "challenge",
                 miner_key,
-                {'challenge': balance_tracking_challenge_dict},
+                generated_balance_tracking_challenge.to_params(),
                 timeout=self.challenge_timeout,
             )
 
-            logger.info(f"Miner {module_ip}:{module_port} finished with results {discovery_result}, {tx_id}, {funds_flow_challenge_output}, {balance_tracking_challenge_output}")
+            logger.info(f"Miner {module_ip}:{module_port} finished with results {discovery}, {tx_id}, {funds_flow_challenge}, {balance_tracking_challenge}")
         except Exception as e:
             logger.info(f"Miner {module_ip}:{module_port} failed to generate an answer")
             return None
@@ -197,61 +196,59 @@ class Validator(Module):
         Prompt
         """
         try:
-            challenge_prompt = "1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
-            prompt = LlmMessage(type=0, content=challenge_prompt)
-            prompt_dict = [prompt.to_dict()]
-            result = await client.call(
+            llm_query_result = LlmMessage.from_dict(await client.call(
                 "llm_query",
                 miner_key,
-                {'prompt': prompt_dict},
+                to_params_multiple([LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")]),
                 timeout=self.llm_query_timeout,
-            )
+            ))
 
-            prompt_result = None
-            pass
         except Exception as e:
             logger.info(f"Miner {module_ip}:{module_port} failed to generate an answer")
             return
 
-        logger.debug(f"Miner {module_ip}:{module_port} finished with results {discovery_result}, {tx_id}, {prompt_result}")
+        logger.debug(f"Miner {module_ip}:{module_port} finished with results {discovery}, {tx_id}, {llm_query_result}")
 
         return {
-            'network': discovery_result['network'],
-            'funds_flow_challenge_actual_result': funds_flow_challenge_output['tx_id'],
+            'network': discovery['network'],
+            'funds_flow_challenge_actual_result': funds_flow_challenge['output'],
             'funds_flow_challenge_expected_result': tx_id,
-            'balance_tracking_challenge_actual_result': balance_tracking_challenge,
+            'balance_tracking_challenge_actual_result': balance_tracking_challenge['output'],
             'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
             'prompt_result': [],
             'prompt_query_used': 'RETURN 1',
         }
 
     def _score_miner(self, response) -> float:
-
         """
-        response {
-            'network': discovery_result['network'],
-            'funds_flow_challenge_actual_result': funds_flow_challenge_output['tx_id'],
+        {
+            'network': discovery['network'],
+            'funds_flow_challenge_actual_result': funds_flow_challenge['output'],
             'funds_flow_challenge_expected_result': tx_id,
-            'balance_tracking_challenge_actual_result': balance_tracking_challenge,
+            'balance_tracking_challenge_actual_result': balance_tracking_challenge['output'],
             'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
             'prompt_result': [],
             'prompt_query_used': 'RETURN 1',
-      }
+        }
         """
-
-
         if not response:
             logger.info(f"Miner didn't answer")
             return 0
 
-        if response['challenge_actual_result'] != response['challenge_expected_result']:
+        if response['funds_flow_challenge_actual_result'] != response['funds_flow_challenge_expected_result']:
             logger.info(f"Miner failed the challenge")
             return 0
 
         score = 0.25
 
-        # if synthetic prompt is equal to majority results
+        if response['balance_tracking_challenge_actual_result'] != response['balance_tracking_challenge_expected_result']:
+            logger.info(f"Miner failed the balance tracking challenge")
+            return score
+
         score = 0.5
+
+        # here we score synthetic llm prompts
+
 
         # if miner has many accepted receipts
         score = 0.95 # 95% of the score
@@ -266,13 +263,9 @@ class Validator(Module):
         how we set weights?
         80% for synthetic prompts
         20% for organic prompts
-        
-        
-        
-        
         """
 
-        return 0.25
+        return score
 
     async def validate_step(self, netuid: int, settings: ValidatorSettings
                             ) -> None:
