@@ -1,7 +1,4 @@
 from typing import List, Optional, Dict, Literal
-
-from communex.module.module import EndpointParams
-from typing_extensions import Any
 from pydantic import BaseModel, Field
 
 from src.subnet.protocol.blockchain import NETWORK_BITCOIN

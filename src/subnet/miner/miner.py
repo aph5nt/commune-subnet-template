@@ -136,7 +136,7 @@ class Miner(Module):
         start_time = time.time()
 
         try:
-            model_type = self.llm.determine_model_type(llm_messages_list.messages, self.settings.llm_type, self.settings.network)
+            model_type = self.llm.determine_model_type(llm_messages_list.messages, self.settings.LLM_TYPE, self.settings.network)
             logger.debug(f"Determined model type: {model_type}")
 
             if model_type == 'funds_flow':
@@ -250,7 +250,7 @@ class Miner(Module):
             interpreted_result = self.llm.interpret_result_balance_tracker(
                 llm_messages=llm_messages.messages,
                 result=tabular_transformed_result,
-                llm_type=self.settings.llm_type,
+                llm_type=self.settings.LLM_TYPE,
                 network=self.settings.network
             )
 

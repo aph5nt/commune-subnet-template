@@ -202,12 +202,12 @@ class Validator(Module):
         try:
             llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
 
-            llm_query_result = LlmMessage.from_dict(await client.call(
+            llm_query_result = await client.call(
                 "llm_query",
                 miner_key,
-                { "llm_messages_list": llm_message_list.dict() },
+                {"llm_messages_list": llm_message_list.dict()},
                 timeout=self.llm_query_timeout,
-            ))
+            )
 
         except Exception as e:
             logger.info(f"Miner {module_ip}:{module_port} failed to generate an answer")
@@ -221,8 +221,7 @@ class Validator(Module):
             'funds_flow_challenge_expected_result': tx_id,
             'balance_tracking_challenge_actual_result': balance_tracking_challenge['output'],
             'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
-            'prompt_result': [],
-            'prompt_query_used': 'RETURN 1',
+            'prompt_result': llm_query_result,
         }
 
     def _score_miner(self, response) -> float:
