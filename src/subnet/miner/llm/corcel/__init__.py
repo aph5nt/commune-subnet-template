@@ -15,14 +15,14 @@ class CorcelLLM(BaseLLM):
         self.settings = settings
         self.corcel_client = CorcelClient(settings.LLM_API_KEY)
 
-    def build_query_from_messages_balance_tracker(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
-        return self._build_query_from_messages(llm_messages, llm_type, network, "balance_tracking")
+    def build_query_from_messages_balance_tracker(self, llm_messages: List[LlmMessage], network: str) -> str:
+        return self._build_query_from_messages(llm_messages, network, "balance_tracking")
 
-    def build_cypher_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
-        return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+    def build_cypher_query_from_messages(self, llm_messages: List[LlmMessage],  network: str) -> str:
+        return self._build_query_from_messages(llm_messages, network, "funds_flow")
 
-    def _build_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str, subfolder: str) -> str:
-        local_file_path = f"{llm_type}/prompts/{network}/{subfolder}/query_prompt.txt"
+    def _build_query_from_messages(self, llm_messages: List[LlmMessage], network: str, subfolder: str) -> str:
+        local_file_path = f"corcel/prompts/{network}/{subfolder}/query_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
@@ -49,14 +49,14 @@ class CorcelLLM(BaseLLM):
             logger.error(f"LlmQuery build error: {e}")
             raise Exception(LLM_ERROR_QUERY_BUILD_FAILED)
 
-    def interpret_result_balance_tracker(self, llm_messages: List[LlmMessage], result: list, llm_type: str, network: str) -> str:
-        return self._interpret_result(llm_messages, result, llm_type, network, "balance_tracking")
+    def interpret_result_balance_tracker(self, llm_messages: List[LlmMessage], result: list, network: str) -> str:
+        return self._interpret_result(llm_messages, result, network, "balance_tracking")
 
-    def interpret_result_funds_flow(self, llm_messages: List[LlmMessage], result: list, llm_type: str, network: str) -> str:
-        return self._interpret_result(llm_messages, result, llm_type, network, "funds_flow")
+    def interpret_result_funds_flow(self, llm_messages: List[LlmMessage], result: list, network: str) -> str:
+        return self._interpret_result(llm_messages, result, network, "funds_flow")
 
-    def _interpret_result(self, llm_messages: List[LlmMessage], result: list, llm_type: str, network: str, subfolder: str) -> str:
-        local_file_path = f"{llm_type}/prompts/{network}/{subfolder}/interpretation_prompt.txt"
+    def _interpret_result(self, llm_messages: List[LlmMessage], result: list, network: str, subfolder: str) -> str:
+        local_file_path = f"corcel/prompts/{network}/{subfolder}/interpretation_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
@@ -72,8 +72,8 @@ class CorcelLLM(BaseLLM):
             logger.error(f"LlmQuery interpret result error: {e}")
             raise Exception(LLM_ERROR_INTERPRETION_FAILED)
 
-    def determine_model_type(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
-        local_file_path = f"{llm_type}/prompts/{network}/classification/classification_prompt.txt"
+    def determine_model_type(self, llm_messages: List[LlmMessage], network: str) -> str:
+        local_file_path = f"corcel/prompts/{network}/classification/classification_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")

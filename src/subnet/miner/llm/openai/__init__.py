@@ -6,7 +6,6 @@ from loguru import logger
 
 from src.subnet.miner._config import MinerSettings
 from src.subnet.miner.llm.base_llm import BaseLLM
-from src.subnet.miner.llm.corcel.corcel_client import CorcelClient
 from src.subnet.miner.llm.prompt_reader import read_local_file
 from src.subnet.miner.llm.utils import split_messages_into_chunks
 from src.subnet.protocol.llm_engine import LlmMessage, LLM_ERROR_QUERY_BUILD_FAILED, LLM_ERROR_INTERPRETION_FAILED, \
