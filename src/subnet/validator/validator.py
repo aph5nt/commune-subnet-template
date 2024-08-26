@@ -45,7 +45,7 @@ from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
-from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, to_params_multiple, Challenge
+from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList
 from src.subnet.protocol.blockchain import Discovery
 
 IP_REGEX = re.compile(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+")
@@ -169,23 +169,27 @@ class Validator(Module):
             last_block_height = node.get_current_block_height() - 6
 
             # rename that to funds flow challenge
-            generated_funds_flow_challenge, tx_id = node.create_funds_flow_challenge(0, last_block_height)
+            funds_flow_challenge, tx_id = node.create_funds_flow_challenge(0, last_block_height)
             funds_flow_challenge = await client.call(
                 "challenge",
                 miner_key,
-                generated_funds_flow_challenge.to_params(),
+                {"challenge": funds_flow_challenge.dict()},
                 timeout=self.challenge_timeout,
             )
 
+            funds_flow_challenge = Challenge(**funds_flow_challenge)
+
             # balance tracking challenge
             random_balance_tracking_block = randint(1, 1000)  # this is for fast testing only, remove on production
-            generated_balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(random_balance_tracking_block)
+            balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(random_balance_tracking_block)
             balance_tracking_challenge = await client.call(
                 "challenge",
                 miner_key,
-                generated_balance_tracking_challenge.to_params(),
+                {"challenge": balance_tracking_challenge.dict()},
                 timeout=self.challenge_timeout,
             )
+
+            balance_tracking_challenge = Challenge(**balance_tracking_challenge)
 
             logger.info(f"Miner {module_ip}:{module_port} finished with results {discovery}, {tx_id}, {funds_flow_challenge}, {balance_tracking_challenge}")
         except Exception as e:
@@ -196,10 +200,12 @@ class Validator(Module):
         Prompt
         """
         try:
+            llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
+
             llm_query_result = LlmMessage.from_dict(await client.call(
                 "llm_query",
                 miner_key,
-                to_params_multiple([LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")]),
+                { "llm_messages_list": llm_message_list.dict() },
                 timeout=self.llm_query_timeout,
             ))
 
@@ -207,7 +213,7 @@ class Validator(Module):
             logger.info(f"Miner {module_ip}:{module_port} failed to generate an answer")
             return
 
-        logger.debug(f"Miner {module_ip}:{module_port} finished with results {discovery}, {tx_id}, {llm_query_result}")
+        logger.debug(f"Miner {module_ip}:{module_port} finished with results {discovery}, {tx_id},")
 
         return {
             'network': discovery['network'],

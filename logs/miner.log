@@ -584,3 +584,51 @@ AttributeError: 'dict' object has no attribute 'content'
 2024-08-25 19:58:15 | INFO | Tokens per second: 0.9663359767027154
 2024-08-25 19:58:18 | INFO | Model type: funds_flow
 2024-08-25 19:58:27 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 22:10:09 | ERROR | Traceback (most recent call last):
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/miner.py", line 191, in _handle_funds_flow_query
+    query, token_usage_query = self.llm.build_cypher_query_from_messages(llm_messages, self.settings.LLM_TYPE, self.settings.NETWORK)
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 22, in build_cypher_query_from_messages
+    return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in _build_query_from_messages
+    question = "\n".join([message['content'] for message in llm_messages])
+  File "/mnt/c/work4/commune-subnet-template/src/subnet/miner/llm/corcel/__init__.py", line 30, in <listcomp>
+    question = "\n".join([message['content'] for message in llm_messages])
+AttributeError: 'dict' object has no attribute 'content'
+
+2024-08-25 22:10:09 | INFO | LLM query processing time: 7927.305829048157 seconds
+2024-08-25 22:11:18 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 22:11:42 | INFO | Executing balance sum query for block heights: [238]
+2024-08-25 22:13:18 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 22:13:28 | INFO | Executing balance sum query for block heights: [228]
+2024-08-25 22:18:45 | INFO | Received miner llm query: [{'type': 0, 'content': '1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction'}]
+2024-08-25 22:18:47 | INFO | Formed question: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction
+2024-08-25 22:18:47 | INFO | Sending request to https://api.corcel.io/v1/text/cortext/chat with payload: {
+  "model": "gpt-4o",
+  "stream": false,
+  "top_p": 1,
+  "temperature": 0,
+  "max_tokens": 4096,
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are an assistant that classifies prompts into two categories: \"Funds Flow\" and \"Balance Tracking\". Your task is to identify the type of each prompt given to you. Here are the definitions and examples for each category:\n\n        **Funds Flow**:\n        Questions related to specific transactions, including outgoing and incoming transactions, transactions related to a particular address in a specific block, and tracing where funds were transferred from an address.\n\n        Examples:\n        1. Return 15 transactions outgoing from my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        2. Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n        3. I have sent more than 1.5 BTC to somewhere but I couldn't remember. Show me 30 relevant transactions.\n        4. My address is bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r. Show 10 transactions related to my address in the block 402913.\n        5. Show where funds were transferred from address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\n\n        **Balance Tracking**:\n        Questions related to the current or historical balance of addresses, including identifying addresses with the highest balances and retrieving mined blocks and their timestamps.\n\n        Examples:\n        1. Return me top 3 addresses that have the highest current balances plus return blocks and timestamps.\n        2. Return me the address that has the highest current balance over time.\n        3. Return me the address who had the highest amount of BTC in 2009-01.\n        4. Return me all mined blocks and their timestamps.\n        5. Show me the top 3 blocks that have the highest balance.\n\n        Given a prompt, classify it as either \"Funds Flow\" or \"Balance Tracking\". For example:\n\n        1. \"Show me 20 transactions incoming to my address bc1q4s8yps9my6hun2tpd5ke5xmvgdnxcm2qspnp9r.\"\n        funds_flow\n\n        2. \"Return me the address that has the highest current balance over time.\"\n        balance_tracking\n\n        Classify the provided prompt.\n\nActual question is: 1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction"
+    }
+  ]
+}
+2024-08-25 22:18:48 | INFO | Response from API: [
+  {
+    "choices": [
+      {
+        "delta": {
+          "content": "funds_flow"
+        },
+        "finish_reason": "stop"
+      }
+    ]
+  }
+]
+2024-08-25 22:18:48 | INFO | Tokens per second: 1.0529457247577447
+2024-08-25 22:51:42 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 22:52:55 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 22:56:00 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768
+2024-08-25 23:03:00 | INFO | Here is loaded configs bolt://memgraph.hyperclouds.io:30768

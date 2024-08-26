@@ -15,13 +15,13 @@ class CorcelLLM(BaseLLM):
         self.settings = settings
         self.corcel_client = CorcelClient(settings.LLM_API_KEY)
 
-    def build_query_from_messages_balance_tracker(self, llm_messages, llm_type: str, network: str) -> str:
+    def build_query_from_messages_balance_tracker(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
         return self._build_query_from_messages(llm_messages, llm_type, network, "balance_tracking")
 
-    def build_cypher_query_from_messages(self, llm_messages, llm_type: str, network: str) -> str:
+    def build_cypher_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str) -> str:
         return self._build_query_from_messages(llm_messages, llm_type, network, "funds_flow")
 
-    def _build_query_from_messages(self, llm_messages, llm_type: str, network: str, subfolder: str) -> str:
+    def _build_query_from_messages(self, llm_messages: List[LlmMessage], llm_type: str, network: str, subfolder: str) -> str:
         local_file_path = f"{llm_type}/prompts/{network}/{subfolder}/query_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
@@ -30,7 +30,7 @@ class CorcelLLM(BaseLLM):
         question = "\n".join([message['content'] for message in llm_messages])
 
         try:
-            ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
+            ai_response, _ = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
             logger.info(f'ai_response using GPT-4: {ai_response}')
 
             # Log the entire response content
@@ -44,7 +44,7 @@ class CorcelLLM(BaseLLM):
                 # Directly use the content as the query
                 query = ai_response.strip()
 
-            return query, token_usage
+            return query
         except Exception as e:
             logger.error(f"LlmQuery build error: {e}")
             raise Exception(LLM_ERROR_QUERY_BUILD_FAILED)
@@ -65,9 +65,9 @@ class CorcelLLM(BaseLLM):
         question = "\n".join([message.content for message in llm_messages])
 
         try:
-            ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, result=result)
+            ai_response, _ = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, result=result)
             ai_response = ai_response.strip('"')
-            return ai_response, token_usage
+            return ai_response
         except Exception as e:
             logger.error(f"LlmQuery interpret result error: {e}")
             raise Exception(LLM_ERROR_INTERPRETION_FAILED)
@@ -82,9 +82,9 @@ class CorcelLLM(BaseLLM):
         logger.info(f"Formed question: {question}")
 
         try:
-            ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
+            ai_response, _ = self.corcel_client.send_prompt(model="gpt-4o", prompt=prompt, question=question)
             if ai_response in [MODEL_TYPE_FUNDS_FLOW, MODEL_TYPE_BALANCE_TRACKING]:
-                return ai_response, token_usage
+                return ai_response
             else:
                 raise Exception("LLM_ERROR_CLASSIFICATION_FAILED")
 
@@ -97,11 +97,11 @@ class CorcelLLM(BaseLLM):
         question = "\n".join([message.content for message in llm_messages])
 
         try:
-            ai_response, token_usage = self.corcel_client.send_prompt(model="gpt-4o", prompt=general_prompt, question=question)
+            ai_response, _ = self.corcel_client.send_prompt(model="gpt-4o", prompt=general_prompt, question=question)
             if ai_response == "not applicable questions":
                 raise Exception(LLM_ERROR_NOT_APPLICAPLE_QUESTIONS)
             else:
-                return ai_response, token_usage
+                return ai_response
         except Exception as e:
             logger.error(f"LlmQuery general response error: {e}")
             raise Exception(LLM_ERROR_GENERAL_RESPONSE_FAILED)

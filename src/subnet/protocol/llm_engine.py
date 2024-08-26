@@ -71,55 +71,17 @@ class Challenge(BaseModel):
     block_height: Optional[int] = None
     output: Optional[Dict] = None
 
-    def to_params(self):
-        return {
-            "challenge": {
-                "kind": self.kind,
-                "in_total_amount": self.in_total_amount,
-                "out_total_amount": self.out_total_amount,
-                "tx_id_last_6_chars": self.tx_id_last_6_chars,
-                "block_height": self.block_height,
-                "checksum": self.checksum,
-                "output": self.output
-            }
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return Challenge(**data)
-
 
 class LlmMessage(BaseModel):
     type: int = Field(0, title="The type of the message")
     content: str = Field("", title="The content of the message")
 
-    def to_params(self):
-        return {
-            "llm_messages": [
-                {
-                    "type": self.type,
-                    "content": self.content
-                }
-            ]
-        }
 
-    @staticmethod
-    def from_dict(data):
-        return LlmMessage(**data)
+class LlmMessageList(BaseModel):
+    messages: List[LlmMessage] = Field([], title="The list of LLM messages")
 
 
-def to_params_multiple(llm_messages: list[LlmMessage]):
-    return {
-        "llm_messages": [
-            {
-                "type": message.type,
-                "content": message.content
-            } for message in llm_messages
-        ]
-    }
-
-
-class QueryOutput(BaseModel):
+class LlmMessageOutput(BaseModel):
     type: Literal["graph", "text", "table", "error"] = Field(..., title="The type of the output")
     result: Optional[List[object]] = None
     interpreted_result: Optional[str] = None
@@ -129,10 +91,14 @@ class QueryOutput(BaseModel):
         arbitrary_types_allowed = True
 
 
+class LlmMessageOutputList(BaseModel):
+    outputs: List[LlmMessageOutput] = Field([], title="The list of LLM message outputs")
+
+
 class LlmQuery(BaseModel):
     network: str = Field(NETWORK_BITCOIN, title="The network to query")
     messages: List[LlmMessage] = None
-    output: Optional[QueryOutput] = None
+    output: Optional[LlmMessageOutputList] = None
 
 
 class Query(BaseModel):
