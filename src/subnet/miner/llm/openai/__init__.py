@@ -19,7 +19,7 @@ class OpenAILLM(BaseLLM):
         self.chat_gpt4o = ChatOpenAI(api_key=settings.LLM_API_KEY, model="gpt-4o", temperature=0)
         self.MAX_TOKENS = 128000
 
-    def determine_model_type(self, llm_messages: List[LlmMessage], network: str) -> MODEL_TYPE_FUNDS_FLOW | MODEL_TYPE_BALANCE_TRACKING:
+    def determine_model_type(self, llm_messages: List[LlmMessage], network: str) -> str:
         content = self._build_query_from_messages(llm_messages, network, "classification", "classification_prompt.txt")
         if "Funds Flow" in content:
             return MODEL_TYPE_FUNDS_FLOW

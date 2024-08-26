@@ -23,7 +23,6 @@ def get_model_types():
 ERROR_TYPE = int
 LLM_TYPE_OPENAI = "openai"
 LLM_TYPE_CUSTOM = "custom"
-LLM_TYPE_CORCEL = "corcel"
 
 # LLM MESSAGE TYPE
 LLM_MESSAGE_TYPE_USER = 1
@@ -99,6 +98,12 @@ class LlmQuery(BaseModel):
     network: str = Field(NETWORK_BITCOIN, title="The network to query")
     messages: List[LlmMessage] = None
     output: Optional[LlmMessageOutputList] = None
+
+
+class QueryOutput(BaseModel):
+    type: Literal["graph", "text", "table", "chart", "error"] = Field(..., title="The type of the output")
+    result: Optional[Dict] = None
+    error: Optional[ERROR_TYPE] = None
 
 
 class Query(BaseModel):
