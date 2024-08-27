@@ -26,6 +26,9 @@ class ValidatorSettings(BaseSettings):
     QUERY_TIMEOUT: int   # cross check query timeout
     CHALLENGE_TIMEOUT: int  # challenge and llm challenge time
 
+    LLM_API_KEY: str
+    LLM_TYPE: str
+
     class Config:
         env_file = '../env/.env.validator.testnet'  # Default .env file
         extra = 'ignore'
