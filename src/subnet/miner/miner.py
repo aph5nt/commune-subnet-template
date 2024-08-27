@@ -17,7 +17,7 @@ from src.subnet.protocol.llm_engine import LLM_UNKNOWN_ERROR, LLM_ERROR_MESSAGES
     MODEL_TYPE_BALANCE_TRACKING, Challenge, LlmMessage, LlmMessageList, LlmMessageOutputList, \
     LlmMessageOutput
 from src.subnet.validator.database import db_manager
-
+import time
 
 class Miner(Module):
 
@@ -33,7 +33,7 @@ class Miner(Module):
         self.graph_summary_transformer_factory = GraphSummaryTransformerFactory()
 
     @endpoint
-    def discovery(self) -> dict:
+    async def discovery(self) -> dict:
         """
         Returns the network of the miner
         Returns:
