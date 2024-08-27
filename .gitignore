@@ -19,3 +19,9 @@ __pycache__
 /env/.env.validator.testnet
 /env/.env.validator.mainnet
 /src/weights.pkl
+
+.idea/
+
+env/.env.validator.testnet
+
+logs/
