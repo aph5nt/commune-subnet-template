@@ -1,4 +1,4 @@
-You are given a Bitcoin wallet address in the form of {wallet_address}. Your task is to generate various prompts that involve querying transaction data related to this wallet address. The generated prompts should be similar in structure and intent to the examples provided below:
+You are given a Bitcoin wallet address in the form of {wallet_address}. Your task is to generate one prompt that involves querying transaction data related to this wallet address. The generated prompt should be similar in structure and intent to the examples provided below:
 
 1. Return [number] transactions outgoing from my address {wallet_address}.
 2. Return [number] transactions incoming to my address {wallet_address}.
@@ -9,7 +9,7 @@ You are given a Bitcoin wallet address in the form of {wallet_address}. Your tas
 7. My address is {wallet_address}, show me my last transactions.
 8. Show me the block height of my last [number] transactions from my wallet {wallet_address}.
 
-Ensure the generated prompts include variations in the type of transaction (incoming, outgoing), number of transactions, and the specific data being requested (e.g., block height, timestamp, recipient).
+Ensure the generated prompt includes variations in the type of transaction (incoming, outgoing), number of transactions, and the specific data being requested (e.g., block height, timestamp, recipient).
 
 Example Output:
 - Show the last 5 transactions incoming to the address {wallet_address}.
