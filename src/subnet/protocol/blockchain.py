@@ -27,8 +27,3 @@ def get_networks():
 
 class Discovery(BaseModel):
     network: str = Field(NETWORK_BITCOIN, title="The network to discover")
-
-    def to_params(self):
-        return {
-            "network": self.network
-        }

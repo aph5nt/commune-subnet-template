@@ -136,7 +136,7 @@ class Miner(Module):
         start_time = time.time()
 
         try:
-            model_type = self.llm.determine_model_type(llm_messages_list.messages, self.settings.LLM_TYPE, self.settings.network)
+            model_type = self.llm.determine_model_type(llm_messages_list.messages, self.settings.NETWORK)
             logger.debug(f"Determined model type: {model_type}")
 
             if model_type == 'funds_flow':
@@ -160,7 +160,7 @@ class Miner(Module):
             graph_search = self.graph_search_factory.create_graph_search(self.settings)
             query_start_time = time.time()
 
-            query, _ = self.llm.build_cypher_query_from_messages(llm_messages_list.messages, self.settings.LLM_TYPE, self.settings.NETWORK)
+            query = self.llm.build_cypher_query_from_messages(llm_messages_list.messages, self.settings.NETWORK)
             query = query.strip('`')
             logger.debug(f"Generated Cypher query: {query} (Time taken: {time.time() - query_start_time} seconds)")
 
@@ -197,17 +197,16 @@ class Miner(Module):
                 chart_transformed_result = chart_transformer.convert_funds_flow_to_chart(result)
 
             interpret_result_start_time = time.time()
-            interpreted_result, _ = self.llm.interpret_result_funds_flow(
+            interpreted_result = self.llm.interpret_result_funds_flow(
                 llm_messages=llm_messages_list.messages,
                 result=graph_summary_result,
-                llm_type=self.settings.LLM_TYPE,
                 network=self.settings.NETWORK
             )
 
             logger.info(f"Result interpretation time: {time.time() - interpret_result_start_time} seconds")
             output = LlmMessageOutputList(outputs=[
                 LlmMessageOutput(type="graph", result=graph_transformed_result),
-                LlmMessageOutput(type="text", result=interpreted_result)
+                LlmMessageOutput(type="text", result=[interpreted_result])
             ])
             return output
 
@@ -221,7 +220,7 @@ class Miner(Module):
     async def _handle_balance_tracking_query(self, llm_messages: LlmMessageList) -> LlmMessageOutputList:
         try:
             query_start_time = time.time()
-            query = self.llm.build_query_from_messages_balance_tracker(llm_messages.messages, settings.LLM_TYPE, settings.NETWORK)
+            query = self.llm.build_query_from_messages_balance_tracker(llm_messages.messages, settings.NETWORK)
             logger.info(f"extracted query: {query} (Time taken: {time.time() - query_start_time} seconds)")
 
             if query in ['modification_error', 'invalid_prompt_error']:
@@ -238,10 +237,10 @@ class Miner(Module):
             logger.info(f"Query execution time: {time.time() - execute_query_start_time} seconds")
 
             # Use transformer for tabular result
-            tabular_transformer = self.tabular_transformer_factory.create_tabular_transformer(self.settings.network)
+            tabular_transformer = self.tabular_transformer_factory.create_tabular_transformer(self.settings.NETWORK)
             tabular_transformed_result = tabular_transformer.transform_result_set(result)
 
-            chart_transformer = self.chart_transformer_factory.create_chart_transformer(self.settings.network)
+            chart_transformer = self.chart_transformer_factory.create_chart_transformer(self.settings.NETWORK)
             chart_transformed_result = None
             if chart_transformer.is_chart_applicable(result):
                 chart_transformed_result = chart_transformer.convert_balance_tracking_to_chart(result)
@@ -250,14 +249,13 @@ class Miner(Module):
             interpreted_result = self.llm.interpret_result_balance_tracker(
                 llm_messages=llm_messages.messages,
                 result=tabular_transformed_result,
-                llm_type=self.settings.LLM_TYPE,
-                network=self.settings.network
+                network=self.settings.NETWORK
             )
 
             logger.info(f"Result interpretation time: {time.time() - interpret_result_start_time} seconds")
             output = LlmMessageOutputList(outputs=[
                 LlmMessageOutput(type="table", result=tabular_transformed_result),
-                LlmMessageOutput(type="text", result=interpreted_result)])
+                LlmMessageOutput(type="text", result=[interpreted_result])])
 
             return output
 

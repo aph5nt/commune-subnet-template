@@ -217,9 +217,9 @@ class Validator(Module):
 
         return {
             'network': discovery['network'],
-            'funds_flow_challenge_actual_result': funds_flow_challenge['output'],
+            'funds_flow_challenge_actual_result': funds_flow_challenge.output,
             'funds_flow_challenge_expected_result': tx_id,
-            'balance_tracking_challenge_actual_result': balance_tracking_challenge['output'],
+            'balance_tracking_challenge_actual_result': balance_tracking_challenge.output,
             'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
             'prompt_result': llm_query_result,
         }

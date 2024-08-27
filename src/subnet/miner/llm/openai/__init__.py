@@ -42,7 +42,7 @@ class OpenAILLM(BaseLLM):
         return self._interpret_result(result, network, "balance_tracking")
 
     def _build_query_from_messages(self, llm_messages: List[LlmMessage], network: str, subfolder: str, prompt_file_name: str) -> str:
-        local_file_path = f"openai/{network}/{subfolder}/{prompt_file_name}"
+        local_file_path = f"openai/prompts/{network}/{subfolder}/{prompt_file_name}"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
@@ -67,7 +67,7 @@ class OpenAILLM(BaseLLM):
             raise Exception(LLM_ERROR_QUERY_BUILD_FAILED)
 
     def _interpret_result(self, result: list, network: str, subfolder: str) -> str:
-        local_file_path = f"openai/{network}/{subfolder}/interpretation_prompt.txt"
+        local_file_path = f"openai/prompts/{network}/{subfolder}/interpretation_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
