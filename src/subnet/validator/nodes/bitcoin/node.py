@@ -288,3 +288,49 @@ class BitcoinNode(Node):
         out_total_amount = sum(output_amounts.values())
 
         return input_amounts, output_amounts, input_addresses, output_addresses, in_total_amount, out_total_amount
+
+    def get_random_vin_or_vout(self, block_height):
+        logger.info(f"Fetching random vin or vout from block", block_height=block_height)
+
+        block_data = self.get_block_by_height(block_height)
+        transactions = block_data.get('tx', [])
+
+        if not transactions:
+            raise Exception(f"No transactions found in block {block_height}")
+
+        # Select a random transaction from the block
+        selected_txn = random.choice(transactions)
+        txn_data = self.get_txn_data_by_id(selected_txn['txid'])
+
+        if txn_data is None:
+            raise Exception(f"Transaction data not found for txid: {selected_txn['txid']}")
+
+        tx = self.create_in_memory_txn(txn_data)
+
+        # Collect all vins and vouts
+        all_vins = tx.vins
+        all_vouts = tx.vouts
+
+        if not all_vins and not all_vouts:
+            raise Exception(f"No vins or vouts found in transaction {selected_txn['txid']}")
+
+        # Randomly select between vins and vouts
+        if all_vins and all_vouts:
+            selected_list = random.choice([all_vins, all_vouts])
+        elif all_vins:
+            selected_list = all_vins
+        else:
+            selected_list = all_vouts
+
+        selected_item = random.choice(selected_list)
+
+        if isinstance(selected_item, VIN):
+            # Get the address from the previous output this VIN is spending
+            address, _ = self.get_address_and_amount_by_txn_id_and_vout_id(selected_item.tx_id,
+                                                                           str(selected_item.vout_id))
+            return {"type": "vin", "address": address}
+        elif isinstance(selected_item, VOUT):
+            return {"type": "vout", "address": selected_item.address}
+        else:
+            raise Exception(f"Unknown item type selected")
+
