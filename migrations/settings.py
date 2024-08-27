@@ -14,8 +14,6 @@ class MigrationSettings(BaseSettings):
     POSTGRES_PORT: int
     POSTGRES_DB: str
 
-    LLM_PROMPTS_URL: str
-
     DB_URL_OBJ: URL = URL.create(
         "postgresql+asyncpg",
         username=os.environ.get("POSTGRES_USER"),
