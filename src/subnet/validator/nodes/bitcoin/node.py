@@ -10,6 +10,7 @@ import time
 import os
 import random
 from ..abstract_node import Node
+from ..random_block import select_block
 
 
 class BitcoinNode(Node):
@@ -109,7 +110,7 @@ class BitcoinNode(Node):
         num_retries = 10 # to prevent infinite loop
         is_valid_block = False
         while num_retries and not is_valid_block:
-            block_to_check = random.randint(start_block_height, last_block_height)
+            block_to_check = select_block(start_block_height, last_block_height)
             is_valid_block = check_if_block_is_valid_for_challenge(block_to_check)
             num_retries -= 1
 
