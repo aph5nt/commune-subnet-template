@@ -12,6 +12,7 @@ from communex.misc import get_map_modules
 from communex.module.client import ModuleClient  # type: ignore
 from communex.module.module import Module  # type: ignore
 from communex.types import Ss58Address  # type: ignore
+from pydantic import BaseModel
 from substrateinterface import Keypair  # type: ignore
 from ._config import ValidatorSettings
 from loguru import logger
@@ -22,7 +23,9 @@ from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
-from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList
+from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
+    ChallengeMinerResponse, LlmMessageOutputList
+from ..protocol.blockchain import Discovery
 
 
 class Validator(Module):
@@ -73,35 +76,39 @@ class Validator(Module):
         logger.debug(f"Challenging miner {miner_key}")
 
         # Discovery Phase
-        discovery = await self._get_discovery(client, miner_key, module_ip, module_port)
+        discovery = await self._get_discovery(client, miner_key)
         if not discovery:
             return None
 
         # Challenge Phase
         node = NodeFactory.create_node(discovery['network'])
-        funds_flow_challenge, tx_id, balance_tracking_challenge, balance_tracking_expected_response = await self._perform_challenges(
-            client, miner_key, discovery, node)
-        if not funds_flow_challenge or not balance_tracking_challenge:
-            return None
+        challenge_response = await self._perform_challenges(client, miner_key, discovery, node)
 
         # Prompt Phase
         llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
         llm_query_result = await self._send_prompt(client, miner_key, llm_message_list)
-        if not llm_query_result:
-            return None
 
-        logger.info(f"Miner {miner_key} finished the challenge")
+        # TODO: select miner keys for cross check
+        prompt_cross_check_miner_keys = []
+        prompt_cross_check_tasks = []
+        for _miner_key in prompt_cross_check_miner_keys:
+            prompt_cross_check_tasks.append(self._send_prompt(client, _miner_key, llm_message_list))
 
-        return {
-            'network': discovery['network'],
-            'funds_flow_challenge_actual_result': funds_flow_challenge.output,
-            'funds_flow_challenge_expected_result': tx_id,
-            'balance_tracking_challenge_actual_result': balance_tracking_challenge.output,
-            'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
-            'prompt_result': llm_query_result,
-        }
+        prompt_result_cross_checks = await asyncio.gather(*prompt_cross_check_tasks)
 
-    async def _get_discovery(self, client, miner_key, module_ip, module_port):
+        logger.info(f"Miner {miner_key} finished the challenges")
+
+        return ChallengeMinerResponse(
+            network=discovery.network,
+            funds_flow_challenge_result=challenge_response.funds_flow_challenge.output,
+            funds_flow_challenge_expected_result=challenge_response.funds_flow_challenge_expected_output['tx_id'],
+            balance_tracking_challenge_result=challenge_response.balance_tracking_challenge.output,
+            balance_tracking_challenge_expected_result=challenge_response.balance_tracking_expected_output['sum'],
+            prompt_result_cross_checks=prompt_result_cross_checks,
+            prompt_result=llm_query_result,
+        )
+
+    async def _get_discovery(self, client, miner_key) -> Discovery:
         try:
             discovery = await client.call(
                 "discovery",
@@ -109,12 +116,13 @@ class Validator(Module):
                 {},
                 timeout=self.challenge_timeout,
             )
-            return discovery
+
+            return Discovery(**discovery)
         except Exception as e:
             logger.info(f"Miner {miner_key} failed to get discovery")
             return None
 
-    async def _perform_challenges(self, client, miner_key, discovery, node):
+    async def _perform_challenges(self, client, miner_key, discovery, node) -> ChallengesResponse | None:
         try:
             last_block_height = node.get_current_block_height() - 6
 
@@ -130,8 +138,7 @@ class Validator(Module):
 
             # Balance tracking challenge
             random_balance_tracking_block = randint(1, 1000)  # this is for fast testing only, remove on production
-            balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(
-                random_balance_tracking_block)
+            balance_tracking_challenge, balance_tracking_expected_response = node.create_balance_tracking_challenge(random_balance_tracking_block)
             balance_tracking_challenge = await client.call(
                 "challenge",
                 miner_key,
@@ -140,12 +147,17 @@ class Validator(Module):
             )
             balance_tracking_challenge = Challenge(**balance_tracking_challenge)
 
-            return funds_flow_challenge, tx_id, balance_tracking_challenge, balance_tracking_expected_response
+            return ChallengesResponse(
+                funds_flow_challenge=funds_flow_challenge,
+                funds_flow_challenge_expected_output=tx_id,
+                balance_tracking_challenge=balance_tracking_challenge,
+                balance_tracking_expected_output=balance_tracking_expected_response,
+            )
         except Exception as e:
             logger.info(f"Miner {miner_key} failed to generate an answer")
-            return None, None, None, None
+            return None
 
-    async def _send_prompt(self, client, miner_key, llm_message_list):
+    async def _send_prompt(self, client, miner_key, llm_message_list) -> LlmMessageOutputList | None:
         try:
             llm_query_result = await client.call(
                 "llm_query",
@@ -153,57 +165,43 @@ class Validator(Module):
                 {"llm_messages_list": llm_message_list.dict()},
                 timeout=self.llm_query_timeout,
             )
-            return llm_query_result
+            if not llm_query_result:
+                return None
+
+            return LlmMessageOutputList(**llm_query_result)
         except Exception as e:
             logger.info(f"Miner {miner_key} failed to generate an answer")
             return None
 
-    def _score_miner(self, response) -> float:
-        """
-        {
-            'network': discovery['network'],
-            'funds_flow_challenge_actual_result': funds_flow_challenge['output'],
-            'funds_flow_challenge_expected_result': tx_id,
-            'balance_tracking_challenge_actual_result': balance_tracking_challenge['output'],
-            'balance_tracking_challenge_expected_result': balance_tracking_expected_response,
-            'prompt_result': [],
-            'prompt_query_used': 'RETURN 1',
-        }
-        """
+    @staticmethod
+    def _score_miner(response: ChallengeMinerResponse) -> float:
         if not response:
             logger.info(f"Miner didn't answer")
             return 0
 
-        if response['funds_flow_challenge_actual_result'] != response['funds_flow_challenge_expected_result']:
-            logger.info(f"Miner failed the challenge")
-            return 0
+        failed_challenges = response.get_failed_challenges()
+        if failed_challenges > 0:
+            if failed_challenges == 2:
+                return 0
+            else:
+                return 0.2
 
-        score = 0.25
+        # all challenges are passed, setting base score to 0.36
+        score = 0.36
 
-        if response['balance_tracking_challenge_actual_result'] != response['balance_tracking_challenge_expected_result']:
-            logger.info(f"Miner failed the balance tracking challenge")
+        """
+        if response.prompt_result is None:
             return score
-
-        score = 0.5
+        if response.prompt_result_cross_checks is None:
+            return score
+        """
+        # compute hashes of the responses (data fields only)
+        #score = 0.5
 
         # here we score synthetic llm prompts
-
-
         # if miner has many accepted receipts
-        score = 0.95 # 95% of the score
 
-        """
-        HOW WE WILL SCORE?
-       
-        replied organic prompts
-        we get miner with highest monthly accepted receipts 100 - that will be our 1 score
-        we check given miner accepted rate lets say its 50% - we give him 0.5 score
-        
-        how we set weights?
-        80% for synthetic prompts
-        20% for organic prompts
-        """
-
+        #score = 0.95 # 95% of the score
         return score
 
     async def validate_step(self, netuid: int, settings: ValidatorSettings
@@ -242,24 +240,27 @@ class Validator(Module):
             challenge_tasks.append(self._challenge_miner(miner_info))
 
         logger.debug(f"Challenging {len(challenge_tasks)} miners")
-        responses = await asyncio.gather(*challenge_tasks)
+        responses: tuple[ChallengeMinerResponse] = await asyncio.gather(*challenge_tasks)
         logger.debug(f"Got responses from {len(responses)} miners")
 
+        score = 0
         for uid, miner_info, response in zip(miners_module_info.keys(), miners_module_info.values(), responses):
             if not response:
                 logger.info(f"Skipping miner {uid} that didn't answer")
                 continue
 
-            score = self._score_miner(response)
-            assert score <= 1
-            score_dict[uid] = score
+            if isinstance(response, ChallengeMinerResponse):
+                network = response.network
+                connection, miner_metadata = miner_info
+                miner_address, miner_ip_port = connection
+                miner_key = miner_metadata['key']
 
-            network = response['network']
-            connection, miner_metadata = miner_info
-            miner_address, miner_ip_port = connection
-            miner_key = miner_metadata['key']
+                score = self._score_miner(response)
+                assert score <= 1
+                score_dict[uid] = score
 
-            await self.miner_discovery_manager.store_miner_metadata(uid, miner_key, miner_address, miner_ip_port, network)
+                await self.miner_discovery_manager.store_miner_metadata(uid, miner_key, miner_address, miner_ip_port, network)
+                await self.miner_discovery_manager.update_miner_challenges(miner_key, response.get_failed_challenges(), 2)
 
         if not score_dict:
             logger.info("No miner managed to give a valid answer")
@@ -327,6 +328,14 @@ class Validator(Module):
 
         if request.miner_key:
             miner = await self.miner_discovery_manager.get_miner_by_key(request.miner_key)
+            if not miner:
+                return {
+                    "request_id": request_id,
+                    "timestamp": timestamp,
+                    "miner_keys": [],
+                    "prompt_hash": prompt_hash,
+                    "data": []}
+
             result = await self._query_miner(miner, request)
 
             await self.miner_receipt_manager.store_miner_receipt(request_id, request.miner_key, prompt_hash, timestamp)

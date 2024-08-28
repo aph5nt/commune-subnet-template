@@ -1,3 +1,4 @@
+import json
 from typing import List, Optional, Dict, Literal
 from pydantic import BaseModel, Field
 
@@ -59,6 +60,15 @@ LLM_ERROR_MESSAGES = {
 }
 
 
+class LlmMessage(BaseModel):
+    type: int = Field(0, title="The type of the message")
+    content: str = Field("", title="The content of the message")
+
+
+class LlmMessageList(BaseModel):
+    messages: List[LlmMessage] = Field([], title="The list of LLM messages")
+
+
 class Challenge(BaseModel):
     kind: str = Field(default=MODEL_TYPE_FUNDS_FLOW)
     in_total_amount: Optional[int] = None
@@ -69,13 +79,34 @@ class Challenge(BaseModel):
     output: Optional[Dict] = None
 
 
-class LlmMessage(BaseModel):
-    type: int = Field(0, title="The type of the message")
-    content: str = Field("", title="The content of the message")
+class ChallengesResponse(BaseModel):
+    funds_flow_challenge: Challenge
+    funds_flow_challenge_expected_output: dict
+    balance_tracking_challenge: Challenge
+    balance_tracking_expected_output: dict
 
 
-class LlmMessageList(BaseModel):
-    messages: List[LlmMessage] = Field([], title="The list of LLM messages")
+class ChallengeMinerResponse(BaseModel):
+    network: str
+    funds_flow_challenge_result: str
+    funds_flow_challenge_expected_result: str
+    balance_tracking_challenge_result: float
+    balance_tracking_challenge_expected_result: str
+    prompt_result_cross_checks: List[dict]
+    prompt_result: dict
+
+    def get_failed_challenges(self):
+        funds_flow_challenge_passed = self.funds_flow_challenge_expected_result == self.funds_flow_challenge_result
+        balance_tracking_challenge_passed = self.balance_tracking_challenge_expected_result == self.balance_tracking_challenge_result
+
+        failed_challenges = 0
+        if funds_flow_challenge_passed is False:
+            failed_challenges += 1
+
+        if balance_tracking_challenge_passed is False:
+            failed_challenges += 1
+
+        return failed_challenges
 
 
 class LlmMessageOutput(BaseModel):
@@ -90,6 +121,10 @@ class LlmMessageOutput(BaseModel):
 
 class LlmMessageOutputList(BaseModel):
     outputs: List[LlmMessageOutput] = Field([], title="The list of LLM message outputs")
+
+    def get_hash(self):
+        value_to_hash = [json.dumps(r.result) in self.outputs for r in self.outputs if r.type == "graph" or r.type == "table"]
+        return hash(value_to_hash)
 
 
 class LlmQuery(BaseModel):
