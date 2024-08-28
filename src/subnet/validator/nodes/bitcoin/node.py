@@ -328,9 +328,8 @@ class BitcoinNode(Node):
             # Get the address from the previous output this VIN is spending
             address, _ = self.get_address_and_amount_by_txn_id_and_vout_id(selected_item.tx_id,
                                                                            str(selected_item.vout_id))
-            return {"type": "vin", "address": address}
+            return {"type": "vin", "address": address, "block_data": block_data}
         elif isinstance(selected_item, VOUT):
-            return {"type": "vout", "address": selected_item.address}
+            return {"type": "vout", "address": selected_item.address, "block_data": block_data}
         else:
             raise Exception(f"Unknown item type selected")
-

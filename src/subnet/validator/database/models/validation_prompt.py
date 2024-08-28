@@ -1,4 +1,6 @@
 from typing import Optional
+import json
+from decimal import Decimal
 
 from sqlalchemy import Column, Integer, String, Float, DateTime, update, insert
 from sqlalchemy.ext.declarative import declarative_base
@@ -15,7 +17,6 @@ import random
 
 Base = declarative_base()
 
-
 class ValidationPrompt(OrmBase):
     __tablename__ = 'validation_prompt'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -26,12 +27,24 @@ class ValidationPromptManager:
     def __init__(self, session_manager: DatabaseSessionManager):
         self.session_manager = session_manager
 
-    async def store_prompt(self, prompt: str, block: str):
+    def _convert_decimals_to_strings(self, data):
+        if isinstance(data, dict):
+            return {k: self._convert_decimals_to_strings(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self._convert_decimals_to_strings(v) for v in data]
+        elif isinstance(data, Decimal):
+            return str(data)
+        return data
+
+    async def store_prompt(self, prompt: str, block: dict):
+        # Convert the block dictionary to a JSON string, converting Decimal to strings
+        block_json = json.dumps(self._convert_decimals_to_strings(block))
+
         async with self.session_manager.session() as session:
             async with session.begin():
                 stmt = insert(ValidationPrompt).values(
                     prompt=prompt,
-                    block=block
+                    block=block_json
                 )
                 await session.execute(stmt)
 
@@ -66,5 +79,3 @@ class ValidationPromptManager:
                 select(ValidationPrompt).where(ValidationPrompt.id == random_id)
             )
             return to_dict(result.scalars().first())
-
-
