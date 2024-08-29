@@ -26,6 +26,7 @@ from src.subnet.validator.database.models.miner_receipts import MinerReceiptMana
 from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
     ChallengeMinerResponse, LlmMessageOutputList
 from src.subnet.protocol.blockchain import Discovery
+from src.subnet.validator.database.models.validation_prompt import ValidationPromptManager
 
 
 class Validator(Module):
@@ -37,6 +38,7 @@ class Validator(Module):
             client: CommuneClient,
             weights_storage: WeightsStorage,
             miner_discovery_manager: MinerDiscoveryManager,
+            validation_prompt_manager: ValidationPromptManager,
             miner_receipt_manager: MinerReceiptManager,
             query_timeout: int = 60,
             llm_query_timeout: int = 60,
@@ -52,10 +54,10 @@ class Validator(Module):
         self.llm_query_timeout = llm_query_timeout
         self.challenge_timeout = challenge_timeout
         self.query_timeout = query_timeout
-
         self.weights_storage = weights_storage
         self.miner_discovery_manager = miner_discovery_manager
         self.terminate_event = threading.Event()
+        self.validation_prompt_manager = validation_prompt_manager
 
     @staticmethod
     def get_addresses(client: CommuneClient, netuid: int) -> dict[int, str]:
@@ -90,7 +92,8 @@ class Validator(Module):
                 return None
 
             # Prompt Phase
-            llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
+            random_validation_prompt = await self.validation_prompt_manager.get_random_prompt()
+            llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content=random_validation_prompt)])
             llm_query_result = await self._send_prompt(client, miner_key, llm_message_list)
             if not llm_query_result:
                 return None
