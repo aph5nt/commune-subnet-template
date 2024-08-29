@@ -53,7 +53,7 @@ if __name__ == "__main__":
     import asyncio
 
     if len(sys.argv) != 3:
-        print("Usage: python llm_test_utility.py <wallet_address> <network>")
+        print("Usage: python llm_prompt_utility.py <wallet_address> <network>")
         sys.exit(1)
 
     wallet_address = sys.argv[1]
