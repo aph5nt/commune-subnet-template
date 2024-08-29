@@ -95,8 +95,7 @@ class Validator(Module):
             if not llm_query_result:
                 return None
 
-            prompt_cross_check_miner_keys = await self.miner_discovery_manager.get_miners_for_cross_check(
-                discovery.network)
+            prompt_cross_check_miner_keys = await self.miner_discovery_manager.get_miners_for_cross_check(discovery.network)
             prompt_cross_check_tasks = []
             for _miner_key in prompt_cross_check_miner_keys:
                 prompt_cross_check_tasks.append(self._send_prompt(client, _miner_key, llm_message_list))
@@ -105,10 +104,10 @@ class Validator(Module):
 
             return ChallengeMinerResponse(
                 network=discovery.network,
-                funds_flow_challenge_result=challenge_response.funds_flow_challenge.output,
-                funds_flow_challenge_expected_result=challenge_response.funds_flow_challenge_expected_output['tx_id'],
-                balance_tracking_challenge_result=challenge_response.balance_tracking_challenge.output,
-                balance_tracking_challenge_expected_result=challenge_response.balance_tracking_expected_output['sum'],
+                funds_flow_challenge_actual=challenge_response.funds_flow_challenge_actual,
+                funds_flow_challenge_expected=challenge_response.funds_flow_challenge_expected,
+                balance_tracking_challenge_actual=challenge_response.balance_tracking_challenge_actual,
+                balance_tracking_expected=challenge_response.balance_tracking_expected,
                 prompt_result_cross_checks=prompt_result_cross_checks,
                 prompt_result=llm_query_result,
             )
@@ -119,8 +118,6 @@ class Validator(Module):
             end_time = time.time()
             execution_time = end_time - start_time
             logger.info(f"Execution time for challenge_miner {miner_key}: {execution_time} seconds")
-
-
 
     async def _get_discovery(self, client, miner_key) -> Discovery:
         try:
@@ -164,10 +161,10 @@ class Validator(Module):
             logger.debug(f"Balance tracking challenge result for {miner_key}: {balance_tracking_challenge.output}")
 
             return ChallengesResponse(
-                funds_flow_challenge=funds_flow_challenge,
-                funds_flow_challenge_expected_output=tx_id,
-                balance_tracking_challenge=balance_tracking_challenge,
-                balance_tracking_expected_output=balance_tracking_expected_response,
+                funds_flow_challenge_actual=funds_flow_challenge.output['tx_id'],
+                funds_flow_challenge_expected=tx_id,
+                balance_tracking_challenge_actual=balance_tracking_challenge['sum'],
+                balance_tracking_expected=balance_tracking_expected_response,
             )
         except Exception as e:
             logger.error(f"Miner {miner_key} failed to perform challenges: {e}")

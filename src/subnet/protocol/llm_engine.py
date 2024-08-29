@@ -80,18 +80,20 @@ class Challenge(BaseModel):
 
 
 class ChallengesResponse(BaseModel):
-    funds_flow_challenge: Challenge
-    funds_flow_challenge_expected_output: object
-    balance_tracking_challenge: Challenge
-    balance_tracking_expected_output: object
+    funds_flow_challenge_expected: str
+    balance_tracking_expected: int
+    funds_flow_challenge_actual: Optional[str]
+    balance_tracking_challenge_actual: Optional[int]
 
 
 class ChallengeMinerResponse(BaseModel):
     network: str
-    funds_flow_challenge_result: Optional[str]
-    funds_flow_challenge_expected_result: str
-    balance_tracking_challenge_result: Optional[float]
-    balance_tracking_challenge_expected_result: str
+
+    funds_flow_challenge_expected: str
+    balance_tracking_expected: int
+    funds_flow_challenge_actual: Optional[str]
+    balance_tracking_challenge_actual: Optional[int]
+
     prompt_result_cross_checks: Optional[List[dict]]
     prompt_result: Optional[dict]
 
