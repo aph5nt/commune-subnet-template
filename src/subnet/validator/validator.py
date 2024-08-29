@@ -93,6 +93,10 @@ class Validator(Module):
 
             # Prompt Phase
             random_validation_prompt = await self.validation_prompt_manager.get_random_prompt()
+            if not random_validation_prompt:
+                logger.error("Failed to get a random validation prompt")
+                return None
+
             llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content=random_validation_prompt)])
             llm_query_result = await self._send_prompt(client, miner_key, llm_message_list)
             if not llm_query_result:
@@ -103,16 +107,20 @@ class Validator(Module):
             for _miner_key in prompt_cross_check_miner_keys:
                 prompt_cross_check_tasks.append(self._send_prompt(client, _miner_key, llm_message_list))
 
-            prompt_result_cross_checks = await asyncio.gather(*prompt_cross_check_tasks)
+            prompt_result_cross_checks: LlmMessageOutputList = await asyncio.gather(*prompt_cross_check_tasks)
+
+            x2 = llm_query_result.get_hash()
+            x1 = prompt_result_cross_checks.get_hash()
+
 
             return ChallengeMinerResponse(
                 network=discovery.network,
                 funds_flow_challenge_actual=challenge_response.funds_flow_challenge_actual,
                 funds_flow_challenge_expected=challenge_response.funds_flow_challenge_expected,
                 balance_tracking_challenge_actual=challenge_response.balance_tracking_challenge_actual,
-                balance_tracking_expected=challenge_response.balance_tracking_expected,
-                prompt_result_cross_checks=prompt_result_cross_checks,
-                prompt_result=llm_query_result,
+                balance_tracking_challenge_expected=challenge_response.balance_tracking_challenge_expected,
+                prompt_result_cross_checks=prompt_result_cross_checks.get_hash(),
+                prompt_result=llm_query_result.get_hash(),
             )
         except Exception as e:
             logger.error(f"Failed to challenge miner {miner_key}, {e}")
@@ -166,7 +174,7 @@ class Validator(Module):
             return ChallengesResponse(
                 funds_flow_challenge_actual=funds_flow_challenge.output['tx_id'],
                 funds_flow_challenge_expected=tx_id,
-                balance_tracking_challenge_actual=balance_tracking_challenge['sum'],
+                balance_tracking_challenge_actual=balance_tracking_challenge.output['balance'],
                 balance_tracking_challenge_expected=balance_tracking_expected_response,
             )
         except Exception as e:

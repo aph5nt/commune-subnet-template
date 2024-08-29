@@ -38,9 +38,9 @@ class BitcoinBalanceSearch(BaseBalanceSearch):
             async with db_manager.session() as session:
                 query = text("SELECT SUM(d_balance) FROM balance_changes WHERE block = ANY(:block_heights)")
                 result = await session.execute(query, {'block_heights': block_heights})
-                sum_d_balance = result.scalar()
+                sum_d_balance = int(result.scalar())
 
-                logger.info(f"Balance sum for block heights {block_heights}: {sum_d_balance:,.2f}")
+                logger.info(f"Balance sum for block heights {block_heights}: {sum_d_balance}")
 
                 return sum_d_balance
 

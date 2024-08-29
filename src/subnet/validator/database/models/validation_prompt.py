@@ -17,12 +17,14 @@ import random
 
 Base = declarative_base()
 
+
 class ValidationPrompt(OrmBase):
     __tablename__ = 'validation_prompt'
     id = Column(Integer, primary_key=True, autoincrement=True)
     prompt = Column(String, nullable=False)
     block = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
 
 class ValidationPromptManager:
     def __init__(self, session_manager: DatabaseSessionManager):
@@ -57,7 +59,7 @@ class ValidationPromptManager:
             )
             return to_dict(result.scalars().first())
 
-    async def get_random_prompt(self):
+    async def get_random_prompt(self) -> str:
         async with self.session_manager.session() as session:
             # First, get the min and max ID in the table
             min_id_result = await session.execute(
@@ -80,4 +82,4 @@ class ValidationPromptManager:
             result = await session.execute(
                 select(ValidationPrompt).where(ValidationPrompt.id == random_id)
             )
-            return to_dict(result.scalars().first())
+            return to_dict(result.scalars().first())['prompt']

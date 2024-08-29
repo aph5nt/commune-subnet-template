@@ -54,8 +54,8 @@ if __name__ == "__main__":
         c_client,
         weights_storage,
         miner_discovery_manager,
-        miner_receipt_manager,
         validation_prompt_manager,
+        miner_receipt_manager,
         query_timeout=settings.QUERY_TIMEOUT,
         challenge_timeout=settings.CHALLENGE_TIMEOUT,
         llm_query_timeout=settings.LLM_QUERY_TIMEOUT

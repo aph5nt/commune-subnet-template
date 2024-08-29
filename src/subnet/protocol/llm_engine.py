@@ -1,3 +1,4 @@
+import hashlib
 import json
 from typing import List, Optional, Dict, Literal
 from pydantic import BaseModel, Field
@@ -81,7 +82,7 @@ class Challenge(BaseModel):
 
 class ChallengesResponse(BaseModel):
     funds_flow_challenge_expected: str
-    balance_tracking_expected: int
+    balance_tracking_challenge_expected: int
     funds_flow_challenge_actual: Optional[str]
     balance_tracking_challenge_actual: Optional[int]
 
@@ -123,10 +124,6 @@ class LlmMessageOutput(BaseModel):
 
 class LlmMessageOutputList(BaseModel):
     outputs: List[LlmMessageOutput] = Field([], title="The list of LLM message outputs")
-
-    def get_hash(self):
-        value_to_hash = [json.dumps(r.result) in self.outputs for r in self.outputs if r.type == "graph" or r.type == "table"]
-        return hash(value_to_hash)
 
 
 class LlmQuery(BaseModel):
