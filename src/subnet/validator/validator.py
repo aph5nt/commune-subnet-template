@@ -167,7 +167,7 @@ class Validator(Module):
                 funds_flow_challenge_actual=funds_flow_challenge.output['tx_id'],
                 funds_flow_challenge_expected=tx_id,
                 balance_tracking_challenge_actual=balance_tracking_challenge['sum'],
-                balance_tracking_expected=balance_tracking_expected_response,
+                balance_tracking_challenge_expected=balance_tracking_expected_response,
             )
         except Exception as e:
             logger.error(f"Miner {miner_key} failed to perform challenges: {e}")

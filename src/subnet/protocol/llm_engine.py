@@ -90,7 +90,7 @@ class ChallengeMinerResponse(BaseModel):
     network: str
 
     funds_flow_challenge_expected: str
-    balance_tracking_expected: int
+    balance_tracking_challenge_expected: int
     funds_flow_challenge_actual: Optional[str]
     balance_tracking_challenge_actual: Optional[int]
 
@@ -98,8 +98,8 @@ class ChallengeMinerResponse(BaseModel):
     prompt_result: Optional[dict]
 
     def get_failed_challenges(self):
-        funds_flow_challenge_passed = self.funds_flow_challenge_expected_result == self.funds_flow_challenge_result
-        balance_tracking_challenge_passed = self.balance_tracking_challenge_expected_result == self.balance_tracking_challenge_result
+        funds_flow_challenge_passed = self.funds_flow_challenge_expected == self.funds_flow_challenge_actual
+        balance_tracking_challenge_passed = self.balance_tracking_expected == self.balance_tracking_challenge_expected
 
         failed_challenges = 0
         if funds_flow_challenge_passed is False:
