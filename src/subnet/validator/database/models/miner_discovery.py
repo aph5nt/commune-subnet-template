@@ -1,6 +1,7 @@
+import random
 from typing import Optional
 
-from sqlalchemy import Column, Integer, String, Float, DateTime, update, insert
+from sqlalchemy import Column, Integer, String, Float, DateTime, update, insert, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.future import select
 from sqlalchemy.dialects.postgresql import insert
@@ -26,6 +27,7 @@ class MinerDiscovery(OrmBase):
     rank = Column(Float, nullable=False, default=0.0)
     failed_challenges = Column(Integer, nullable=False, default=0)
     total_challenges = Column(Integer, nullable=False, default=0)
+    is_trusted = Column(Integer, nullable=False, default=0)
 
 
 # TODO: migracja, dodanie kolumny failed_challenges, total_challenges, zwiększenie wersji bazy danych, migracja danych, dodanie obsługi w kodzie,
@@ -113,3 +115,34 @@ class MinerDiscoveryManager:
                 await session.execute(
                     delete(MinerDiscovery).where(MinerDiscovery.miner_key == miner_key)
                 )
+
+    async def get_miners_for_cross_check(self, network):
+        async with self.session_manager.session() as session:
+            total_miners_result = await session.execute(
+                select(func.count(MinerDiscovery.id)).where(MinerDiscovery.network == network)
+            )
+
+            total_miners = total_miners_result.scalar()
+            limit = int(0.64 * total_miners)
+
+            result = await session.execute(
+                select(MinerDiscovery,
+                       ((MinerDiscovery.total_challenges - MinerDiscovery.failed_challenges) / MinerDiscovery.total_challenges).label('success_ratio'))
+                .where(MinerDiscovery.network == network, MinerDiscovery.rank > 0.9)
+                .order_by('success_ratio', MinerDiscovery.rank.desc())
+                .limit(limit)
+            )
+
+            miners = [to_dict(row.MinerDiscovery) for row in result.fetchall()]
+            sample_size = int(0.64 * len(miners))
+            selected_miners = random.sample(miners, sample_size)
+
+            # fetch trusted miners for given network and merge results with selected miners
+            trusted_miners_result = await session.execute(
+                select(MinerDiscovery)
+                .where(MinerDiscovery.network == network, MinerDiscovery.is_trusted == 1)
+            )
+            trusted_miners = [to_dict(row.MinerDiscovery) for row in trusted_miners_result.fetchall()]
+
+            final_result: list = selected_miners + trusted_miners
+            return final_result

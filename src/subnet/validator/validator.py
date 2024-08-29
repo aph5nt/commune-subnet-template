@@ -25,7 +25,7 @@ from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryM
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
 from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
     ChallengeMinerResponse, LlmMessageOutputList
-from ..protocol.blockchain import Discovery
+from src.subnet.protocol.blockchain import Discovery
 
 
 class Validator(Module):
@@ -67,46 +67,60 @@ class Validator(Module):
         return modules_adresses
 
     async def _challenge_miner(self, miner_info):
+        start_time = time.time()
+        try:
+            connection, miner_metadata = miner_info
+            module_ip, module_port = connection
+            miner_key = miner_metadata['key']
+            client = ModuleClient(module_ip, int(module_port), self.key)
 
-        connection, miner_metadata = miner_info
-        module_ip, module_port = connection
-        miner_key = miner_metadata['key']
-        client = ModuleClient(module_ip, int(module_port), self.key)
+            logger.info(f"Challenging miner {miner_key}")
 
-        logger.debug(f"Challenging miner {miner_key}")
+            # Discovery Phase
+            discovery = await self._get_discovery(client, miner_key)
+            if not discovery:
+                return None
 
-        # Discovery Phase
-        discovery = await self._get_discovery(client, miner_key)
-        if not discovery:
+            logger.debug(f"Got discovery for miner {miner_key}")
+
+            # Challenge Phase
+            node = NodeFactory.create_node(discovery.network)
+            challenge_response = await self._perform_challenges(client, miner_key, discovery, node)
+            if not challenge_response:
+                return None
+
+            # Prompt Phase
+            llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
+            llm_query_result = await self._send_prompt(client, miner_key, llm_message_list)
+            if not llm_query_result:
+                return None
+
+            prompt_cross_check_miner_keys = await self.miner_discovery_manager.get_miners_for_cross_check(
+                discovery.network)
+            prompt_cross_check_tasks = []
+            for _miner_key in prompt_cross_check_miner_keys:
+                prompt_cross_check_tasks.append(self._send_prompt(client, _miner_key, llm_message_list))
+
+            prompt_result_cross_checks = await asyncio.gather(*prompt_cross_check_tasks)
+
+            return ChallengeMinerResponse(
+                network=discovery.network,
+                funds_flow_challenge_result=challenge_response.funds_flow_challenge.output,
+                funds_flow_challenge_expected_result=challenge_response.funds_flow_challenge_expected_output['tx_id'],
+                balance_tracking_challenge_result=challenge_response.balance_tracking_challenge.output,
+                balance_tracking_challenge_expected_result=challenge_response.balance_tracking_expected_output['sum'],
+                prompt_result_cross_checks=prompt_result_cross_checks,
+                prompt_result=llm_query_result,
+            )
+        except Exception as e:
+            logger.error(f"Failed to challenge miner {miner_key}, {e}")
             return None
+        finally:
+            end_time = time.time()
+            execution_time = end_time - start_time
+            logger.info(f"Execution time for challenge_miner {miner_key}: {execution_time} seconds")
 
-        # Challenge Phase
-        node = NodeFactory.create_node(discovery['network'])
-        challenge_response = await self._perform_challenges(client, miner_key, discovery, node)
 
-        # Prompt Phase
-        llm_message_list = LlmMessageList(messages=[LlmMessage(type=0, content="1CGpXZ9LLYwi1baonweGfZDMsyA35sZXCW this is my wallet in bitcoin. what is my last transaction")])
-        llm_query_result = await self._send_prompt(client, miner_key, llm_message_list)
-
-        # TODO: select miner keys for cross check
-        prompt_cross_check_miner_keys = []
-        prompt_cross_check_tasks = []
-        for _miner_key in prompt_cross_check_miner_keys:
-            prompt_cross_check_tasks.append(self._send_prompt(client, _miner_key, llm_message_list))
-
-        prompt_result_cross_checks = await asyncio.gather(*prompt_cross_check_tasks)
-
-        logger.info(f"Miner {miner_key} finished the challenges")
-
-        return ChallengeMinerResponse(
-            network=discovery.network,
-            funds_flow_challenge_result=challenge_response.funds_flow_challenge.output,
-            funds_flow_challenge_expected_result=challenge_response.funds_flow_challenge_expected_output['tx_id'],
-            balance_tracking_challenge_result=challenge_response.balance_tracking_challenge.output,
-            balance_tracking_challenge_expected_result=challenge_response.balance_tracking_expected_output['sum'],
-            prompt_result_cross_checks=prompt_result_cross_checks,
-            prompt_result=llm_query_result,
-        )
 
     async def _get_discovery(self, client, miner_key) -> Discovery:
         try:
@@ -135,6 +149,7 @@ class Validator(Module):
                 timeout=self.challenge_timeout,
             )
             funds_flow_challenge = Challenge(**funds_flow_challenge)
+            logger.debug(f"Funds flow challenge result for {miner_key}: {funds_flow_challenge.output}")
 
             # Balance tracking challenge
             random_balance_tracking_block = randint(1, 1000)  # this is for fast testing only, remove on production
@@ -146,6 +161,7 @@ class Validator(Module):
                 timeout=self.challenge_timeout,
             )
             balance_tracking_challenge = Challenge(**balance_tracking_challenge)
+            logger.debug(f"Balance tracking challenge result for {miner_key}: {balance_tracking_challenge.output}")
 
             return ChallengesResponse(
                 funds_flow_challenge=funds_flow_challenge,
@@ -154,7 +170,7 @@ class Validator(Module):
                 balance_tracking_expected_output=balance_tracking_expected_response,
             )
         except Exception as e:
-            logger.info(f"Miner {miner_key} failed to generate an answer")
+            logger.error(f"Miner {miner_key} failed to perform challenges: {e}")
             return None
 
     async def _send_prompt(self, client, miner_key, llm_message_list) -> LlmMessageOutputList | None:
@@ -243,10 +259,9 @@ class Validator(Module):
         responses: tuple[ChallengeMinerResponse] = await asyncio.gather(*challenge_tasks)
         logger.debug(f"Got responses from {len(responses)} miners")
 
-        score = 0
         for uid, miner_info, response in zip(miners_module_info.keys(), miners_module_info.values(), responses):
             if not response:
-                logger.info(f"Skipping miner {uid} that didn't answer")
+                score_dict[uid] = 0
                 continue
 
             if isinstance(response, ChallengeMinerResponse):

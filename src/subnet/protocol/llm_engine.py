@@ -81,19 +81,19 @@ class Challenge(BaseModel):
 
 class ChallengesResponse(BaseModel):
     funds_flow_challenge: Challenge
-    funds_flow_challenge_expected_output: dict
+    funds_flow_challenge_expected_output: object
     balance_tracking_challenge: Challenge
-    balance_tracking_expected_output: dict
+    balance_tracking_expected_output: object
 
 
 class ChallengeMinerResponse(BaseModel):
     network: str
-    funds_flow_challenge_result: str
+    funds_flow_challenge_result: Optional[str]
     funds_flow_challenge_expected_result: str
-    balance_tracking_challenge_result: float
+    balance_tracking_challenge_result: Optional[float]
     balance_tracking_challenge_expected_result: str
-    prompt_result_cross_checks: List[dict]
-    prompt_result: dict
+    prompt_result_cross_checks: Optional[List[dict]]
+    prompt_result: Optional[dict]
 
     def get_failed_challenges(self):
         funds_flow_challenge_passed = self.funds_flow_challenge_expected_result == self.funds_flow_challenge_result

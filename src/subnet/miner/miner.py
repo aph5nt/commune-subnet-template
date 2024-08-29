@@ -3,6 +3,7 @@ import traceback
 from communex._common import get_node_url
 from communex.client import CommuneClient
 from communex.module import Module, endpoint
+from communex.module._rate_limiters.limiters import IpLimiterMiddleware, IpLimiterParams
 from keylimiter import TokenBucketLimiter
 from loguru import logger
 from starlette.middleware.cors import CORSMiddleware
@@ -305,10 +306,15 @@ if __name__ == "__main__":
         bucket_size=1000,
         time_func=time.time,
     )
-
+    limiter = IpLimiterParams()
     db_manager.init(settings.DATABASE_URL)
 
-    server = ModuleServer(miner, keypair, subnets_whitelist=[settings.NET_UID], use_testnet=use_testnet)
+    server = ModuleServer(miner,
+                          keypair,
+                          subnets_whitelist=[settings.NET_UID],
+                          use_testnet=use_testnet,
+                          limiter=limiter)
+
     app = server.get_fastapi_app()
     app.add_middleware(
         CORSMiddleware,
