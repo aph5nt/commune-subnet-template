@@ -6,6 +6,7 @@ from communex.compat.key import classic_load_key
 
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
+from src.subnet.validator.database.models.validation_prompt import ValidationPromptManager
 from src.subnet.validator.database.session_manager import DatabaseSessionManager
 from src.subnet.validator.weights_storage import WeightsStorage
 from validator._config import ValidatorSettings, load_environment
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     session_manager.init(settings.DATABASE_URL)
     miner_discovery_manager = MinerDiscoveryManager(session_manager)
     miner_receipt_manager = MinerReceiptManager(session_manager)
+    validation_prompt_manager = ValidationPromptManager(session_manager)
 
     validator = Validator(
         keypair,
@@ -53,6 +55,7 @@ if __name__ == "__main__":
         weights_storage,
         miner_discovery_manager,
         miner_receipt_manager,
+        validation_prompt_manager,
         query_timeout=settings.QUERY_TIMEOUT,
         challenge_timeout=settings.CHALLENGE_TIMEOUT,
         llm_query_timeout=settings.LLM_QUERY_TIMEOUT

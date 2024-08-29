@@ -22,6 +22,7 @@ class ValidationPrompt(OrmBase):
     id = Column(Integer, primary_key=True, autoincrement=True)
     prompt = Column(String, nullable=False)
     block = Column(String, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 class ValidationPromptManager:
     def __init__(self, session_manager: DatabaseSessionManager):
@@ -44,7 +45,8 @@ class ValidationPromptManager:
             async with session.begin():
                 stmt = insert(ValidationPrompt).values(
                     prompt=prompt,
-                    block=block_json
+                    block=block_json,
+                    created_at=datetime.utcnow()  # Automatically set the created_at field
                 )
                 await session.execute(stmt)
 
