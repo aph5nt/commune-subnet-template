@@ -17,6 +17,7 @@ from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryM
 from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
 
 from src.subnet.validator._config import ValidatorSettings, load_environment
+from src.subnet.validator.database.models.validation_prompt import ValidationPromptManager
 from src.subnet.validator.database.session_manager import DatabaseSessionManager
 from src.subnet.validator.rate_limiter import RateLimiterMiddleware
 from src.subnet.validator.validator import Validator
@@ -49,7 +50,7 @@ class ValidatorApi:
         self.router.add_api_route("/miner/query", self.query_miner, methods=["POST"])
         self.router.add_api_route("/miner/receipts", self.get_receipts, methods=["GET"])
         self.router.add_api_route("/miner/receipts", self.accept_receipt, methods=["POST"])
-        self.router.add_api_route("/miner/receipts/stats", self.get_receipts_stats, methods=["GET"])
+        self.router.add_api_route("/miner/receipts/stats", self.get_receipt_miner_multiplier, methods=["GET"])
 
     async def get_miner_metadata(self, network: Optional[str] = None, api_key: str = Depends(api_key_auth)):
         results = await self.validator.miner_discovery_manager.get_miners_by_network(network)
@@ -67,8 +68,8 @@ class ValidatorApi:
         await self.validator.miner_receipt_manager.accept_miner_receipt(request_id, miner_key)
         return Response(status_code=204)
 
-    async def get_receipts_stats(self, miner_key: str, api_key: str = Depends(api_key_auth)):
-        results = await self.validator.miner_receipt_manager.get_receipts_stats_by_miner_key(miner_key)
+    async def get_receipt_miner_multiplier(self, miner_key: Optional[str], api_key: str = Depends(api_key_auth)):
+        results = await self.validator.miner_receipt_manager.get_receipt_miner_multiplier(miner_key)
         return results
 
 
@@ -105,6 +106,7 @@ if __name__ == "__main__":
     session_manager.init(settings.DATABASE_URL)
     miner_discovery_manager = MinerDiscoveryManager(session_manager)
     miner_receipt_manager = MinerReceiptManager(session_manager)
+    validation_prompt_manager = ValidationPromptManager(session_manager)
 
     global api_key_manager
     api_key_manager = ApiKeyManager(session_manager)
@@ -115,6 +117,7 @@ if __name__ == "__main__":
         c_client,
         weights_storage,
         miner_discovery_manager,
+        validation_prompt_manager,
         miner_receipt_manager,
         query_timeout=settings.QUERY_TIMEOUT,
         challenge_timeout=settings.CHALLENGE_TIMEOUT,

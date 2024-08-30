@@ -22,7 +22,7 @@ from .helpers import raise_exception_if_not_registered, get_ip_port, cut_to_max_
 from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
-from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager, ReceiptStats
+from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager, ReceiptMinerRank
 from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
     ChallengeMinerResponse, LlmMessageOutputList
 from src.subnet.protocol.blockchain import Discovery
@@ -182,7 +182,7 @@ class Validator(Module):
             llm_query_result = await client.call(
                 "llm_query",
                 miner_key,
-                {"llm_messages_list": llm_message_list.dict()},
+                {"llm_messages_list": llm_message_list.model_dump()},
                 timeout=self.llm_query_timeout,
             )
             if not llm_query_result:
@@ -194,7 +194,7 @@ class Validator(Module):
             return None
 
     @staticmethod
-    def _score_miner(response: ChallengeMinerResponse, receipt_stats: ReceiptStats) -> float:
+    def _score_miner(response: ChallengeMinerResponse, receipt_miner_multiplier: float) -> float:
         if not response:
             logger.info(f"Miner didn't answer")
             return 0
@@ -204,10 +204,10 @@ class Validator(Module):
             if failed_challenges == 2:
                 return 0
             else:
-                return 0.2
+                return 0.15
 
         # all challenges are passed, setting base score to 0.36
-        score = 0.36
+        score = 0.3
 
         if response.prompt_result is None:
             return score
@@ -215,19 +215,12 @@ class Validator(Module):
         if response.prompt_result_cross_checks is None:
             return score
 
-        # TODO: here we have to RUN LLM to compare prompt_results with the majority of prompt_result_cross_checks + results from trusted miners
+        # TODO: implement prompt cross checks
+        # max to +0.3
 
-        # TODO: we have to add extra score for organic usage of the network
+        multiplier = min(1.0, receipt_miner_multiplier)
+        score += 0.4 * multiplier
 
-
-
-        # compute hashes of the responses (data fields only)
-        #score = 0.5
-
-        # here we score synthetic llm prompts
-        # if miner has many accepted receipts
-
-        #score = 0.95 # 95% of the score
         return score
 
     async def validate_step(self, netuid: int, settings: ValidatorSettings
@@ -279,8 +272,8 @@ class Validator(Module):
                 connection, miner_metadata = miner_info
                 miner_address, miner_ip_port = connection
                 miner_key = miner_metadata['key']
-                receipt_stats: ReceiptStats = await self.miner_receipt_manager.get_receipts_stats_by_miner_key(miner_key)
-                score = self._score_miner(response, receipt_stats)
+                receipt_miner_multiplier = await self.miner_receipt_manager.get_receipt_miner_multiplier(miner_key)
+                score = self._score_miner(response, receipt_miner_multiplier)
                 assert score <= 1
                 score_dict[uid] = score
 
@@ -351,11 +344,11 @@ class Validator(Module):
     async def query_miner(self, request: LlmQueryRequest) -> dict:
         request_id = str(uuid.uuid4())
         timestamp = datetime.utcnow()
-        prompt_dict = [message.to_dict() for message in request.prompt]
+        prompt_dict = [message.model_dump() for message in request.prompt]
         prompt_hash = generate_hash(json.dumps(prompt_dict))
 
         if request.miner_key:
-            miner = await self.miner_discovery_manager.get_miner_by_key(request.miner_key)
+            miner = await self.miner_discovery_manager.get_miner_by_key(request.miner_key, request.network)
             if not miner:
                 return {
                     "request_id": request_id,
@@ -403,22 +396,23 @@ class Validator(Module):
                 "data": responses,
             }
 
-    async def _query_miner(self, miner, prompt: List[LlmMessage]):
+    async def _query_miner(self, miner, llm_message_list: LlmMessageList):
         miner_key = miner['miner_key']
         miner_network = miner['network']
         module_ip = miner['miner_address']
         module_port = int(miner['miner_ip_port'])
         module_client = ModuleClient(module_ip, module_port, self.key)
         try:
-            prompt_dict = [message.to_dict() for message in prompt]
-            result = await module_client.call(
+            llm_query_result = await module_client.call(
                 "llm_query",
                 miner_key,
-                {'prompt': prompt_dict},
+                {"llm_messages_list": llm_message_list.model_dump()},
                 timeout=self.llm_query_timeout,
             )
+            if not llm_query_result:
+                return None
 
-            return result
+            return LlmMessageOutputList(**llm_query_result)
         except Exception as e:
             logger.warning(f"Failed to query miner {miner_key}, {e}")
             return None

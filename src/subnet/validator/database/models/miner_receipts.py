@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from typing import List, Optional, Dict
 
 from pydantic import BaseModel
 from sqlalchemy import Column, String, DateTime, update, insert, BigInteger, Boolean, UniqueConstraint, Text, select, \
-    func
+    func, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.sql import case
@@ -27,15 +28,9 @@ class MinerReceipt(OrmBase):
     )
 
 
-class StatsData(BaseModel):
-    accepted_count: int
-    not_accepted_count: int
-
-
-class ReceiptStats(BaseModel):
-    last_day: StatsData
-    last_week: StatsData
-    last_month: StatsData
+class ReceiptMinerRank(BaseModel):
+    miner_ratio: float
+    miner_rank: int
 
 
 class MinerReceiptManager:
@@ -93,63 +88,77 @@ class MinerReceiptManager:
                 "total_items": total_items
             }
 
-    async def get_receipts_stats_by_miner_key(self, miner_key: str) -> ReceiptStats:
+    async def get_receipt_miner_rank(self) -> List[ReceiptMinerRank]:
         async with self.session_manager.session() as session:
-            now = datetime.utcnow()
-            last_day = now - timedelta(days=1)
-            last_week = now - timedelta(weeks=1)
-            last_month = now - timedelta(days=30)
+            query = text("""
+                            WITH miner_ratios AS (
+                                SELECT 
+                                    miner_key,
+                                    COUNT(CASE WHEN accepted = True THEN 1 END) AS accepted_true_count,
+                                    COUNT(CASE WHEN accepted = False THEN 1 END) AS accepted_false_count,
+                                    CASE 
+                                        WHEN COUNT(CASE WHEN accepted = False THEN 1 END) = 0 
+                                        THEN NULL 
+                                        ELSE COUNT(CASE WHEN accepted = True THEN 1 END)::float / COUNT(CASE WHEN accepted = False THEN 1 END)
+                                    END AS ratio
+                                FROM 
+                                    miner_receipts
+                                WHERE 
+                                    timestamp >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 month'
+                                GROUP BY 
+                                    miner_key
+                            )
+                            SELECT 
+                                miner_key,
+                                ratio,
+                                RANK() OVER (ORDER BY ratio DESC NULLS LAST) AS rank
+                            FROM 
+                                miner_ratios
+                        """)
 
-            # Query for last day
-            query_day = select(
-                func.sum(case((MinerReceipt.accepted == True, 1), else_=0)).label('accepted_count'),
-                func.sum(case((MinerReceipt.accepted == False, 1), else_=0)).label('not_accepted_count')
-            ).where(
-                MinerReceipt.miner_key == miner_key,
-                MinerReceipt.timestamp >= last_day
-            )
+            result = await session.execute(query).fetchone()
+            result = [ReceiptMinerRank(miner_ratio=row['ratio'], miner_rank=row['rank']) for row in result]
 
-            # Query for last week
-            query_week = select(
-                func.sum(case((MinerReceipt.accepted == True, 1), else_=0)).label('accepted_count'),
-                func.sum(case((MinerReceipt.accepted == False, 1), else_=0)).label('not_accepted_count')
-            ).where(
-                MinerReceipt.miner_key == miner_key,
-                MinerReceipt.timestamp >= last_week
-            )
+            return result
 
-            # Query for last month
-            query_month = select(
-                func.sum(case((MinerReceipt.accepted == True, 1), else_=0)).label('accepted_count'),
-                func.sum(case((MinerReceipt.accepted == False, 1), else_=0)).label('not_accepted_count')
-            ).where(
-                MinerReceipt.miner_key == miner_key,
-                MinerReceipt.timestamp >= last_month
-            )
-
-            result_day = await session.execute(query_day)
-            result_week = await session.execute(query_week)
-            result_month = await session.execute(query_month)
-
-            stats = {
-                'last_day': result_day.fetchone(),
-                'last_week': result_week.fetchone(),
-                'last_month': result_month.fetchone()
-            }
-
-            stats_result = ReceiptStats(
-                last_day=ReceiptStats(
-                    accepted_count=stats['last_day'].accepted_count,
-                    not_accepted_count=stats['last_day'].not_accepted_count
+    async def get_receipt_miner_multiplier(self, miner_key: Optional[str] = None) -> List[Dict[str, float]] | float:
+        async with self.session_manager.session() as session:
+            query = text("""
+                WITH total_receipts AS (
+                    SELECT COUNT(*) AS total_count
+                    FROM miner_receipts
+                    WHERE timestamp >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 month'
                 ),
-                last_week=ReceiptStats(
-                    accepted_count=stats['last_week'].accepted_count,
-                    not_accepted_count=stats['last_week'].not_accepted_count
-                ),
-                last_month=ReceiptStats(
-                    accepted_count=stats['last_month'].accepted_count,
-                    not_accepted_count=stats['last_month'].not_accepted_count
+                miner_accepted_counts AS (
+                    SELECT 
+                        miner_key,
+                        COUNT(CASE WHEN accepted = True THEN 1 END) AS accepted_true_count
+                    FROM 
+                        miner_receipts
+                    WHERE 
+                        timestamp >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 month'
+                        {miner_key_filter}
+                    GROUP BY 
+                        miner_key
                 )
-            )
+                SELECT 
+                    mac.miner_key,
+                    CASE 
+                        WHEN tr.total_count = 0 THEN NULL  -- or you can use 0 instead of NULL
+                        ELSE POWER(mac.accepted_true_count::float / tr.total_count, 2)
+                    END AS multiplier
+                FROM 
+                    miner_accepted_counts mac, total_receipts tr
+                ORDER BY multiplier DESC;
+            """.format(miner_key_filter="AND miner_key = :miner_key" if miner_key else ""))
 
-            return stats_result
+            params = {'miner_key': miner_key} if miner_key else {}
+            result = await session.execute(query, params)
+
+            if miner_key is not None:
+                result = result.fetchone()
+                if result is None:
+                    return 0.0
+                return result[1]
+
+            return [dict(row) for row in result.fetchall()]
