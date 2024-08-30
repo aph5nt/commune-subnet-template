@@ -1,14 +1,11 @@
-You are given a Bitcoin transaction ID in the form of {txid} and a block number in the form of {block}. Select a template from the following examples:
+You are given a Bitcoin transaction ID in the form of {txid} and a block number in the form of {block}. Below are eight possible templates you can use:
 
 1. Give me the total amount of the transaction with txid {txid} in block {block}.
 2. List all transactions in block {block} and their respective amounts.
 3. Calculate the sum of incoming and outgoing coins for all transactions in block {block}.
-4. What are the details of the transaction with txid {txid} in block {block}?
-5. Retrieve the details of the transaction with txid {txid} in block {block}.
-6. Provide the total number of transactions in block {block} and identify the largest transaction by amount.
-7. Determine the fees paid for the transaction with txid {txid} in block {block}.
-8. Identify all addresses involved in the transaction with txid {txid} in block {block}.
+4. Retrieve the details of the transaction with txid {txid} in block {block}.
+5. Provide the total number of transactions in block {block} and identify the largest transaction by amount.
+6. Determine the fees paid for the transaction with txid {txid} in block {block}.
+7. Identify all addresses involved in the transaction with txid {txid} in block {block}.
 
-Generate a prompt using the pre-selected template and the provided transaction ID `{txid}` and block number `{block}`, replacing `{txid}` with the provided transaction ID and `{block}` with the provided block number. Randomly select one of the eight templates for each prompt generation.
-Avoid any extra noise and only generate the prompt.
-
+Randomly and evenly select one of the eight templates listed above to generate the prompt. Ensure that the selection process is fair and that each template has an equal chance of being chosen. Replace `{txid}` with the provided transaction ID and `{block}` with the provided block number. Only generate the prompt corresponding to the randomly selected template.
