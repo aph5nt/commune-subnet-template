@@ -21,12 +21,12 @@ async def generate_prompt_and_store(wallet_address: str, network: str, validatio
     random_block_height = random.randint(lowest_block_height, highest_block_height)
 
     # Get a random vin or vout address from the random block and also get block data
-    random_vin_or_vout = btc.get_random_vin_or_vout(random_block_height)
-    print(f"Random Vin or Vout: {random_vin_or_vout}")
-    print(f"Block Data: {random_vin_or_vout['block_data']}")  # Print block data if needed
+    random_txid = btc.get_random_txid_from_block(random_block_height)
+    print(f"Random Txid: {random_txid}")
+    print(f"Block Data: {random_txid['block_data']}")  # Print block data if needed
 
     # Use the address in the LLM prompt generation
-    prompt = llm.build_prompt_from_wallet_address(random_vin_or_vout["address"], network)
+    prompt = llm.build_prompt_from_txid_and_block(random_txid['txid'], random_block_height, network)
     print(f"Generated Prompt: {prompt}")
 
     # Check the current number of prompts in the database
@@ -37,7 +37,7 @@ async def generate_prompt_and_store(wallet_address: str, network: str, validatio
         await validation_prompt_manager.delete_oldest_prompt()
 
     # Store the generated prompt and block information in the database
-    await validation_prompt_manager.store_prompt(prompt, random_vin_or_vout['block_data'])
+    await validation_prompt_manager.store_prompt(prompt, random_txid['block_data'])
     print(f"Prompt stored in the database successfully.")
 
 

@@ -17,24 +17,28 @@ class OpenAILLM(BaseLLM):
         self.chat_gpt4o = ChatOpenAI(api_key=settings.LLM_API_KEY, model="gpt-4o", temperature=0)
         self.MAX_TOKENS = 128000
 
-    def build_prompt_from_wallet_address(self, wallet_address: str, network: str) -> str:
+    def build_prompt_from_txid_and_block(self, txid: str, block: str, network: str) -> str:
         local_file_path = f"openai/prompts/{network}/prompt_generation/prompt_generation_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
             raise Exception("Failed to read prompt content")
 
-        if not wallet_address:
-            logger.warning("The wallet address is empty. Cannot generate a prompt without a valid wallet address.")
-            return "Prompt generation failed: Wallet address is required but not provided."
+        if not txid:
+            logger.warning("The transaction ID is empty. Cannot generate a prompt without a valid txid.")
+            return "Prompt generation failed: Transaction ID is required but not provided."
+        if not block:
+            logger.warning("The block is empty. Cannot generate a prompt without a valid block.")
+            return "Prompt generation failed: Block is required but not provided."
 
         try:
-            full_prompt = prompt.format(wallet_address=wallet_address)
-            logger.error(f"Full prompt: {full_prompt}")
+            # Substitute txid and block into the prompt
+            full_prompt = prompt.format(txid=txid, block=block)
+            logger.info(f"Full prompt: {full_prompt}")
         except KeyError as e:
             logger.error(f"KeyError during prompt formatting: {e}")
             logger.error(f"Prompt: {prompt}")
-            logger.error(f"Wallet Address: {wallet_address}")
-            raise Exception("Error formatting prompt with wallet address") from e
+            logger.error(f"Transaction ID: {txid}, Block: {block}")
+            raise Exception("Error formatting prompt with txid and block") from e
 
         # Prepare the messages
         messages = [SystemMessage(content=full_prompt)]
@@ -51,4 +55,3 @@ class OpenAILLM(BaseLLM):
         except Exception as e:
             logger.error(f"LlmQuery prompt generation error: {e}")
             raise Exception(LLM_ERROR_PROMPT_GENERATION_FAILED)
-
