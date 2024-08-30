@@ -93,7 +93,7 @@ class MinerReceiptManager:
                 "total_items": total_items
             }
 
-    async def get_receipts_stats_by_miner_key(self, miner_key: str) -> Stats:
+    async def get_receipts_stats_by_miner_key(self, miner_key: str) -> ReceiptStats:
         async with self.session_manager.session() as session:
             now = datetime.utcnow()
             last_day = now - timedelta(days=1)
@@ -137,7 +137,7 @@ class MinerReceiptManager:
                 'last_month': result_month.fetchone()
             }
 
-            stats_result = Stats(
+            stats_result = ReceiptStats(
                 last_day=ReceiptStats(
                     accepted_count=stats['last_day'].accepted_count,
                     not_accepted_count=stats['last_day'].not_accepted_count
