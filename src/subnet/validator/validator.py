@@ -22,7 +22,7 @@ from .helpers import raise_exception_if_not_registered, get_ip_port, cut_to_max_
 from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
-from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager
+from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager, ReceiptStats
 from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
     ChallengeMinerResponse, LlmMessageOutputList
 from src.subnet.protocol.blockchain import Discovery
@@ -109,18 +109,14 @@ class Validator(Module):
 
             prompt_result_cross_checks: LlmMessageOutputList = await asyncio.gather(*prompt_cross_check_tasks)
 
-            x2 = llm_query_result.get_hash()
-            x1 = prompt_result_cross_checks.get_hash()
-
-
             return ChallengeMinerResponse(
                 network=discovery.network,
                 funds_flow_challenge_actual=challenge_response.funds_flow_challenge_actual,
                 funds_flow_challenge_expected=challenge_response.funds_flow_challenge_expected,
                 balance_tracking_challenge_actual=challenge_response.balance_tracking_challenge_actual,
                 balance_tracking_challenge_expected=challenge_response.balance_tracking_challenge_expected,
-                prompt_result_cross_checks=prompt_result_cross_checks.get_hash(),
-                prompt_result=llm_query_result.get_hash(),
+                prompt_result_cross_checks=prompt_result_cross_checks,
+                prompt_result=llm_query_result,
             )
         except Exception as e:
             logger.error(f"Failed to challenge miner {miner_key}, {e}")
@@ -198,7 +194,7 @@ class Validator(Module):
             return None
 
     @staticmethod
-    def _score_miner(response: ChallengeMinerResponse) -> float:
+    def _score_miner(response: ChallengeMinerResponse, receipt_stats: ReceiptStats) -> float:
         if not response:
             logger.info(f"Miner didn't answer")
             return 0
@@ -213,12 +209,18 @@ class Validator(Module):
         # all challenges are passed, setting base score to 0.36
         score = 0.36
 
-        """
         if response.prompt_result is None:
             return score
+
         if response.prompt_result_cross_checks is None:
             return score
-        """
+
+        # TODO: here we have to RUN LLM to compare prompt_results with the majority of prompt_result_cross_checks + results from trusted miners
+
+        # TODO: we have to add extra score for organic usage of the network
+
+
+
         # compute hashes of the responses (data fields only)
         #score = 0.5
 
@@ -277,8 +279,8 @@ class Validator(Module):
                 connection, miner_metadata = miner_info
                 miner_address, miner_ip_port = connection
                 miner_key = miner_metadata['key']
-
-                score = self._score_miner(response)
+                receipt_stats: ReceiptStats = await self.miner_receipt_manager.get_receipts_stats_by_miner_key(miner_key)
+                score = self._score_miner(response, receipt_stats)
                 assert score <= 1
                 score_dict[uid] = score
 
@@ -289,7 +291,10 @@ class Validator(Module):
             logger.info("No miner managed to give a valid answer")
             return None
 
-        self.set_weights(settings, score_dict, self.netuid, self.client, self.key)
+        try:
+            self.set_weights(settings, score_dict, self.netuid, self.client, self.key)
+        except Exception as e:
+            logger.error(f"Failed to set weights: {e}")
 
     def set_weights(self,
                     settings: ValidatorSettings,

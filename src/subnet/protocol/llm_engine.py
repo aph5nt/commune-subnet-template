@@ -66,8 +66,28 @@ class LlmMessage(BaseModel):
     content: str = Field("", title="The content of the message")
 
 
+class LlmMessageOutput(BaseModel):
+    type: Literal["graph", "text", "table", "error"] = Field(..., title="The type of the output")
+    result: Optional[List[object]] = None
+    interpreted_result: Optional[str] = None
+    error: Optional[ERROR_TYPE] = None
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
 class LlmMessageList(BaseModel):
     messages: List[LlmMessage] = Field([], title="The list of LLM messages")
+
+
+class LlmMessageOutputList(BaseModel):
+    outputs: List[LlmMessageOutput] = Field([], title="The list of LLM message outputs")
+
+
+class LlmQuery(BaseModel):
+    network: str = Field(NETWORK_BITCOIN, title="The network to query")
+    messages: List[LlmMessage] = None
+    output: Optional[LlmMessageOutputList] = None
 
 
 class Challenge(BaseModel):
@@ -95,12 +115,12 @@ class ChallengeMinerResponse(BaseModel):
     funds_flow_challenge_actual: Optional[str]
     balance_tracking_challenge_actual: Optional[int]
 
-    prompt_result_cross_checks: Optional[List[dict]]
-    prompt_result: Optional[dict]
+    prompt_result_cross_checks: Optional[List[LlmMessageOutputList]]
+    prompt_result: Optional[LlmMessageOutputList]
 
     def get_failed_challenges(self):
         funds_flow_challenge_passed = self.funds_flow_challenge_expected == self.funds_flow_challenge_actual
-        balance_tracking_challenge_passed = self.balance_tracking_expected == self.balance_tracking_challenge_expected
+        balance_tracking_challenge_passed = self.balance_tracking_challenge_expected == self.balance_tracking_challenge_actual
 
         failed_challenges = 0
         if funds_flow_challenge_passed is False:
@@ -110,26 +130,6 @@ class ChallengeMinerResponse(BaseModel):
             failed_challenges += 1
 
         return failed_challenges
-
-
-class LlmMessageOutput(BaseModel):
-    type: Literal["graph", "text", "table", "error"] = Field(..., title="The type of the output")
-    result: Optional[List[object]] = None
-    interpreted_result: Optional[str] = None
-    error: Optional[ERROR_TYPE] = None
-
-    class Config:
-        arbitrary_types_allowed = True
-
-
-class LlmMessageOutputList(BaseModel):
-    outputs: List[LlmMessageOutput] = Field([], title="The list of LLM message outputs")
-
-
-class LlmQuery(BaseModel):
-    network: str = Field(NETWORK_BITCOIN, title="The network to query")
-    messages: List[LlmMessage] = None
-    output: Optional[LlmMessageOutputList] = None
 
 
 class QueryOutput(BaseModel):

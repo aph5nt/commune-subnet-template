@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+from pydantic import BaseModel
 from sqlalchemy import Column, String, DateTime, update, insert, BigInteger, Boolean, UniqueConstraint, Text, select, \
     func
 from sqlalchemy.ext.declarative import declarative_base
@@ -22,6 +25,17 @@ class MinerReceipt(OrmBase):
     __table_args__ = (
         UniqueConstraint('miner_key', 'request_id', name='uq_miner_key_request_id'),
     )
+
+
+class StatsData(BaseModel):
+    accepted_count: int
+    not_accepted_count: int
+
+
+class ReceiptStats(BaseModel):
+    last_day: StatsData
+    last_week: StatsData
+    last_month: StatsData
 
 
 class MinerReceiptManager:
@@ -79,7 +93,7 @@ class MinerReceiptManager:
                 "total_items": total_items
             }
 
-    async def get_receipts_stats_by_miner_key(self, miner_key: str):
+    async def get_receipts_stats_by_miner_key(self, miner_key: str) -> Stats:
         async with self.session_manager.session() as session:
             now = datetime.utcnow()
             last_day = now - timedelta(days=1)
@@ -123,20 +137,19 @@ class MinerReceiptManager:
                 'last_month': result_month.fetchone()
             }
 
-            # Convert results to dictionary
-            stats = {
-                'last_day': {
-                    'accepted_count': stats['last_day'].accepted_count,
-                    'not_accepted_count': stats['last_day'].not_accepted_count
-                },
-                'last_week': {
-                    'accepted_count': stats['last_week'].accepted_count,
-                    'not_accepted_count': stats['last_week'].not_accepted_count
-                },
-                'last_month': {
-                    'accepted_count': stats['last_month'].accepted_count,
-                    'not_accepted_count': stats['last_month'].not_accepted_count
-                }
-            }
+            stats_result = Stats(
+                last_day=ReceiptStats(
+                    accepted_count=stats['last_day'].accepted_count,
+                    not_accepted_count=stats['last_day'].not_accepted_count
+                ),
+                last_week=ReceiptStats(
+                    accepted_count=stats['last_week'].accepted_count,
+                    not_accepted_count=stats['last_week'].not_accepted_count
+                ),
+                last_month=ReceiptStats(
+                    accepted_count=stats['last_month'].accepted_count,
+                    not_accepted_count=stats['last_month'].not_accepted_count
+                )
+            )
 
-            return stats
+            return stats_result
