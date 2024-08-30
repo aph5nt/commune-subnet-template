@@ -67,8 +67,8 @@ class ValidatorApi:
         await self.validator.miner_receipt_manager.accept_miner_receipt(request_id, miner_key)
         return Response(status_code=204)
 
-    async def get_receipts_stats(self, miner_key: str, api_key: str = Depends(api_key_auth)):
-        results = await self.validator.miner_receipt_manager.get_receipts_stats_by_miner_key(miner_key)
+    async def get_receipt_miner_multiplier(self, miner_key: Optional[str], api_key: str = Depends(api_key_auth)):
+        results = await self.validator.miner_receipt_manager.get_receipt_miner_multiplier(miner_key)
         return results
 
 

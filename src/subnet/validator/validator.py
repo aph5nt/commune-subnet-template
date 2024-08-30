@@ -22,7 +22,7 @@ from .helpers import raise_exception_if_not_registered, get_ip_port, cut_to_max_
 from .nodes.factory import NodeFactory
 from .weights_storage import WeightsStorage
 from src.subnet.validator.database.models.miner_discovery import MinerDiscoveryManager
-from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager, ReceiptStats
+from src.subnet.validator.database.models.miner_receipts import MinerReceiptManager, ReceiptMinerRank
 from src.subnet.protocol.llm_engine import LlmQueryRequest, LlmMessage, Challenge, LlmMessageList, ChallengesResponse, \
     ChallengeMinerResponse, LlmMessageOutputList
 from src.subnet.protocol.blockchain import Discovery
@@ -194,7 +194,7 @@ class Validator(Module):
             return None
 
     @staticmethod
-    def _score_miner(response: ChallengeMinerResponse, receipt_stats: ReceiptStats) -> float:
+    def _score_miner(response: ChallengeMinerResponse, receipt_miner_multiplier: float) -> float:
         if not response:
             logger.info(f"Miner didn't answer")
             return 0
@@ -204,10 +204,10 @@ class Validator(Module):
             if failed_challenges == 2:
                 return 0
             else:
-                return 0.2
+                return 0.15
 
         # all challenges are passed, setting base score to 0.36
-        score = 0.36
+        score = 0.3
 
         if response.prompt_result is None:
             return score
@@ -215,19 +215,12 @@ class Validator(Module):
         if response.prompt_result_cross_checks is None:
             return score
 
-        # TODO: here we have to RUN LLM to compare prompt_results with the majority of prompt_result_cross_checks + results from trusted miners
+        # TODO: implement prompt cross checks
+        # max to +0.3
 
-        # TODO: we have to add extra score for organic usage of the network
+        multiplier = min(1.0, receipt_miner_multiplier)
+        score += 0.4 * multiplier
 
-
-
-        # compute hashes of the responses (data fields only)
-        #score = 0.5
-
-        # here we score synthetic llm prompts
-        # if miner has many accepted receipts
-
-        #score = 0.95 # 95% of the score
         return score
 
     async def validate_step(self, netuid: int, settings: ValidatorSettings
@@ -279,8 +272,8 @@ class Validator(Module):
                 connection, miner_metadata = miner_info
                 miner_address, miner_ip_port = connection
                 miner_key = miner_metadata['key']
-                receipt_stats: ReceiptStats = await self.miner_receipt_manager.get_receipts_stats_by_miner_key(miner_key)
-                score = self._score_miner(response, receipt_stats)
+                receipt_miner_multiplier = await self.miner_receipt_manager.get_receipt_miner_multiplier(miner_key)
+                score = self._score_miner(response, receipt_miner_multiplier)
                 assert score <= 1
                 score_dict[uid] = score
 
