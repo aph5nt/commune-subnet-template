@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.future import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import delete
+from sqlalchemy import func
 from datetime import datetime
 
 from src.subnet.validator.database import OrmBase
@@ -83,3 +84,26 @@ class ValidationPromptManager:
                 select(ValidationPrompt).where(ValidationPrompt.id == random_id)
             )
             return to_dict(result.scalars().first())['prompt']
+
+    async def get_prompt_count(self):
+        async with self.session_manager.session() as session:
+            result = await session.execute(
+                select(func.count(ValidationPrompt.id))
+            )
+            return result.scalar()
+
+    async def delete_oldest_prompt(self):
+        async with self.session_manager.session() as session:
+            async with session.begin():
+                # Get the oldest prompt (with the lowest ID or oldest created_at timestamp)
+                oldest_prompt_result = await session.execute(
+                    select(ValidationPrompt).order_by(ValidationPrompt.created_at.asc()).limit(1)
+                )
+                oldest_prompt = oldest_prompt_result.scalars().first()
+
+                if oldest_prompt:
+                    # Delete the oldest prompt
+                    await session.execute(
+                        delete(ValidationPrompt).where(ValidationPrompt.id == oldest_prompt.id)
+                    )
+                    print(f"Deleted oldest prompt with ID: {oldest_prompt.id}")

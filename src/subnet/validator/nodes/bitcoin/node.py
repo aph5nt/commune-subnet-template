@@ -290,7 +290,7 @@ class BitcoinNode(Node):
         return input_amounts, output_amounts, input_addresses, output_addresses, in_total_amount, out_total_amount
 
     def get_random_vin_or_vout(self, block_height):
-        logger.info(f"Fetching random vin or vout from block", block_height=block_height)
+        logger.info(f"Fetching random vin or vout from block {block_height}")
 
         block_data = self.get_block_by_height(block_height)
         transactions = block_data.get('tx', [])
@@ -298,8 +298,17 @@ class BitcoinNode(Node):
         if not transactions:
             raise Exception(f"No transactions found in block {block_height}")
 
+        # Ensure that transactions are list items, not single integers
+        if not isinstance(transactions, list):
+            raise Exception(f"Expected a list of transactions but got {type(transactions)}")
+
         # Select a random transaction from the block
         selected_txn = random.choice(transactions)
+
+        # Ensure the selected transaction has a 'txid' key
+        if not isinstance(selected_txn, dict) or 'txid' not in selected_txn:
+            raise Exception(f"Invalid transaction data: {selected_txn}")
+
         txn_data = self.get_txn_data_by_id(selected_txn['txid'])
 
         if txn_data is None:
@@ -308,28 +317,36 @@ class BitcoinNode(Node):
         tx = self.create_in_memory_txn(txn_data)
 
         # Collect all vins and vouts
-        all_vins = tx.vins
-        all_vouts = tx.vouts
+        all_vins = getattr(tx, 'vins', [])
+        all_vouts = getattr(tx, 'vouts', [])
 
         if not all_vins and not all_vouts:
             raise Exception(f"No vins or vouts found in transaction {selected_txn['txid']}")
 
-        # Randomly select between vins and vouts
-        if all_vins and all_vouts:
-            selected_list = random.choice([all_vins, all_vouts])
-        elif all_vins:
-            selected_list = all_vins
-        else:
-            selected_list = all_vouts
+        # Randomly select between vins and vouts, but prioritize VOUTs if VINs are problematic
+        selected_item = None
 
-        selected_item = random.choice(selected_list)
-
-        if isinstance(selected_item, VIN):
-            # Get the address from the previous output this VIN is spending
-            address, _ = self.get_address_and_amount_by_txn_id_and_vout_id(selected_item.tx_id,
-                                                                           str(selected_item.vout_id))
-            return {"type": "vin", "address": address, "block_data": block_data}
-        elif isinstance(selected_item, VOUT):
+        if all_vouts:
+            selected_item = random.choice(all_vouts)
             return {"type": "vout", "address": selected_item.address, "block_data": block_data}
+        elif all_vins:
+            selected_item = random.choice(all_vins)
+            try:
+                # Attempt to retrieve the address from the previous VOUT
+                prev_txn = self.get_txn_data_by_id(selected_item.tx_id)
+                if prev_txn:
+                    prev_vout = prev_txn['vout'][selected_item.vout_id]
+                    address = prev_vout.get('scriptPubKey', {}).get('addresses', [None])[0]
+                    if address:
+                        return {"type": "vin", "address": address, "block_data": block_data}
+                    else:
+                        logger.warning(f"Address not found for VIN in transaction {selected_item.tx_id}")
+                        raise Exception(f"Address not found for VIN in transaction {selected_item.tx_id}")
+                else:
+                    logger.warning(f"Previous transaction not found for VIN {selected_item.tx_id}")
+                    raise Exception(f"Previous transaction not found for VIN {selected_item.tx_id}")
+            except Exception as e:
+                logger.error(f"Error retrieving address for VIN: {e}")
+                raise
         else:
-            raise Exception(f"Unknown item type selected")
+            raise Exception(f"No valid VIN or VOUT found for transaction {selected_txn['txid']}")
