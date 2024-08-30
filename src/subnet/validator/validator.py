@@ -182,7 +182,7 @@ class Validator(Module):
             llm_query_result = await client.call(
                 "llm_query",
                 miner_key,
-                {"llm_messages_list": llm_message_list.dict()},
+                {"llm_messages_list": llm_message_list.model_dump()},
                 timeout=self.llm_query_timeout,
             )
             if not llm_query_result:
@@ -344,11 +344,11 @@ class Validator(Module):
     async def query_miner(self, request: LlmQueryRequest) -> dict:
         request_id = str(uuid.uuid4())
         timestamp = datetime.utcnow()
-        prompt_dict = [message.to_dict() for message in request.prompt]
+        prompt_dict = [message.model_dump() for message in request.prompt]
         prompt_hash = generate_hash(json.dumps(prompt_dict))
 
         if request.miner_key:
-            miner = await self.miner_discovery_manager.get_miner_by_key(request.miner_key)
+            miner = await self.miner_discovery_manager.get_miner_by_key(request.miner_key, request.network)
             if not miner:
                 return {
                     "request_id": request_id,
@@ -396,22 +396,23 @@ class Validator(Module):
                 "data": responses,
             }
 
-    async def _query_miner(self, miner, prompt: List[LlmMessage]):
+    async def _query_miner(self, miner, llm_message_list: LlmMessageList):
         miner_key = miner['miner_key']
         miner_network = miner['network']
         module_ip = miner['miner_address']
         module_port = int(miner['miner_ip_port'])
         module_client = ModuleClient(module_ip, module_port, self.key)
         try:
-            prompt_dict = [message.to_dict() for message in prompt]
-            result = await module_client.call(
+            llm_query_result = await module_client.call(
                 "llm_query",
                 miner_key,
-                {'prompt': prompt_dict},
+                {"llm_messages_list": llm_message_list.model_dump()},
                 timeout=self.llm_query_timeout,
             )
+            if not llm_query_result:
+                return None
 
-            return result
+            return LlmMessageOutputList(**llm_query_result)
         except Exception as e:
             logger.warning(f"Failed to query miner {miner_key}, {e}")
             return None

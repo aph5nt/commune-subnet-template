@@ -159,6 +159,6 @@ class MinerReceiptManager:
                 result = result.fetchone()
                 if result is None:
                     return 0.0
-                return result['multiplier']
+                return result[1]
 
             return [dict(row) for row in result.fetchall()]
