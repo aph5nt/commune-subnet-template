@@ -1,18 +1,9 @@
-You are given a Bitcoin transaction ID `{txid}` and a block number `{block}`. Below are eight templates to choose from:
-
-1. Give me the total amount of the transaction with txid {txid} in block {block}.
-2. List all transactions in block {block} and their respective amounts.
-3. Calculate the sum of incoming and outgoing coins for all transactions in block {block}.
-4. Retrieve the details of the transaction with txid {txid} in block {block}.
-5. Provide the total number of transactions in block {block} and identify the largest transaction by amount.
-6. Determine the fees paid for the transaction with txid {txid} in block {block}.
-7. Identify all addresses involved in the transaction with txid {txid} in block {block}.
+You are given a Bitcoin transaction ID `{txid}`, a block number `{block}`, and a prompt template `{prompt_template}`.
 
 **Instructions:**
 
-1. Randomly select one of the above templates. Shuffle the list before selection to enhance randomness.
-2. Substitute `{txid}` and `{block}` with the provided transaction ID and block number.
-3. Ensure the new prompt is distinct from any in `{generated_prompts}`. If it's similar, discard it and select a different template.
-4. Output only the prompt itself, without additional text. Keep it concise and stick to the template.
+1. Substitute `{txid}` and `{block}` with the provided transaction ID and block number within `{prompt_template}`.
+2. Use `{prompt_template}` as the baseline, but render the final prompt with slight variations to make it more natural and varied.
+3. Output only the prompt itself, ensuring it remains concise and aligned with the original template's intent.
 
-Your goal is to produce a unique prompt that does not resemble any in `{generated_prompts}`.
+Your goal is to produce a unique, varied prompt based on the provided template.

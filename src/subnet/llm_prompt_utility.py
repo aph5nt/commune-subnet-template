@@ -7,8 +7,18 @@ from src.subnet.validator.nodes.bitcoin.node import BitcoinNode
 from src.subnet.validator.database.session_manager import DatabaseSessionManager
 from src.subnet.validator.database.models.validation_prompt import ValidationPromptManager
 
+# Define the list of prompt templates
+PROMPT_TEMPLATES = [
+    "Give me the total amount of the transaction with txid {txid} in block {block}.",
+    "List all transactions in block {block} and their respective amounts.",
+    "Calculate the sum of incoming and outgoing coins for all transactions in block {block}.",
+    "Retrieve the details of the transaction with txid {txid} in block {block}.",
+    "Provide the total number of transactions in block {block} and identify the largest transaction by amount.",
+    "Determine the fees paid for the transaction with txid {txid} in block {block}.",
+    "Identify all addresses involved in the transaction with txid {txid} in block {block}."
+]
 
-async def generate_prompt_and_store(wallet_address: str, network: str, validation_prompt_manager, llm, threshold: int):
+async def generate_prompt_and_store(network: str, validation_prompt_manager, llm, threshold: int):
     btc = BitcoinNode()
 
     # Get the current highest block height
@@ -25,11 +35,11 @@ async def generate_prompt_and_store(wallet_address: str, network: str, validatio
     print(f"Random Txid: {random_txid}")
     print(f"Block Data: {random_txid['block_data']}")  # Print block data if needed
 
-    # Retrieve the last 5 generated prompts from the database
-    last_5_prompts = await validation_prompt_manager.get_last_5_prompts()
+    # Randomly select a prompt template
+    selected_template = random.choice(PROMPT_TEMPLATES)
 
-    # Use the address in the LLM prompt generation
-    prompt = llm.build_prompt_from_txid_and_block(random_txid['txid'], random_block_height, network, last_generated_prompts=last_5_prompts)
+    # Use the selected template, txid, and block in the LLM prompt generation
+    prompt = llm.build_prompt_from_txid_and_block(random_txid['txid'], random_block_height, network, prompt_template=selected_template)
     print(f"Generated Prompt: {prompt}")
 
     # Check the current number of prompts in the database
@@ -44,7 +54,7 @@ async def generate_prompt_and_store(wallet_address: str, network: str, validatio
     print(f"Prompt stored in the database successfully.")
 
 
-async def main(wallet_address: str, network: str, frequency: int, threshold: int):
+async def main(network: str, frequency: int, threshold: int):
     # Ensure environment is loaded
     env = 'testnet'  # or 'mainnet' depending on your test
     load_environment(env)
@@ -59,7 +69,7 @@ async def main(wallet_address: str, network: str, frequency: int, threshold: int
 
     try:
         while True:
-            await generate_prompt_and_store(wallet_address, network, validation_prompt_manager, llm, threshold)
+            await generate_prompt_and_store(network, validation_prompt_manager, llm, threshold)
             await asyncio.sleep(frequency * 60)  # frequency is in minutes
 
     except Exception as e:
@@ -69,14 +79,13 @@ async def main(wallet_address: str, network: str, frequency: int, threshold: int
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) != 5:
-        print("Usage: python llm_prompt_utility.py <wallet_address> <network> <frequency_in_minutes> <threshold>")
+    if len(sys.argv) != 4:
+        print("Usage: python llm_prompt_utility.py <network> <frequency_in_minutes> <threshold>")
         sys.exit(1)
 
-    wallet_address = sys.argv[1]
-    network = sys.argv[2]
-    frequency = int(sys.argv[3])
-    threshold = int(sys.argv[4])
+    network = sys.argv[1]
+    frequency = int(sys.argv[2])
+    threshold = int(sys.argv[3])
 
     # Run the async main function
-    asyncio.run(main(wallet_address, network, frequency, threshold))
+    asyncio.run(main(network, frequency, threshold))

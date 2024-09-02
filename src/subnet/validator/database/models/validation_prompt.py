@@ -107,13 +107,3 @@ class ValidationPromptManager:
                         delete(ValidationPrompt).where(ValidationPrompt.id == oldest_prompt.id)
                     )
                     print(f"Deleted oldest prompt with ID: {oldest_prompt.id}")
-
-    async def get_last_5_prompts(self) -> list[str]:
-        async with self.session_manager.session() as session:
-            result = await session.execute(
-                select(ValidationPrompt.prompt)
-                .order_by(ValidationPrompt.created_at.desc())
-                .limit(5)
-            )
-            prompts = result.scalars().all()
-            return prompts
