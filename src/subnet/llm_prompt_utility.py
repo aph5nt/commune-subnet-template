@@ -25,8 +25,11 @@ async def generate_prompt_and_store(wallet_address: str, network: str, validatio
     print(f"Random Txid: {random_txid}")
     print(f"Block Data: {random_txid['block_data']}")  # Print block data if needed
 
+    # Retrieve the last 5 generated prompts from the database
+    last_5_prompts = await validation_prompt_manager.get_last_5_prompts()
+
     # Use the address in the LLM prompt generation
-    prompt = llm.build_prompt_from_txid_and_block(random_txid['txid'], random_block_height, network)
+    prompt = llm.build_prompt_from_txid_and_block(random_txid['txid'], random_block_height, network, last_generated_prompts=last_5_prompts)
     print(f"Generated Prompt: {prompt}")
 
     # Check the current number of prompts in the database

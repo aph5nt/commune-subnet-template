@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import json
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
@@ -17,7 +17,7 @@ class OpenAILLM(BaseLLM):
         self.chat_gpt4o = ChatOpenAI(api_key=settings.LLM_API_KEY, model="gpt-4o", temperature=0)
         self.MAX_TOKENS = 128000
 
-    def build_prompt_from_txid_and_block(self, txid: str, block: str, network: str) -> str:
+    def build_prompt_from_txid_and_block(self, txid: str, block: str, network: str, last_generated_prompts: Optional[list[str]] = None) -> str:
         local_file_path = f"openai/prompts/{network}/prompt_generation/prompt_generation_prompt.txt"
         prompt = read_local_file(local_file_path)
         if not prompt:
@@ -30,9 +30,15 @@ class OpenAILLM(BaseLLM):
             logger.warning("The block is empty. Cannot generate a prompt without a valid block.")
             return "Prompt generation failed: Block is required but not provided."
 
+        # Limit the number of previous prompts to 3 or fewer
+         if last_generated_prompts and len(last_generated_prompts) > 3:
+            last_generated_prompts = last_generated_prompts[-3:]
+        # Prepare the last generated prompts text
+        last_prompts_text = "\n".join(last_generated_prompts) if last_generated_prompts else ""
+
         try:
-            # Substitute txid and block into the prompt
-            full_prompt = prompt.format(txid=txid, block=block)
+            # Substitute txid, block, and generated_prompts into the prompt
+            full_prompt = prompt.format(txid=txid, block=block, generated_prompts=last_prompts_text)
             logger.info(f"Full prompt: {full_prompt}")
         except KeyError as e:
             logger.error(f"KeyError during prompt formatting: {e}")

@@ -1,4 +1,4 @@
-You are given a Bitcoin transaction ID in the form of {txid} and a block number in the form of {block}. Below are eight possible templates you can use:
+You are given a Bitcoin transaction ID `{txid}` and a block number `{block}`. Below are eight templates to choose from:
 
 1. Give me the total amount of the transaction with txid {txid} in block {block}.
 2. List all transactions in block {block} and their respective amounts.
@@ -8,4 +8,11 @@ You are given a Bitcoin transaction ID in the form of {txid} and a block number 
 6. Determine the fees paid for the transaction with txid {txid} in block {block}.
 7. Identify all addresses involved in the transaction with txid {txid} in block {block}.
 
-Randomly and evenly select one of the eight templates listed above to generate the prompt. Ensure that the selection process is fair and that each template has an equal chance of being chosen. Replace `{txid}` with the provided transaction ID and `{block}` with the provided block number. Only generate the prompt corresponding to the randomly selected template.
+**Instructions:**
+
+1. Randomly select one of the above templates. Shuffle the list before selection to enhance randomness.
+2. Substitute `{txid}` and `{block}` with the provided transaction ID and block number.
+3. Ensure the new prompt is distinct from any in `{generated_prompts}`. If it's similar, discard it and select a different template.
+4. Output only the prompt itself, without additional text. Keep it concise and stick to the template.
+
+Your goal is to produce a unique prompt that does not resemble any in `{generated_prompts}`.
